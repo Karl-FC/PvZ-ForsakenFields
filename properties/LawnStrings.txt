@@ -1,8 +1,8 @@
 [PEASHOOTER]
-Scaredy-shroom
+Peashooter
 
 [PEASHOOTER_TOOLTIP]
-Rapidly shoots spores at the enemy
+Shoots peas at the enemy
 
 [SUNFLOWER]
 Sunflower
@@ -23,10 +23,10 @@ Wall-nut
 Blocks off zombies and protects your other plants
 
 [REPEATER]
-Fire Peashooter
+Repeater
 
 [REPEATER_TOOLTIP]
-Fire Peashooter shoots flaming peas down the lane.
+Fires two peas at a time
 
 [POTATO_MINE]
 Potato Mine
@@ -35,37 +35,37 @@ Potato Mine
 Explodes on contact, but takes time to arm itself
 
 [SNOW_PEA]
-Kernel-pult
+Snow Pea
 
 [SNOW_PEA_TOOLTIP]
-Flings corn kernels and butter at zombies
+Shoots frozen peas that damage and slow the enemy
 
 [CHOMPER]
-Nommer
+Chomper
 
 [CHOMPER_TOOLTIP]
-Rapidly bites enemies in front or behind him.
+Devours a zombie whole, but is vulnerable while chewing
 
 [PUFF_SHROOM]
-Poison Ivy
+Puff-shroom
 
 [PUFF_SHROOM_TOOLTIP]
-Blocks zombies while dealing damage to them
+Shoots short-ranged spores at the enemy
 
 [SUN_SHROOM]
-Palm
+Sun-shroom
 
 [SUN_SHROOM_TOOLTIP]
-High defense plant that gives small sun at first and normal sun later
+Gives small sun at first and normal sun later
 
 [FUME_SHROOM]
-Snow-Shroom
+Fume-shroom
 
 [FUME_SHROOM_TOOLTIP]
-Shoot-ranged attacker that slows zombies on hit
+Shoots fumes that can pass through screen doors
 
 [GRAVE_BUSTER]
-Moss
+Grave Buster
 
 [GRAVE_BUSTER_TOOLTIP]
 Plant it on a grave to remove the grave
@@ -77,13 +77,13 @@ Hypno-shroom
 Makes a zombie fight for you
 
 [SCAREDY_SHROOM]
-Cactus
+Scaredy-shroom
 
 [SCAREDY_SHROOM_TOOLTIP]
-Long-ranged shooter that turns melee when enemies get near it
+Long-ranged shooter that hides when enemies get near it
 
 [ICE_SHROOM]
-Stun-spore
+Ice-shroom
 
 [ICE_SHROOM_TOOLTIP]
 Temporarily immobilizes all zombies on the screen
@@ -92,10 +92,10 @@ Temporarily immobilizes all zombies on the screen
 Doom-shroom
 
 [DOOM_SHROOM_TOOLTIP]
-Basically Nuclear bomb
+Destroys a large area, leaving a crater in its wake
 
 [LILY_PAD]
-Bamboo Raft
+Lily Pad
 
 [LILY_PAD_TOOLTIP]
 Lets you plant non-aquatic plants on top of it
@@ -107,10 +107,10 @@ Squash
 Squashes zombies
 
 [THREEPEATER]
-Snapdragon
+Threepeater
 
 [THREEPEATER_TOOLTIP]
-Shoots fire in three lanes
+Shoots peas in three lanes
 
 [TANGLE_KELP]
 Tangle Kelp
@@ -134,7 +134,7 @@ Pops tires and hurts zombies that step on it
 Torchwood
 
 [TORCHWOOD_TOOLTIP]
-Blocks off zombies while lighting up an area
+Peas that pass through it turn into fireballs
 
 [TALL_NUT]
 Tall-nut
@@ -155,28 +155,28 @@ Plantern
 Lights up an area, letting you see through fog
 
 [CACTUS]
-Soulshooter
+Cactus
 
 [CACTUS_TOOLTIP]
-Slowly fires {REDACTED} at zombies
+Shoots spikes that can pop balloons
 
 [BLOVER]
 Blover
 
 [BLOVER_TOOLTIP]
-Blows away all zombies and fog
+Blows away all balloon zombies and fog
 
 [SPLIT_PEA]
-Reverse Peashooter
+Split Pea
 
 [SPLIT_PEA_TOOLTIP]
-Shoots peas backwards
+Shoots peas forward and backwards
 
 [STARFRUIT]
-Spineapple
+Starfruit
 
 [STARFRUIT_TOOLTIP]
-Shoots poison darts in 5 directions
+Shoots stars in 5 directions
 
 [PUMPKIN]
 Pumpkin
@@ -191,56 +191,56 @@ Magnet-shroom
 Removes helmets and other metal objects from zombies
 
 [CABBAGE_PULT]
-Iceberg Cabbage
+Cabbage-pult
 
 [CABBAGE_PULT_TOOLTIP]
-Hurls frozen cabbages that slows enemies
+Hurls cabbages at the enemy
 
 [FLOWER_POT]
-Power Pot
+Flower Pot
 
 [FLOWER_POT_TOOLTIP]
-Lets you plant on radioactive places
+Lets you plant on the roof
 
 [KERNEL_PULT]
-pult
+Kernel-pult
 
 [KERNEL_PULT_TOOLTIP]
 Flings corn kernels and butter at zombies
 
 [GARLIC]
-Explode-o-Nut
+Garlic
 
 [GARLIC_TOOLTIP]
-Blocks zombies but explodes when eaten
+Diverts zombies into other lanes
 
 [UMBRELLA_LEAF]
-Breeze Blossom
+Umbrella Leaf
 
 [UMBRELLA_LEAF_TOOLTIP]
 Protects nearby plants from bungees and catapults
 
 [MARIGOLD]
-Seedling
+Marigold
 
 [MARIGOLD_TOOLTIP]
-Drops random seed packets
+Gives you silver and gold coins
 
 [MELON_PULT]
-Winter Melon
+Melon-pult
 
 [MELON_PULT_TOOLTIP]
-Does heavy damage and slows groups of zombies
+Does heavy damage to groups of zombies
 
 [GATLING_PEA]
-Sus Pea
+Gatling Pea
 
 [GATLING_PEA_TOOLTIP]
-Shoots random projectiles at zombies
+Shoots four peas at a time
 (requires repeater)
 
 [TWIN_SUNFLOWER]
-Evolved Sunflower
+Twin Sunflower
 
 [TWIN_SUNFLOWER_TOOLTIP]
 Gives twice as much sun as a sunflower
@@ -254,31 +254,31 @@ Releases heavy fumes in an area around itself
 (requires fume-shroom)
 
 [CATTAIL]
-Caulipower
+Cattail
 
 [CATTAIL_TOOLTIP]
-Hypnotizes a random zombie
-(requires bamboo raft)
+Attacks any lane and shoots down balloon zombies
+(requires lily pad)
 
 [WINTER_MELON]
-Melon Fault
+Winter Melon
 
 [WINTER_MELON_TOOLTIP]
-Does heavy damage with a chance to throw explosive melons
+Does heavy damage and slows groups of zombies
 (requires melon-pult)
 
 [GOLD_MAGNET]
-AFK Shroom
+Gold Magnet
 
 [GOLD_MAGNET_TOOLTIP]
-Fires deadly cobs of corn whenever a coin is collected
+Collects coins and diamonds for you
 (requires magnet-shroom)
 
 [SPIKEROCK]
-Iceweed
+Spikerock
 
 [SPIKEROCK_TOOLTIP]
-Slows and damages zombies that walk over it
+Pops multiple tires and damages zombies that walk over it
 (requires spikeweed)
 
 [COB_CANNON]
@@ -301,7 +301,7 @@ Coffee Bean
 Plant it on a mushroom to wake it up
 
 [EXPLODE_O_NUT]
-Unstable Wall-nut
+Explode-o-nut
 
 [EXPLODE_O_NUT_TOOLTIP]
 Explodes on contact
@@ -451,23 +451,21 @@ Potato Mines pack a powerful punch, but they need a while to arm themselves. You
 minute. Potato Mine says nothing. He's too busy thinking about his investment strategy.
 
 [REPEATER_DESCRIPTION]
-Fire Peashooters shoot flaming peas.
+Repeaters fire two peas at a time.
 {SHORTLINE}
 {KEYWORD}Damage:{STAT} normal (for each pea)
+{KEYWORD}Firing speed:{STAT} 2x
 {SHORTLINE}
-{FLAVOR}Fire Peashooter knows what she looks like when she gets excited. But working with an
- open flame is serious and, more importantly, dangerous business. That's why, in her spare time,
- she talks to children about the importance of fire safety. "I'm professionally trained," she explains. "Don't play with fire at home, kids."
+{FLAVOR}Repeater is fierce. He's from the streets. He doesn't take attitude from anybody, 
+plant or zombie, and he shoots peas to keep people at a distance. Secretly, though, Repeater yearns for love.
 
 [SNOW_PEA_DESCRIPTION]
-Kernel-pults fling corn kernels and butter at zombies.
+Snow Peas shoot frozen peas that damage and slow the enemy.
 {SHORTLINE}
-{KEYWORD}Damage:{STAT} light (kernel), normal (butter)
-{KEYWORD}Range:{STAT} lobbed
-{KEYWORD}Special:{STAT} butter immobilizes zombies
+{KEYWORD}Damage:{STAT} normal, slows zombies
 {SHORTLINE}
-{FLAVOR}Kernel-Pult is the eldest of the Pult brothers. Of the three of them, Kernel is the only one 
-who consistently remembers the others' birthdays. He bugs them about it a little, too.
+{FLAVOR}Folks often tell Snow Pea how "cool" he is, or exhort him to "chill out." They 
+tell him to "stay frosty." Snow Pea just rolls his eyes. He's heard 'em all.
 
 [CHOMPER_DESCRIPTION]
 Chompers can devour a zombie whole, but they are vulnerable while chewing.
