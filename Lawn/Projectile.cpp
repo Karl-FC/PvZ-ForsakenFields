@@ -25,7 +25,8 @@ ProjectileDefinition gProjectileDefinition[] = {  //0x69F1C0
 	{ ProjectileType::PROJECTILE_KERNEL,        0,  20  },
 	{ ProjectileType::PROJECTILE_COBBIG,        0,  300 },
 	{ ProjectileType::PROJECTILE_BUTTER,        0,  40  },
-	{ ProjectileType::PROJECTILE_ZOMBIE_PEA,    0,  20  }
+	{ ProjectileType::PROJECTILE_ZOMBIE_PEA,    0,  20  },
+    { ProjectileType::PROJECTILE_SLOWPEA,       0,  5  }
 };
 
 Projectile::Projectile()
@@ -124,6 +125,7 @@ void Projectile::ProjectileInitialize(int theX, int theY, int theRenderOrder, in
 			mRotationSpeed = -mRotationSpeed;
 		}
 	}
+
 
 	mAnimCounter = 0;
 	mX = (int)mPosX;
@@ -320,6 +322,7 @@ bool Projectile::CantHitHighGround()
 	return (
 		mProjectileType == ProjectileType::PROJECTILE_PEA ||
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_STAR ||
 		mProjectileType == ProjectileType::PROJECTILE_PUFF ||
 		mProjectileType == ProjectileType::PROJECTILE_FIREBALL
@@ -333,6 +336,7 @@ void Projectile::CheckForHighGround()
 
 	if (mProjectileType == ProjectileType::PROJECTILE_PEA ||
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_FIREBALL ||
 		mProjectileType == ProjectileType::PROJECTILE_SPIKE ||
 		mProjectileType == ProjectileType::PROJECTILE_COBBIG)
@@ -396,7 +400,7 @@ unsigned int Projectile::GetDamageFlags(Zombie* theZombie)
 		SetBit(aDamageFlags, (int)DamageFlags::DAMAGE_BYPASSES_SHIELD, true);
 	}
 
-	if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || mProjectileType == ProjectileType::PROJECTILE_WINTERMELON)
+	if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || mProjectileType == ProjectileType::PROJECTILE_SLOWPEA)
 	{
 		SetBit(aDamageFlags, (int)DamageFlags::DAMAGE_FREEZE, true);
 	}
@@ -852,6 +856,11 @@ void Projectile::DoImpact(Zombie* theZombie)
 		aSplatPosX -= 15.0f;
 		aEffect = ParticleEffect::PARTICLE_SNOWPEA_SPLAT;
 	}
+	else if (mProjectileType == ProjectileType::PROJECTILE_SLOWPEA)
+	{
+		aSplatPosX -= 15.0f;
+		aEffect = ParticleEffect::PARTICLE_SNOWPEA_SPLAT;
+	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_FIREBALL)
 	{
 		if (IsSplashDamage(theZombie))
@@ -930,6 +939,7 @@ void Projectile::Update()
 	int aTime = 20;
 	if (mProjectileType == ProjectileType::PROJECTILE_PEA || 
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || 
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_CABBAGE || 
 		mProjectileType == ProjectileType::PROJECTILE_MELON || 
 		mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || 
@@ -973,6 +983,10 @@ void Projectile::Draw(Graphics* g)
 		aImage = IMAGE_PROJECTILEPEA;
 	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA)
+	{
+		aImage = IMAGE_PROJECTILESNOWPEA;
+	}
+	else if (mProjectileType == ProjectileType::PROJECTILE_SLOWPEA)
 	{
 		aImage = IMAGE_PROJECTILESNOWPEA;
 	}
@@ -1105,6 +1119,10 @@ void Projectile::DrawShadow(Graphics* g)
 		aOffsetX += -1.0f;
 		aScale = 1.3f;
 		break;
+	case ProjectileType::PROJECTILE_SLOWPEA:
+		aOffsetX += -1.0f;
+		aScale = 1.3f;
+		break;
 
 	case ProjectileType::PROJECTILE_STAR:
 		aOffsetX += 7.0f;
@@ -1164,6 +1182,7 @@ Rect Projectile::GetProjectileRect()
 {
 	if (mProjectileType == ProjectileType::PROJECTILE_PEA || 
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_ZOMBIE_PEA)
 	{
 		return Rect(mX - 15, mY, mWidth + 15, mHeight);

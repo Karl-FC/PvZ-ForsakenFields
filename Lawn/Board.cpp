@@ -4004,7 +4004,7 @@ void Board::MouseDownWithPlant(int x, int y, int theClickCount)
 	else if (mTutorialState == TutorialState::TUTORIAL_LEVEL_2_PLANT_SUNFLOWER)
 	{
 		int aSunFlowersCount = CountSunFlowers();
-		if (aPlantingSeedType == SeedType::SEED_SUNFLOWER && aSunFlowersCount == 2)
+		if (aPlantingSeedType == SeedType::SEED_SUNSHROOM && aSunFlowersCount == 2)
 		{
 			DisplayAdvice(_S("[ADVICE_MORE_SUNFLOWERS]"), MessageStyle::MESSAGE_STYLE_TUTORIAL_LEVEL2, AdviceType::ADVICE_NONE);
 			if (!mSeedBank->mSeedPackets[1].CanPickUp())
@@ -5657,7 +5657,7 @@ void Board::UpdateTutorial()
 
 	// 冒险模式初期关卡，检测到向日葵数量小于 3 时，进入“更多向日葵”的教程
 	if (mApp->IsFirstTimeAdventureMode() && mLevel >= 3 && mLevel != 5 && mLevel <= 7 && mTutorialState == TutorialState::TUTORIAL_OFF &&
-		mCurrentWave >= 5 && !gShownMoreSunTutorial && mSeedBank->mSeedPackets[1].CanPickUp() && CountPlantByType(SeedType::SEED_SUNFLOWER) < 3)
+		mCurrentWave >= 5 && !gShownMoreSunTutorial && mSeedBank->mSeedPackets[1].CanPickUp() && CountPlantByType(SeedType::SEED_SUNSHROOM) < 3)
 	{
 		TOD_ASSERT(!ChooseSeedsOnCurrentLevel());
 		DisplayAdvice(_S("[ADVICE_PLANT_SUNFLOWER4]"), MessageStyle::MESSAGE_STYLE_TUTORIAL_LATER_STAY, AdviceType::ADVICE_NONE);
