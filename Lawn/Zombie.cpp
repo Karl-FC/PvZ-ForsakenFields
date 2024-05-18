@@ -1112,7 +1112,7 @@ void Zombie::PickRandomSpeed()
     }
     else if (mZombieType == ZombieType::ZOMBIE_IMP && mApp->IsIZombieLevel())
     {
-        mVelX = 0.9f;
+        mVelX = 0.93f;
     }
     else if (mZombiePhase == ZombiePhase::PHASE_YETI_RUNNING)
     {
@@ -1125,12 +1125,12 @@ void Zombie::PickRandomSpeed()
     else if (mZombieType == ZombieType::ZOMBIE_DANCER || mZombieType == ZombieType::ZOMBIE_BACKUP_DANCER || 
         mZombieType == ZombieType::ZOMBIE_POGO || mZombieType == ZombieType::ZOMBIE_FLAG)
     {
-        mVelX = 0.45f;
+        mVelX = 0.9f;
     }
     else if (mZombiePhase == ZombiePhase::PHASE_DIGGER_TUNNELING || mZombiePhase == ZombiePhase::PHASE_POLEVAULTER_PRE_VAULT || 
         mZombieType == ZombieType::ZOMBIE_FOOTBALL || mZombieType == ZombieType::ZOMBIE_SNORKEL || mZombieType == ZombieType::ZOMBIE_JACK_IN_THE_BOX)
     {
-        mVelX = RandRangeFloat(0.66f, 0.68f);
+        mVelX = RandRangeFloat(0.85f, 0.9f);
     }
     else if (mZombiePhase == ZombiePhase::PHASE_LADDER_CARRYING || mZombieType == ZombieType::ZOMBIE_SQUASH_HEAD)
     {
@@ -1143,7 +1143,7 @@ void Zombie::PickRandomSpeed()
     }
     else
     {
-        mVelX = RandRangeFloat(0.23f, 0.32f);
+        mVelX = RandRangeFloat(0.29f, 0.79f);
         if (mVelX < 0.3f)
         {
             mAnimTicksPerFrame = 12;
