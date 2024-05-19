@@ -30,7 +30,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_SLOWPEA,           nullptr, ReanimationType::REANIM_THREEPEATER,       4,  75,    1000,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SLOW_PEA") },
     { SeedType::SEED_SCAREDYSHROOM,        nullptr, ReanimationType::REANIM_SCRAREYSHROOM,    33,  100,    750,    PlantSubClass::SUBCLASS_SHOOTER,    80,    _S("SCAREDY_SHROOM") },
     { SeedType::SEED_SOULPEA,           nullptr, ReanimationType::REANIM_REPEATER,       4,  225,    750,    PlantSubClass::SUBCLASS_SHOOTER,    400,    _S("SOUL_PEA") },
-    { SeedType::SEED_PUFFSHROOM,        nullptr, ReanimationType::REANIM_PUFFSHROOM,    6,  0,      750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("PUFF_SHROOM") },
+    { SeedType::SEED_PUFFSHROOM,        nullptr, ReanimationType::REANIM_PUFFSHROOM,    6,  0,      750,    PlantSubClass::SUBCLASS_SHOOTER,    175,    _S("PUFF_SHROOM") },
     { SeedType::SEED_SUNFLOWER,         nullptr, ReanimationType::REANIM_SUNFLOWER,     7,  25,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("SUNFLOWER") },
     { SeedType::SEED_CHOMPER,           nullptr, ReanimationType::REANIM_CHOMPER,       31, 150,    750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("CHOMPER") },
     { SeedType::SEED_GRAVEBUSTER,       nullptr, ReanimationType::REANIM_GRAVE_BUSTER,  40, 75,     750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GRAVE_BUSTER") },
@@ -5407,7 +5407,7 @@ Rect Plant::GetPlantAttackRect(PlantWeapon thePlantWeapon)
     {
     case SeedType::SEED_LEFTPEATER:     aRect = Rect(0,             mY,             mX,                 mHeight);               break;
     case SeedType::SEED_SQUASH:         aRect = Rect(mX + 20,       mY,             mWidth - 35,        mHeight);               break;
-    case SeedType::SEED_CHOMPER:        aRect = Rect(mX + 80,       mY,             40,                 mHeight);               break;
+    case SeedType::SEED_CHOMPER:        aRect = Rect(mX + 80,       mY,             80,                 mHeight);               break;
     case SeedType::SEED_SPIKEWEED:
     case SeedType::SEED_SPIKEROCK:      aRect = Rect(mX + 20,       mY,             mWidth - 50,        mHeight);               break;
     case SeedType::SEED_POTATOMINE:     aRect = Rect(mX,            mY,             mWidth - 25,        mHeight);               break;
