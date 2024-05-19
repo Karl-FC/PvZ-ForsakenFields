@@ -1012,57 +1012,64 @@ enum SeedChooserState
     CHOOSE_VIEW_LAWN = 1
 };
 enum SeedType
-{
-    SEED_SCAREDYSHROOM = 0,                    // 豌豆射手
-    SEED_SUNSHROOM = 1,                    
+{//DAY
+    SEED_PEASHOOTER = 0,                // 豌豆射手
+    SEED_SUNSHROOM = 1,                     // 向日葵
     SEED_CHERRYBOMB = 2,                    // 樱桃炸弹
     SEED_WALLNUT = 3,                       // 坚果
     SEED_POTATOMINE = 4,                    // 土豆地雷
-    SEED_SLOWPEA = 5,                       // 寒冰射手
-    SEED_SNOWPEA = 6,
-    SEED_CHOMPER = 7,                       // 大嘴花
-    SEED_REPEATER = 8,                      // 双发射手
-    SEED_PUFFSHROOM = 9,                    // 小喷菇
-    SEED_SUNFLOWER = 10,                     // 阳光菇
-    SEED_FUMESHROOM = 11,                   // 大喷菇
-    SEED_GRAVEBUSTER = 12,                  // 墓碑吞噬者
-    SEED_HYPNOSHROOM = 13,                  // 魅惑菇
-    SEED_PEASHOOTER = 14,                // 胆小菇
-    SEED_ICESHROOM = 15,                    // 寒冰菇
-    SEED_DOOMSHROOM = 16,                   // 毁灭菇
-    SEED_LILYPAD = 17,                      // 睡莲
-    SEED_SQUASH = 18,                       // 窝瓜
-    SEED_THREEPEATER = 19,                  // 三线射手
-    SEED_TANGLEKELP = 20,                   // 缠绕海草
-    SEED_JALAPENO = 21,                     // 火爆辣椒
-    SEED_SPIKEWEED = 22,                    // 地刺
-    SEED_TORCHWOOD = 23,                    // 火炬树桩
-    SEED_TALLNUT = 24,
-    SEED_SEASHROOM = 25,
-    SEED_PLANTERN = 26,
-    SEED_CACTUS = 27,
-    SEED_BLOVER = 28,
-    SEED_SPLITPEA = 29,
-    SEED_STARFRUIT = 30,
-    SEED_PUMPKINSHELL = 31,
-    SEED_MAGNETSHROOM = 32,
-    SEED_CABBAGEPULT = 33,
-    SEED_FLOWERPOT = 34,
-    SEED_KERNELPULT = 35,
-    SEED_INSTANT_COFFEE = 36,
-    SEED_GARLIC = 37,
-    SEED_UMBRELLA = 38,
-    SEED_MARIGOLD = 39,
-    SEED_MELONPULT = 40,
-    SEED_GATLINGPEA = 41,
-    SEED_TWINSUNFLOWER = 42,
-    SEED_GLOOMSHROOM = 43,
-    SEED_CATTAIL = 44,
-    SEED_WINTERMELON = 45,
-    SEED_GOLD_MAGNET = 46,
-    SEED_SPIKEROCK = 47,
-    SEED_COBCANNON = 48,
-    SEED_IMITATER = 49,
+    SEED_SLOWPEA = 5,
+    SEED_SCAREDYSHROOM = 6,
+    SEED_SOULPEA = 7,
+//NIGHT
+    SEED_PUFFSHROOM = 8,                    // 小喷菇
+    SEED_SUNFLOWER = 9,
+    SEED_CHOMPER = 10,
+    SEED_GRAVEBUSTER = 11,                  // 墓碑吞噬者
+    SEED_ICEBERGLETTUCE = 12,
+    SEED_TALLNUT = 13,
+    SEED_THREEPEATER = 14,
+    SEED_HYPNOSHROOM = 15,
+//POOL
+    SEED_LILYPAD = 16,                      // 睡莲
+    SEED_SQUASH = 17,                       // 窝瓜
+    SEED_FUMESHROOM = 18,
+    SEED_TANGLEKELP = 19,                   // 缠绕海草
+    SEED_BLOVER = 20,
+    SEED_SPIKEWEED = 21,                    // Ice rock
+    SEED_REPEATER = 22,
+    SEED_ICESHROOM = 23,
+//FOG
+    SEED_SEASHROOM = 24,
+    SEED_CABBAGEPULT = 25,
+    SEED_GARLIC = 26,
+    SEED_PLANTERN = 27,            //must explode
+    SEED_SPLITPEA = 28,
+    SEED_MELONPULT = 29,
+    SEED_PUMPKINSHELL = 30,
+    SEED_MAGNETSHROOM = 31,
+//ROOF
+    SEED_KERNELPULT = 32,
+    SEED_FLOWERPOT = 33,
+    SEED_CACTUS = 34,
+    SEED_INSTANT_COFFEE = 35,
+    SEED_TORCHWOOD = 36,
+    SEED_UMBRELLA = 37,
+    SEED_MARIGOLD = 38,
+    SEED_DOOMSHROOM = 39,
+//SHOP
+    SEED_GATLINGPEA = 40,
+    SEED_TWINSUNFLOWER = 41,
+    SEED_GLOOMSHROOM = 42,
+    SEED_CATTAIL = 43,
+    SEED_WINTERMELON = 44,
+    SEED_GOLD_MAGNET = 45,
+    SEED_SPIKEROCK = 46,
+    SEED_COBCANNON = 47,
+    SEED_JALAPENO = 48,
+    SEED_SNOWPEA = 49,
+    SEED_STARFRUIT = 50,
+    SEED_IMITATER = 51,
     SEED_EXPLODE_O_NUT,
     SEED_GIANT_WALLNUT,
     SEED_SPROUT,
@@ -1089,7 +1096,7 @@ enum SeedType
     SEED_ZOMBIE_DANCER,
     SEED_ZOMBIE_GARGANTUAR,
     SEED_ZOMBIE_IMP,
-    NUM_SEEDS_IN_CHOOSER = 50,
+    NUM_SEEDS_IN_CHOOSER = 52,
     SEED_NONE = -1
 };
 enum ShieldType

@@ -27,7 +27,7 @@ ProjectileDefinition gProjectileDefinition[] = {  //0x69F1C0
 	{ ProjectileType::PROJECTILE_BUTTER,        0,  40  },
 	{ ProjectileType::PROJECTILE_ZOMBIE_PEA,    0,  20  },
 	{ ProjectileType::PROJECTILE_SLOWPEA,       0,  5 },
-	{ ProjectileType::PROJECTILE_SOULPEA,       0,  120 },
+	{ ProjectileType::PROJECTILE_SOULPEA,       0,  180 },
 	{ ProjectileType::PROJECTILE_BEE,       0,  40 },
 	{ ProjectileType::PROJECTILE_CACTUSSPIKE,         0,  5  }
 

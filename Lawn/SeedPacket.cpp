@@ -628,15 +628,15 @@ void SeedPacket::Draw(Graphics* g)
 			aGrayness = mBoard->mSeedBank->mCutSceneDarken;
 			aPercentDark = 0.0f;
 		}
-		else if (mBoard->mTutorialState == TutorialState::TUTORIAL_LEVEL_1_PICK_UP_PEASHOOTER && mBoard->mTutorialTimer == -1 && mPacketType == SeedType::SEED_PEASHOOTER)
+		else if (mBoard->mTutorialState == TutorialState::TUTORIAL_LEVEL_1_PICK_UP_PEASHOOTER && mBoard->mTutorialTimer == -1 && mPacketType == SeedType::SEED_SCAREDYSHROOM)
 		{
 			aGrayness = GetFlashingColor(mBoard->mMainCounter, 75).mRed;
 		}
-		else if (mBoard->mTutorialState == TutorialState::TUTORIAL_LEVEL_2_PICK_UP_SUNFLOWER && mPacketType == SeedType::SEED_SUNFLOWER)
+		else if (mBoard->mTutorialState == TutorialState::TUTORIAL_LEVEL_2_PICK_UP_SUNFLOWER && mPacketType == SeedType::SEED_SUNSHROOM)
 		{
 			aGrayness = GetFlashingColor(mBoard->mMainCounter, 75).mRed;
 		}
-		else if (mBoard->mTutorialState == TutorialState::TUTORIAL_MORESUN_PICK_UP_SUNFLOWER && mPacketType == SeedType::SEED_SUNFLOWER)
+		else if (mBoard->mTutorialState == TutorialState::TUTORIAL_MORESUN_PICK_UP_SUNFLOWER && mPacketType == SeedType::SEED_SUNSHROOM)
 		{
 			aGrayness = GetFlashingColor(mBoard->mMainCounter, 75).mRed;
 		}

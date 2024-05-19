@@ -390,9 +390,9 @@ void Challenge::InitLevel()
 	}
 	if (mApp->IsFirstTimeAdventureMode() && mBoard->mLevel == 5)
 	{
-		mBoard->NewPlant(5, 1, SEED_PEASHOOTER, SEED_NONE);
-		mBoard->NewPlant(7, 2, SEED_PEASHOOTER, SEED_NONE);
-		mBoard->NewPlant(6, 3, SEED_PEASHOOTER, SEED_NONE);
+		mBoard->NewPlant(5, 1, SEED_WALLNUT, SEED_NONE);
+		mBoard->NewPlant(7, 2, SEED_WALLNUT, SEED_NONE);
+		mBoard->NewPlant(6, 3, SEED_WALLNUT, SEED_NONE);
 	}
 	if (mApp->mGameMode == GAMEMODE_CHALLENGE_BEGHOULED_TWIST)
 	{
@@ -1650,18 +1650,18 @@ void Challenge::UpdateConveyorBelt()
 	if (mBoard->mLevel == 10)
 	{
 		aSeedPickCount = 7;
-		aSeedPickArray[0].mItem = SEED_PEASHOOTER;
+		aSeedPickArray[0].mItem = SEED_SCAREDYSHROOM;
 		aSeedPickArray[0].mWeight = 20;
 		aSeedPickArray[1].mItem = SEED_CHERRYBOMB;
 		aSeedPickArray[1].mWeight = 20;
 		aSeedPickArray[2].mItem = SEED_WALLNUT;
 		aSeedPickArray[2].mWeight = 15;
-		aSeedPickArray[3].mItem = SEED_REPEATER;
+		aSeedPickArray[3].mItem = SEED_SLOWPEA;
 		aSeedPickArray[3].mWeight = 20;
-		aSeedPickArray[4].mItem = SEED_SNOWPEA;
+		aSeedPickArray[4].mItem = SEED_SOULPEA;
 		aSeedPickArray[4].mWeight = 10;
-		aSeedPickArray[5].mItem = SEED_CHOMPER;
-		aSeedPickArray[5].mWeight = 5;
+		aSeedPickArray[5].mItem = SEED_PEASHOOTER;
+		aSeedPickArray[5].mWeight = 15;
 		aSeedPickArray[6].mItem = SEED_POTATOMINE;
 		aSeedPickArray[6].mWeight = 10;
 	}

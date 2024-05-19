@@ -187,14 +187,14 @@ void Coin::CoinInitialize(int theX, int theY, CoinType theCoinType, CoinMotion t
         else if (mBoard->mBackground == BackgroundType::BACKGROUND_1_DAY)
         {
             SeedType aSeedList[] = {
-                SeedType::SEED_PEASHOOTER,
-                SeedType::SEED_SUNFLOWER,
+                SeedType::SEED_SCAREDYSHROOM,
+                SeedType::SEED_SUNSHROOM,
                 SeedType::SEED_CHERRYBOMB,
-                SeedType::SEED_WALLNUT,
-                SeedType::SEED_REPEATER,
+                SeedType::SEED_WALLNUT,   
                 SeedType::SEED_POTATOMINE,
-                SeedType::SEED_SNOWPEA,
-                SeedType::SEED_CHOMPER
+                SeedType::SEED_SLOWPEA,
+                SeedType::SEED_ICEBERGLETTUCE,
+                SeedType::SEED_SOULPEA
             };
             
             SeedType aSeedType = (SeedType)TodPickFromArray((int*)aSeedList, LENGTH(aSeedList));
@@ -204,13 +204,13 @@ void Coin::CoinInitialize(int theX, int theY, CoinType theCoinType, CoinMotion t
         {
             SeedType aSeedList[] = {
                 SeedType::SEED_PUFFSHROOM,
-                SeedType::SEED_SUNSHROOM,
-                SeedType::SEED_FUMESHROOM,
+                SeedType::SEED_SUNFLOWER,
+                SeedType::SEED_CHOMPER,
                 SeedType::SEED_GRAVEBUSTER,
-                SeedType::SEED_HYPNOSHROOM,
-                SeedType::SEED_SCAREDYSHROOM,
-                SeedType::SEED_ICESHROOM,
-                SeedType::SEED_DOOMSHROOM
+                SeedType::SEED_PEASHOOTER,
+                SeedType::SEED_TALLNUT,
+                SeedType::SEED_THREEPEATER,
+                SeedType::SEED_HYPNOSHROOM
             };
 
             SeedType aSeedType = (SeedType)TodPickFromArray((int*)aSeedList, LENGTH(aSeedList));
@@ -221,12 +221,12 @@ void Coin::CoinInitialize(int theX, int theY, CoinType theCoinType, CoinMotion t
             SeedType aSeedList[] = {
                 SeedType::SEED_LILYPAD,
                 SeedType::SEED_SQUASH,
-                SeedType::SEED_THREEPEATER,
+                SeedType::SEED_FUMESHROOM,
                 SeedType::SEED_TANGLEKELP,
-                SeedType::SEED_JALAPENO,
+                SeedType::SEED_BLOVER,
                 SeedType::SEED_SPIKEWEED,
-                SeedType::SEED_TORCHWOOD,
-                SeedType::SEED_TALLNUT
+                SeedType::SEED_REPEATER,
+                SeedType::SEED_ICESHROOM
             };
 
             SeedType aSeedType = (SeedType)TodPickFromArray((int*)aSeedList, LENGTH(aSeedList));
@@ -236,11 +236,11 @@ void Coin::CoinInitialize(int theX, int theY, CoinType theCoinType, CoinMotion t
         {
             SeedType aSeedList[] = {
                 SeedType::SEED_SEASHROOM,
+                SeedType::SEED_CABBAGEPULT,
+                SeedType::SEED_GARLIC,
                 SeedType::SEED_PLANTERN,
-                SeedType::SEED_CACTUS,
-                SeedType::SEED_BLOVER,
                 SeedType::SEED_SPLITPEA,
-                SeedType::SEED_STARFRUIT,
+                SeedType::SEED_MELONPULT,
                 SeedType::SEED_PUMPKINSHELL,
                 SeedType::SEED_MAGNETSHROOM
             };
@@ -251,12 +251,12 @@ void Coin::CoinInitialize(int theX, int theY, CoinType theCoinType, CoinMotion t
         else if (mBoard->mBackground == BackgroundType::BACKGROUND_5_ROOF)
         {
             SeedType aSeedList[] = {
-                SeedType::SEED_CABBAGEPULT,
                 SeedType::SEED_KERNELPULT,
+                SeedType::SEED_CACTUS,
                 SeedType::SEED_INSTANT_COFFEE,
-                SeedType::SEED_GARLIC,
+                SeedType::SEED_TORCHWOOD,
                 SeedType::SEED_UMBRELLA,
-                SeedType::SEED_MELONPULT
+                SeedType::SEED_DOOMSHROOM
             };
 
             SeedType aSeedType = (SeedType)TodPickFromArray((int*)aSeedList, LENGTH(aSeedList));

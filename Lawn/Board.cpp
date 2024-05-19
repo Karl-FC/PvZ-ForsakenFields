@@ -4129,7 +4129,7 @@ void Board::MouseDownWithTool(int x, int y, int theClickCount, CursorType theCur
 		}
 		if (mTutorialState == TutorialState::TUTORIAL_SHOVEL_DIG || mTutorialState == TutorialState::TUTORIAL_SHOVEL_KEEP_DIGGING)
 		{
-			SetTutorialState(CountPlantByType(SeedType::SEED_PEASHOOTER) == 0 ? TutorialState::TUTORIAL_SHOVEL_COMPLETED : TutorialState::TUTORIAL_SHOVEL_KEEP_DIGGING);
+			SetTutorialState(CountPlantByType(SeedType::SEED_WALLNUT) == 0 ? TutorialState::TUTORIAL_SHOVEL_COMPLETED : TutorialState::TUTORIAL_SHOVEL_KEEP_DIGGING);
 		}
 	}
 
