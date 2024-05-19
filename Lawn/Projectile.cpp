@@ -697,6 +697,13 @@ void Projectile::UpdateNormalMotion()
 		mVelY *= 0.97f;
 		mShadowY += mVelY;
 	}
+	else if (mMotionType == ProjectileMotion::MOTION_TWOPEATER)
+	{
+		mPosX += 3.33f;
+		mPosY += mVelY;
+		mVelY *= 0.97f;
+		mShadowY += mVelY;
+	}
 	else
 	{
 		mPosX += 3.33f;

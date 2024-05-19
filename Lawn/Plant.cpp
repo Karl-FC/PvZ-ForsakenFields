@@ -28,7 +28,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_WALLNUT,           nullptr, ReanimationType::REANIM_WALLNUT,       2,  100,     3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("WALL_NUT") },
     { SeedType::SEED_POTATOMINE,        nullptr, ReanimationType::REANIM_POTATOMINE,    37, 25,     3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("POTATO_MINE") },
     { SeedType::SEED_SLOWPEA,           nullptr, ReanimationType::REANIM_THREEPEATER,       4,  75,    1000,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SLOW_PEA") },
-    { SeedType::SEED_SCAREDYSHROOM,        nullptr, ReanimationType::REANIM_SCRAREYSHROOM,    33,  100,    750,    PlantSubClass::SUBCLASS_SHOOTER,    100,    _S("SCAREDY_SHROOM") },
+    { SeedType::SEED_SCAREDYSHROOM,        nullptr, ReanimationType::REANIM_SCRAREYSHROOM,    33,  100,    750,    PlantSubClass::SUBCLASS_SHOOTER,    80,    _S("SCAREDY_SHROOM") },
     { SeedType::SEED_SOULPEA,           nullptr, ReanimationType::REANIM_REPEATER,       4,  225,    750,    PlantSubClass::SUBCLASS_SHOOTER,    400,    _S("SOUL_PEA") },
     { SeedType::SEED_PUFFSHROOM,        nullptr, ReanimationType::REANIM_PUFFSHROOM,    6,  0,      750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("PUFF_SHROOM") },
     { SeedType::SEED_SUNFLOWER,         nullptr, ReanimationType::REANIM_SUNFLOWER,     7,  25,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("SUNFLOWER") },
@@ -36,7 +36,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_GRAVEBUSTER,       nullptr, ReanimationType::REANIM_GRAVE_BUSTER,  40, 75,     750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GRAVE_BUSTER") },
     { SeedType::SEED_ICEBERGLETTUCE,         nullptr, ReanimationType::REANIM_ICESHROOM,     36, 75,     5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("ICEBERGLETTUCE") },
     { SeedType::SEED_TALLNUT,           nullptr, ReanimationType::REANIM_TALLNUT,       28, 125,    3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("TALL_NUT") },
-    { SeedType::SEED_THREEPEATER,       nullptr, ReanimationType::REANIM_THREEPEATER,   12, 325,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("THREEPEATER") },
+    { SeedType::SEED_TWOPEATER,       nullptr, ReanimationType::REANIM_THREEPEATER,   12, 325,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("TWOPEATER") },
     { SeedType::SEED_HYPNOSHROOM,       nullptr, ReanimationType::REANIM_HYPNOSHROOM,   10, 75,     3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("HYPNO_SHROOM") },
     { SeedType::SEED_LILYPAD,           nullptr, ReanimationType::REANIM_LILYPAD,       19, 25,     750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("LILY_PAD") },
     { SeedType::SEED_SQUASH,            nullptr, ReanimationType::REANIM_SQUASH,        21, 50,     3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("SQUASH") },
@@ -74,6 +74,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_SNOWPEA,           nullptr, ReanimationType::REANIM_SNOWPEA,       4,  100,    500,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SNOW_PEA") },
     { SeedType::SEED_STARFRUIT,         nullptr, ReanimationType::REANIM_STARFRUIT,     30, 125,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("STARFRUIT") },
     { SeedType::SEED_IMITATER,          nullptr, ReanimationType::REANIM_IMITATER,      33, 0,      750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("IMITATER") },
+    { SeedType::SEED_THREEPEATER,       nullptr, ReanimationType::REANIM_THREEPEATER,   12, 325,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("THREEPEATER") },
     { SeedType::SEED_EXPLODE_O_NUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("EXPLODE_O_NUT") },
     { SeedType::SEED_GIANT_WALLNUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GIANT_WALLNUT") },
     { SeedType::SEED_SPROUT,            nullptr, ReanimationType::REANIM_ZENGARDEN_SPROUT,          33, 0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("SPROUT") },
@@ -241,6 +242,34 @@ void Plant::PlantInitialize(int theGridX, int theGridY, SeedType theSeedType, Se
         break;
     }
     case SeedType::SEED_THREEPEATER:
+    {
+        TOD_ASSERT(aBodyReanim);
+
+        aBodyReanim->mAnimRate = RandRangeFloat(15.0f, 20.0f);
+        Reanimation* aHeadReanim1 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
+        aHeadReanim1->mLoopType = ReanimLoopType::REANIM_LOOP;
+        aHeadReanim1->mAnimRate = aBodyReanim->mAnimRate;
+        aHeadReanim1->SetFramesForLayer("anim_head_idle1");
+        aHeadReanim1->AttachToAnotherReanimation(aBodyReanim, "anim_head1");
+        mHeadReanimID = mApp->ReanimationGetID(aHeadReanim1);
+
+        Reanimation* aHeadReanim2 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
+        aHeadReanim2->mLoopType = ReanimLoopType::REANIM_LOOP;
+        aHeadReanim2->mAnimRate = aBodyReanim->mAnimRate;
+        aHeadReanim2->SetFramesForLayer("anim_head_idle2");
+        aHeadReanim2->AttachToAnotherReanimation(aBodyReanim, "anim_head2");
+        mHeadReanimID2 = mApp->ReanimationGetID(aHeadReanim2);
+
+        Reanimation* aHeadReanim3 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
+        aHeadReanim3->mLoopType = ReanimLoopType::REANIM_LOOP;
+        aHeadReanim3->mAnimRate = aBodyReanim->mAnimRate;
+        aHeadReanim3->SetFramesForLayer("anim_head_idle3");
+        aHeadReanim3->AttachToAnotherReanimation(aBodyReanim, "anim_head3");
+        mHeadReanimID3 = mApp->ReanimationGetID(aHeadReanim3);
+
+        break;
+    }
+    case SeedType::SEED_TWOPEATER:
     {
         TOD_ASSERT(aBodyReanim);
 
@@ -777,6 +806,7 @@ bool Plant::FindTargetAndFire(int theRow, PlantWeapon thePlantWeapon)
         switch (mSeedType)
         {
         case SeedType::SEED_FUMESHROOM:     mShootingCounter = 50;  break;
+
         case SeedType::SEED_PUFFSHROOM:     mShootingCounter = 29;  break;
         case SeedType::SEED_SCAREDYSHROOM:  mShootingCounter = 25;  break;
         case SeedType::SEED_CABBAGEPULT:    mShootingCounter = 32;  break;
@@ -807,6 +837,45 @@ bool Plant::FindTargetAndFire(int theRow, PlantWeapon thePlantWeapon)
 
 //0x45F2A0
 void Plant::LaunchThreepeater()
+{
+    int rowAbove = mRow - 1;
+    int rowBelow = mRow + 1;
+
+    if ((FindTargetZombie(mRow, PlantWeapon::WEAPON_PRIMARY)) ||
+        (mBoard->RowCanHaveZombies(rowAbove) && FindTargetZombie(rowAbove, PlantWeapon::WEAPON_PRIMARY)) ||
+        (mBoard->RowCanHaveZombies(rowBelow) && FindTargetZombie(rowBelow, PlantWeapon::WEAPON_PRIMARY)))
+    {
+        Reanimation* aHeadReanim1 = mApp->ReanimationGet(mHeadReanimID);
+        Reanimation* aHeadReanim2 = mApp->ReanimationGet(mHeadReanimID2);
+        Reanimation* aHeadReanim3 = mApp->ReanimationGet(mHeadReanimID3);
+
+        if (mBoard->RowCanHaveZombies(rowBelow))
+        {
+            aHeadReanim1->StartBlend(10);
+            aHeadReanim1->mLoopType = ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD;
+            aHeadReanim1->mAnimRate = 20.0f;
+            aHeadReanim1->SetFramesForLayer("anim_shooting1");
+        }
+
+        aHeadReanim2->StartBlend(10);
+        aHeadReanim2->mLoopType = ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD;
+        aHeadReanim2->mAnimRate = 20.0f;
+        aHeadReanim2->SetFramesForLayer("anim_shooting2");
+
+        if (mBoard->RowCanHaveZombies(rowAbove))
+        {
+            aHeadReanim3->StartBlend(10);
+            aHeadReanim3->mLoopType = ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD;
+            aHeadReanim3->mAnimRate = 20.0f;
+            aHeadReanim3->SetFramesForLayer("anim_shooting3");
+        }
+
+        mShootingCounter = 35;
+    }
+}
+
+//TWOPEATER
+void Plant::LaunchTwopeater()
 {
     int rowAbove = mRow - 1;
     int rowBelow = mRow + 1;
@@ -944,6 +1013,10 @@ void Plant::UpdateShooter()
         if (mSeedType == SeedType::SEED_THREEPEATER)
         {
             LaunchThreepeater();
+        }
+        if (mSeedType == SeedType::SEED_TWOPEATER)
+        {
+            LaunchTwopeater();
         }
         else if (mSeedType == SeedType::SEED_STARFRUIT)
         {
@@ -1771,7 +1844,7 @@ void Plant::UpdateChomper()
         {
             PlayBodyReanim("anim_bite", ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD, 20, 24.0f);
             mState = PlantState::STATE_CHOMPER_BITING;
-            mStateCountdown = 70;
+            mStateCountdown = 40;
         }
     }
     else if (mState == PlantState::STATE_CHOMPER_BITING)
@@ -2961,6 +3034,31 @@ Reanimation* Plant::AttachBlinkAnim(Reanimation* theReanimBody)
             aAnimToAttach = FindReanimAttachment(aTrackInstance->mAttachmentID);
         }
     }
+    else if (mSeedType == SeedType::SEED_TWOPEATER)
+    {
+        int aHit = Rand(3);
+        if (aHit == 0)
+        {
+            aTrackToPlay = "anim_blink1";
+            aTrackToAttach = "anim_face1";
+            ReanimatorTrackInstance* aTrackInstance = theReanimBody->GetTrackInstanceByName("anim_head1");
+            aAnimToAttach = FindReanimAttachment(aTrackInstance->mAttachmentID);
+        }
+        else if (aHit == 1)
+        {
+            aTrackToPlay = "anim_blink2";
+            aTrackToAttach = "anim_face2";
+            ReanimatorTrackInstance* aTrackInstance = theReanimBody->GetTrackInstanceByName("anim_head2");
+            aAnimToAttach = FindReanimAttachment(aTrackInstance->mAttachmentID);
+        }
+        else
+        {
+            aTrackToPlay = "anim_blink3";
+            aTrackToAttach = "anim_face3";
+            ReanimatorTrackInstance* aTrackInstance = theReanimBody->GetTrackInstanceByName("anim_head3");
+            aAnimToAttach = FindReanimAttachment(aTrackInstance->mAttachmentID);
+        }
+    }
     else if (mSeedType == SeedType::SEED_SPLITPEA)
     {
         if (Rand(2) == 0)
@@ -3302,6 +3400,27 @@ void Plant::UpdateShooting()
                 Fire(nullptr, rowAbove, PlantWeapon::WEAPON_PRIMARY);
             }
         }
+        else if (mSeedType == SeedType::SEED_TWOPEATER)
+        {
+            int rowAbove = mRow - 1;
+            int rowBelow = mRow + 1;
+            Reanimation* aHeadReanim2 = mApp->ReanimationGet(mHeadReanimID2);
+            Reanimation* aHeadReanim3 = mApp->ReanimationGet(mHeadReanimID3);
+            Reanimation* aHeadReanim1 = mApp->ReanimationGet(mHeadReanimID);
+
+            if (aHeadReanim1->mLoopType == ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD)
+            {
+                Fire(nullptr, rowBelow, PlantWeapon::WEAPON_PRIMARY);
+            }
+            if (aHeadReanim2->mLoopType == ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD)
+            {
+                Fire(nullptr, mRow, PlantWeapon::WEAPON_PRIMARY);
+            }
+            if (aHeadReanim3->mLoopType == ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD)
+            {
+                Fire(nullptr, rowAbove, PlantWeapon::WEAPON_PRIMARY);
+            }
+        }
         else if (mSeedType == SeedType::SEED_SPLITPEA)
         {
             Reanimation* aHeadBackReanim = mApp->ReanimationTryToGet(mHeadReanimID2);
@@ -3378,6 +3497,41 @@ void Plant::UpdateShooting()
                 aHeadReanim3->mAnimTime = aBodyReanim->mAnimTime;
             }
             
+            return;
+        }
+    }
+    //TWO
+    else if (mSeedType == SeedType::SEED_TWOPEATER)
+    {
+        Reanimation* aHeadReanim2 = mApp->ReanimationGet(mHeadReanimID2);
+        Reanimation* aHeadReanim3 = mApp->ReanimationGet(mHeadReanimID3);
+
+        if (aHeadReanim2->mLoopCount > 0)
+        {
+            if (aHeadReanim->mLoopType == ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD)
+            {
+                aHeadReanim->StartBlend(20);
+                aHeadReanim->mLoopType = ReanimLoopType::REANIM_LOOP;
+                aHeadReanim->SetFramesForLayer("anim_head_idle1");
+                aHeadReanim->mAnimRate = aBodyReanim->mAnimRate;
+                aHeadReanim->mAnimTime = aBodyReanim->mAnimTime;
+            }
+
+            aHeadReanim2->StartBlend(20);
+            aHeadReanim2->mLoopType = ReanimLoopType::REANIM_LOOP;
+            aHeadReanim2->SetFramesForLayer("anim_head_idle2");
+            aHeadReanim2->mAnimRate = aBodyReanim->mAnimRate;
+            aHeadReanim2->mAnimTime = aBodyReanim->mAnimTime;
+
+            if (aHeadReanim3->mLoopType == ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD)
+            {
+                aHeadReanim3->StartBlend(20);
+                aHeadReanim3->mLoopType = ReanimLoopType::REANIM_LOOP;
+                aHeadReanim3->SetFramesForLayer("anim_head_idle3");
+                aHeadReanim3->mAnimRate = aBodyReanim->mAnimRate;
+                aHeadReanim3->mAnimTime = aBodyReanim->mAnimTime;
+            }
+
             return;
         }
     }
@@ -3547,6 +3701,7 @@ float PlantFlowerPotHeightOffset(SeedType theSeedType, float theFlowerPotScale)
     case SeedType::SEED_SOULPEA:
     case SeedType::SEED_SNOWPEA:
     case SeedType::SEED_THREEPEATER:
+    case SeedType::SEED_TWOPEATER:
     case SeedType::SEED_SUNFLOWER:
     case SeedType::SEED_MARIGOLD:
     case SeedType::SEED_CABBAGEPULT:
@@ -4547,6 +4702,7 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
     case SeedType::SEED_PEASHOOTER:
     case SeedType::SEED_REPEATER:
     case SeedType::SEED_THREEPEATER:
+    case SeedType::SEED_TWOPEATER:
     case SeedType::SEED_SPLITPEA:
     case SeedType::SEED_GATLINGPEA:
     case SeedType::SEED_LEFTPEATER:
@@ -4562,6 +4718,8 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
         aProjectileType = ProjectileType::PROJECTILE_SOULPEA;
         break;
     case SeedType::SEED_PUFFSHROOM:
+        aProjectileType = ProjectileType::PROJECTILE_KERNEL;
+        break;
     case SeedType::SEED_SCAREDYSHROOM:
     case SeedType::SEED_SEASHROOM:
         aProjectileType = ProjectileType::PROJECTILE_PUFF;
@@ -4594,6 +4752,11 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
         aProjectileType = ProjectileType::PROJECTILE_BUTTER;
     }
 
+    if (mSeedType == SeedType::SEED_PUFFSHROOM && Sexy::Rand(4) == 0)
+    { 
+        aProjectileType = ProjectileType::PROJECTILE_BUTTER;
+    }
+
     mApp->PlayFoley(FoleyType::FOLEY_THROW);
     if (mSeedType == SeedType::SEED_SNOWPEA || mSeedType == SeedType::SEED_WINTERMELON)
     {
@@ -4605,7 +4768,12 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
     }
 
     int aOriginX, aOriginY;
-    if (mSeedType == SeedType::SEED_PUFFSHROOM)
+    if (mSeedType == SeedType::SEED_PUFFSHROOM && thePlantWeapon == PlantWeapon::WEAPON_PRIMARY)
+    {
+        aOriginX = mX + 40;
+        aOriginY = mY + 40;
+    }
+    if (mSeedType == SeedType::SEED_PUFFSHROOM && thePlantWeapon == PlantWeapon::WEAPON_SECONDARY)
     {
         aOriginX = mX + 40;
         aOriginY = mY + 40;
@@ -4677,6 +4845,11 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
         }
     }
     else if (mSeedType == SeedType::SEED_THREEPEATER)
+    {
+        aOriginX = mX + 45;
+        aOriginY = mY + 10;
+    }
+    else if (mSeedType == SeedType::SEED_TWOPEATER)
     {
         aOriginX = mX + 45;
         aOriginY = mY + 10;
@@ -4787,6 +4960,21 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
         else if (theRow > mRow)
         {
             aProjectile->mMotionType = ProjectileMotion::MOTION_THREEPEATER;
+            aProjectile->mVelY = 3.0f;
+            aProjectile->mShadowY -= 80.0f;
+        }
+    }
+    else if (mSeedType == SeedType::SEED_TWOPEATER)
+    {
+        if (theRow < mRow)
+        {
+            aProjectile->mMotionType = ProjectileMotion::MOTION_TWOPEATER;
+            aProjectile->mVelY = -3.0f;
+            aProjectile->mShadowY += 80.0f;
+        }
+        else if (theRow > mRow)
+        {
+            aProjectile->mMotionType = ProjectileMotion::MOTION_TWOPEATER;
             aProjectile->mVelY = 3.0f;
             aProjectile->mShadowY -= 80.0f;
         }

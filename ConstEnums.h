@@ -770,7 +770,8 @@ enum ProjectileMotion
     MOTION_BACKWARDS = 6,  // 水平向左
     MOTION_STAR = 7,  // 斜向运动
     MOTION_FLOAT_OVER = 8,  // 缓慢漂浮向右（无碰撞）
-    MOTION_HOMING = 9   // 追踪
+    MOTION_HOMING = 9,   // 追踪
+    MOTION_TWOPEATER = 10
 };
 enum ProjectileType
 {
@@ -1028,7 +1029,7 @@ enum SeedType
     SEED_GRAVEBUSTER = 11,                  // 墓碑吞噬者
     SEED_ICEBERGLETTUCE = 12,
     SEED_TALLNUT = 13,
-    SEED_THREEPEATER = 14,
+    SEED_TWOPEATER = 14,
     SEED_HYPNOSHROOM = 15,
 //POOL
     SEED_LILYPAD = 16,                      // 睡莲
@@ -1069,7 +1070,8 @@ enum SeedType
     SEED_JALAPENO = 48,
     SEED_SNOWPEA = 49,
     SEED_STARFRUIT = 50,
-    SEED_IMITATER = 51,
+    SEED_THREEPEATER = 51,
+    SEED_IMITATER = 52,
     SEED_EXPLODE_O_NUT,
     SEED_GIANT_WALLNUT,
     SEED_SPROUT,
@@ -1096,7 +1098,7 @@ enum SeedType
     SEED_ZOMBIE_DANCER,
     SEED_ZOMBIE_GARGANTUAR,
     SEED_ZOMBIE_IMP,
-    NUM_SEEDS_IN_CHOOSER = 52,
+    NUM_SEEDS_IN_CHOOSER = 53,
     SEED_NONE = -1
 };
 enum ShieldType
@@ -1104,7 +1106,8 @@ enum ShieldType
     SHIELDTYPE_NONE,
     SHIELDTYPE_DOOR,
     SHIELDTYPE_NEWSPAPER,
-    SHIELDTYPE_LADDER
+    SHIELDTYPE_LADDER,
+    SHIELDTYPE_SWAT
 };
 enum StoreItem
 {
