@@ -789,7 +789,10 @@ enum ProjectileType
     PROJECTILE_BUTTER = 12,  // 黄油
     PROJECTILE_ZOMBIE_PEA = 13,  // 僵尸豌豆
     PROJECTILE_SLOWPEA = 14,
-    NUM_PROJECTILES = 15
+    PROJECTILE_SOULPEA = 15,
+    PROJECTILE_BEE = 16,
+    PROJECTILE_CACTUSSPIKE = 17,
+    NUM_PROJECTILES = 18
 };
 enum ReanimationType
 {
@@ -1015,8 +1018,8 @@ enum SeedType
     SEED_CHERRYBOMB = 2,                    // 樱桃炸弹
     SEED_WALLNUT = 3,                       // 坚果
     SEED_POTATOMINE = 4,                    // 土豆地雷
-    SEED_SNOWPEA = 5,                       // 寒冰射手
-    SEED_SLOWPEA = 6,
+    SEED_SLOWPEA = 5,                       // 寒冰射手
+    SEED_SNOWPEA = 6,
     SEED_CHOMPER = 7,                       // 大嘴花
     SEED_REPEATER = 8,                      // 双发射手
     SEED_PUFFSHROOM = 9,                    // 小喷菇

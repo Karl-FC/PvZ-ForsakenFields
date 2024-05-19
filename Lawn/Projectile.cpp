@@ -26,7 +26,11 @@ ProjectileDefinition gProjectileDefinition[] = {  //0x69F1C0
 	{ ProjectileType::PROJECTILE_COBBIG,        0,  300 },
 	{ ProjectileType::PROJECTILE_BUTTER,        0,  40  },
 	{ ProjectileType::PROJECTILE_ZOMBIE_PEA,    0,  20  },
-	{ ProjectileType::PROJECTILE_SLOWPEA,       0,  5 }
+	{ ProjectileType::PROJECTILE_SLOWPEA,       0,  5 },
+	{ ProjectileType::PROJECTILE_SOULPEA,       0,  120 },
+	{ ProjectileType::PROJECTILE_BEE,       0,  40 },
+	{ ProjectileType::PROJECTILE_CACTUSSPIKE,         0,  5  }
+
 };
 
 Projectile::Projectile()
@@ -323,6 +327,7 @@ bool Projectile::CantHitHighGround()
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_STAR ||
 		mProjectileType == ProjectileType::PROJECTILE_PUFF ||
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_FIREBALL
 		) && !mOnHighGround;
 }
@@ -335,6 +340,7 @@ void Projectile::CheckForHighGround()
 	if (mProjectileType == ProjectileType::PROJECTILE_PEA ||
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_FIREBALL ||
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_SPIKE ||
 		mProjectileType == ProjectileType::PROJECTILE_COBBIG)
 	{
@@ -397,7 +403,7 @@ unsigned int Projectile::GetDamageFlags(Zombie* theZombie)
 		SetBit(aDamageFlags, (int)DamageFlags::DAMAGE_BYPASSES_SHIELD, true);
 	}
 
-	if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || mProjectileType == ProjectileType::PROJECTILE_WINTERMELON)
+	if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || mProjectileType == ProjectileType::PROJECTILE_SLOWPEA)
 	{
 		SetBit(aDamageFlags, (int)DamageFlags::DAMAGE_FREEZE, true);
 	}
@@ -937,7 +943,11 @@ void Projectile::Update()
 		mProjectileType == ProjectileType::PROJECTILE_KERNEL || 
 		mProjectileType == ProjectileType::PROJECTILE_BUTTER || 
 		mProjectileType == ProjectileType::PROJECTILE_COBBIG || 
-		mProjectileType == ProjectileType::PROJECTILE_ZOMBIE_PEA || 
+		mProjectileType == ProjectileType::PROJECTILE_ZOMBIE_PEA ||
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_SOULPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_CACTUSSPIKE ||
+		mProjectileType == ProjectileType::PROJECTILE_BEE ||
 		mProjectileType == ProjectileType::PROJECTILE_SPIKE)
 	{
 		aTime = 0;
@@ -977,11 +987,22 @@ void Projectile::Draw(Graphics* g)
 	{
 		aImage = IMAGE_PROJECTILESNOWPEA;
 	}
+	else if (mProjectileType == ProjectileType::PROJECTILE_SLOWPEA)
+	{
+		aImage = IMAGE_REANIM_CORNPULT_BUTTER;
+		aScale = 0.6f;
+	}
+	else if (mProjectileType == ProjectileType::PROJECTILE_SOULPEA)
+	{
+		aImage = IMAGE_PROJECTILE_STAR;
+		aScale = 1.7f;
+	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_FIREBALL)
 	{
 		aImage = nullptr;
 	}
-	else if (mProjectileType == ProjectileType::PROJECTILE_SPIKE)
+	else if (mProjectileType == ProjectileType::PROJECTILE_SPIKE ||
+		mProjectileType == ProjectileType::PROJECTILE_CACTUSSPIKE)
 	{
 		aImage = IMAGE_PROJECTILECACTUS;
 	}
@@ -1112,6 +1133,10 @@ void Projectile::DrawShadow(Graphics* g)
 		break;
 
 	case ProjectileType::PROJECTILE_CABBAGE:
+	case ProjectileType::PROJECTILE_SLOWPEA:
+	case ProjectileType::PROJECTILE_BEE:
+	case ProjectileType::PROJECTILE_CACTUSSPIKE:
+
 	case ProjectileType::PROJECTILE_KERNEL:
 	case ProjectileType::PROJECTILE_BUTTER:
 	case ProjectileType::PROJECTILE_MELON:
@@ -1165,6 +1190,9 @@ Rect Projectile::GetProjectileRect()
 {
 	if (mProjectileType == ProjectileType::PROJECTILE_PEA || 
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_SOULPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_BEE ||
 		mProjectileType == ProjectileType::PROJECTILE_ZOMBIE_PEA)
 	{
 		return Rect(mX - 15, mY, mWidth + 15, mHeight);
@@ -1181,7 +1209,7 @@ Rect Projectile::GetProjectileRect()
 	{
 		return Rect(mX, mY, mWidth - 10, mHeight);
 	}
-	else if (mProjectileType == ProjectileType::PROJECTILE_SPIKE)
+	else if (mProjectileType == ProjectileType::PROJECTILE_SPIKE || mProjectileType == ProjectileType::PROJECTILE_CACTUSSPIKE)
 	{
 		return Rect(mX - 25, mY, mWidth + 25, mHeight);
 	}
