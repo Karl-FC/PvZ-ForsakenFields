@@ -788,7 +788,8 @@ enum ProjectileType
     PROJECTILE_COBBIG = 11,  // 玉米加农炮
     PROJECTILE_BUTTER = 12,  // 黄油
     PROJECTILE_ZOMBIE_PEA = 13,  // 僵尸豌豆
-    NUM_PROJECTILES = 14
+    PROJECTILE_SLOWPEA = 14,
+    NUM_PROJECTILES = 15
 };
 enum ReanimationType
 {
@@ -1009,55 +1010,56 @@ enum SeedChooserState
 };
 enum SeedType
 {
-    SEED_PEASHOOTER = 0,                    // 豌豆射手
-    SEED_SUNFLOWER = 1,                     // 向日葵
+    SEED_SCAREDYSHROOM = 0,                    // 豌豆射手
+    SEED_SUNSHROOM = 1,                    
     SEED_CHERRYBOMB = 2,                    // 樱桃炸弹
     SEED_WALLNUT = 3,                       // 坚果
     SEED_POTATOMINE = 4,                    // 土豆地雷
     SEED_SNOWPEA = 5,                       // 寒冰射手
-    SEED_CHOMPER = 6,                       // 大嘴花
-    SEED_REPEATER = 7,                      // 双发射手
-    SEED_PUFFSHROOM = 8,                    // 小喷菇
-    SEED_SUNSHROOM = 9,                     // 阳光菇
-    SEED_FUMESHROOM = 10,                   // 大喷菇
-    SEED_GRAVEBUSTER = 11,                  // 墓碑吞噬者
-    SEED_HYPNOSHROOM = 12,                  // 魅惑菇
-    SEED_SCAREDYSHROOM = 13,                // 胆小菇
-    SEED_ICESHROOM = 14,                    // 寒冰菇
-    SEED_DOOMSHROOM = 15,                   // 毁灭菇
-    SEED_LILYPAD = 16,                      // 睡莲
-    SEED_SQUASH = 17,                       // 窝瓜
-    SEED_THREEPEATER = 18,                  // 三线射手
-    SEED_TANGLEKELP = 19,                   // 缠绕海草
-    SEED_JALAPENO = 20,                     // 火爆辣椒
-    SEED_SPIKEWEED = 21,                    // 地刺
-    SEED_TORCHWOOD = 22,                    // 火炬树桩
-    SEED_TALLNUT = 23,
-    SEED_SEASHROOM = 24,
-    SEED_PLANTERN = 25,
-    SEED_CACTUS = 26,
-    SEED_BLOVER = 27,
-    SEED_SPLITPEA = 28,
-    SEED_STARFRUIT = 29,
-    SEED_PUMPKINSHELL = 30,
-    SEED_MAGNETSHROOM = 31,
-    SEED_CABBAGEPULT = 32,
-    SEED_FLOWERPOT = 33,
-    SEED_KERNELPULT = 34,
-    SEED_INSTANT_COFFEE = 35,
-    SEED_GARLIC = 36,
-    SEED_UMBRELLA = 37,
-    SEED_MARIGOLD = 38,
-    SEED_MELONPULT = 39,
-    SEED_GATLINGPEA = 40,
-    SEED_TWINSUNFLOWER = 41,
-    SEED_GLOOMSHROOM = 42,
-    SEED_CATTAIL = 43,
-    SEED_WINTERMELON = 44,
-    SEED_GOLD_MAGNET = 45,
-    SEED_SPIKEROCK = 46,
-    SEED_COBCANNON = 47,
-    SEED_IMITATER = 48,
+    SEED_SLOWPEA = 6,
+    SEED_CHOMPER = 7,                       // 大嘴花
+    SEED_REPEATER = 8,                      // 双发射手
+    SEED_PUFFSHROOM = 9,                    // 小喷菇
+    SEED_SUNFLOWER = 10,                     // 阳光菇
+    SEED_FUMESHROOM = 11,                   // 大喷菇
+    SEED_GRAVEBUSTER = 12,                  // 墓碑吞噬者
+    SEED_HYPNOSHROOM = 13,                  // 魅惑菇
+    SEED_PEASHOOTER = 14,                // 胆小菇
+    SEED_ICESHROOM = 15,                    // 寒冰菇
+    SEED_DOOMSHROOM = 16,                   // 毁灭菇
+    SEED_LILYPAD = 17,                      // 睡莲
+    SEED_SQUASH = 18,                       // 窝瓜
+    SEED_THREEPEATER = 19,                  // 三线射手
+    SEED_TANGLEKELP = 20,                   // 缠绕海草
+    SEED_JALAPENO = 21,                     // 火爆辣椒
+    SEED_SPIKEWEED = 22,                    // 地刺
+    SEED_TORCHWOOD = 23,                    // 火炬树桩
+    SEED_TALLNUT = 24,
+    SEED_SEASHROOM = 25,
+    SEED_PLANTERN = 26,
+    SEED_CACTUS = 27,
+    SEED_BLOVER = 28,
+    SEED_SPLITPEA = 29,
+    SEED_STARFRUIT = 30,
+    SEED_PUMPKINSHELL = 31,
+    SEED_MAGNETSHROOM = 32,
+    SEED_CABBAGEPULT = 33,
+    SEED_FLOWERPOT = 34,
+    SEED_KERNELPULT = 35,
+    SEED_INSTANT_COFFEE = 36,
+    SEED_GARLIC = 37,
+    SEED_UMBRELLA = 38,
+    SEED_MARIGOLD = 39,
+    SEED_MELONPULT = 40,
+    SEED_GATLINGPEA = 41,
+    SEED_TWINSUNFLOWER = 42,
+    SEED_GLOOMSHROOM = 43,
+    SEED_CATTAIL = 44,
+    SEED_WINTERMELON = 45,
+    SEED_GOLD_MAGNET = 46,
+    SEED_SPIKEROCK = 47,
+    SEED_COBCANNON = 48,
+    SEED_IMITATER = 49,
     SEED_EXPLODE_O_NUT,
     SEED_GIANT_WALLNUT,
     SEED_SPROUT,
@@ -1084,7 +1086,7 @@ enum SeedType
     SEED_ZOMBIE_DANCER,
     SEED_ZOMBIE_GARGANTUAR,
     SEED_ZOMBIE_IMP,
-    NUM_SEEDS_IN_CHOOSER = 49,
+    NUM_SEEDS_IN_CHOOSER = 50,
     SEED_NONE = -1
 };
 enum ShieldType
