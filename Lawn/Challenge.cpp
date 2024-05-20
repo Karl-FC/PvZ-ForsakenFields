@@ -1725,19 +1725,29 @@ void Challenge::UpdateConveyorBelt()
 	}
 	else if (mApp->IsFinalBossLevel())
 	{
-		aSeedPickCount = 6;
+		aSeedPickCount = 10;
 		aSeedPickArray[0].mItem = SEED_FLOWERPOT;
 		aSeedPickArray[0].mWeight = 55;
 		aSeedPickArray[1].mItem = SEED_MELONPULT;
 		aSeedPickArray[1].mWeight = 10;
 		aSeedPickArray[2].mItem = SEED_JALAPENO;
 		aSeedPickArray[2].mWeight = 12;
-		aSeedPickArray[3].mItem = SEED_CABBAGEPULT;
+		aSeedPickArray[3].mItem = SEED_KERNELPULT;
 		aSeedPickArray[3].mWeight = 10;
-		aSeedPickArray[4].mItem = SEED_KERNELPULT;
+		aSeedPickArray[4].mItem = SEED_CACTUS;
 		aSeedPickArray[4].mWeight = 5;
 		aSeedPickArray[5].mItem = SEED_ICESHROOM;
 		aSeedPickArray[5].mWeight = 8;
+		aSeedPickArray[6].mItem = SEED_PUMPKINSHELL;
+		aSeedPickArray[6].mWeight = 10;
+		aSeedPickArray[7].mItem = SEED_PUFFSHROOM;
+		aSeedPickArray[7].mWeight = 10;
+		aSeedPickArray[8].mItem = SEED_DOOMSHROOM;
+		aSeedPickArray[8].mWeight = 3;
+		aSeedPickArray[9].mItem = SEED_WINTERMELON;
+		aSeedPickArray[9].mWeight = 5;
+
+
 	}
 	else if (mApp->IsShovelLevel())
 	{
@@ -1877,7 +1887,7 @@ void Challenge::UpdateConveyorBelt()
 
 		if (mApp->IsFinalBossLevel())
 		{
-			if (aSeedType == SEED_MELONPULT || aSeedType == SEED_KERNELPULT || aSeedType == SEED_CABBAGEPULT)
+			if (aSeedType == SEED_MELONPULT || aSeedType == SEED_KERNELPULT || aSeedType == SEED_CACTUS)
 			{
 				int aEmptyPots = mBoard->CountEmptyPotsOrLilies(SEED_FLOWERPOT);
 				if (aEmptyPots <= 2)
