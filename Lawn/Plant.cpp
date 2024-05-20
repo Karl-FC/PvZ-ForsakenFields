@@ -22,20 +22,20 @@
 #include "../Sexy.TodLib/TodStringFile.h"
 
 PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
-    { SeedType::SEED_PEASHOOTER,        nullptr, ReanimationType::REANIM_PEASHOOTER, 0, 100,     300,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("PEASHOOTER") },
+    { SeedType::SEED_PEASHOOTER,        nullptr, ReanimationType::REANIM_REPEATER, 0, 100,     300,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("PEASHOOTER") },
     { SeedType::SEED_SUNSHROOM,         nullptr, ReanimationType::REANIM_SUNSHROOM,     1,  50,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("SUN_SHROOM") },
     { SeedType::SEED_CHERRYBOMB,        nullptr, ReanimationType::REANIM_CHERRYBOMB,    3,  150,    3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("CHERRY_BOMB") },
-    { SeedType::SEED_WALLNUT,           nullptr, ReanimationType::REANIM_WALLNUT,       2,  100,     3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("WALL_NUT") },
+    { SeedType::SEED_WALLNUT,           nullptr, ReanimationType::REANIM_TALLNUT,       2,  100,     3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("WALL_NUT") },
     { SeedType::SEED_POTATOMINE,        nullptr, ReanimationType::REANIM_POTATOMINE,    37, 25,     3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("POTATO_MINE") },
     { SeedType::SEED_SLOWPEA,           nullptr, ReanimationType::REANIM_THREEPEATER,       4,  75,    1000,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SLOW_PEA") },
     { SeedType::SEED_SCAREDYSHROOM,        nullptr, ReanimationType::REANIM_SCRAREYSHROOM,    33,  100,    750,    PlantSubClass::SUBCLASS_SHOOTER,    80,    _S("SCAREDY_SHROOM") },
-    { SeedType::SEED_SOULPEA,           nullptr, ReanimationType::REANIM_REPEATER,       4,  225,    750,    PlantSubClass::SUBCLASS_SHOOTER,    400,    _S("SOUL_PEA") },
+    { SeedType::SEED_SOULPEA,           nullptr, ReanimationType::REANIM_PEASHOOTER,       4,  225,    750,    PlantSubClass::SUBCLASS_SHOOTER,    400,    _S("SOUL_PEA") },
     { SeedType::SEED_PUFFSHROOM,        nullptr, ReanimationType::REANIM_PUFFSHROOM,    6,  0,      750,    PlantSubClass::SUBCLASS_SHOOTER,    175,    _S("PUFF_SHROOM") },
     { SeedType::SEED_SUNFLOWER,         nullptr, ReanimationType::REANIM_SUNFLOWER,     7,  25,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("SUNFLOWER") },
     { SeedType::SEED_CHOMPER,           nullptr, ReanimationType::REANIM_CHOMPER,       31, 150,    750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("CHOMPER") },
     { SeedType::SEED_GRAVEBUSTER,       nullptr, ReanimationType::REANIM_GRAVE_BUSTER,  40, 75,     750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GRAVE_BUSTER") },
     { SeedType::SEED_ICEBERGLETTUCE,         nullptr, ReanimationType::REANIM_ICESHROOM,     36, 75,     5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("ICEBERGLETTUCE") },
-    { SeedType::SEED_TALLNUT,           nullptr, ReanimationType::REANIM_TALLNUT,       28, 125,    3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("TALL_NUT") },
+    { SeedType::SEED_TALLNUT,           nullptr, ReanimationType::REANIM_WALLNUT,       28, 125,    3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("TALL_NUT") },
     { SeedType::SEED_TWOPEATER,       nullptr, ReanimationType::REANIM_THREEPEATER,   12, 325,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("TWOPEATER") },
     { SeedType::SEED_HYPNOSHROOM,       nullptr, ReanimationType::REANIM_HYPNOSHROOM,   10, 75,     3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("HYPNO_SHROOM") },
     { SeedType::SEED_LILYPAD,           nullptr, ReanimationType::REANIM_LILYPAD,       19, 25,     750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("LILY_PAD") },
@@ -3412,10 +3412,6 @@ void Plant::UpdateShooting()
             {
                 Fire(nullptr, rowBelow, PlantWeapon::WEAPON_PRIMARY);
             }
-            if (aHeadReanim2->mLoopType == ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD)
-            {
-                Fire(nullptr, mRow, PlantWeapon::WEAPON_PRIMARY);
-            }
             if (aHeadReanim3->mLoopType == ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD)
             {
                 Fire(nullptr, rowAbove, PlantWeapon::WEAPON_PRIMARY);
@@ -4755,6 +4751,17 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
     if (mSeedType == SeedType::SEED_PUFFSHROOM && Sexy::Rand(4) == 0)
     { 
         aProjectileType = ProjectileType::PROJECTILE_BUTTER;
+    }
+
+    if (mSeedType == SeedType::SEED_PEASHOOTER && Sexy::Rand(3) == 0)
+    {
+        aProjectileType = ProjectileType::PROJECTILE_CABBAGE;
+    } else if (mSeedType == SeedType::SEED_PEASHOOTER && Sexy::Rand(2) == 1)
+    {
+        aProjectileType = ProjectileType::PROJECTILE_SPIKE;
+    } else if (mSeedType == SeedType::SEED_PEASHOOTER && Sexy::Rand(2) == 2)
+    {
+        aProjectileType = ProjectileType::PROJECTILE_PUFF;
     }
 
     mApp->PlayFoley(FoleyType::FOLEY_THROW);
