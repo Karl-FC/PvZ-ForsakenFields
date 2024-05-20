@@ -382,6 +382,7 @@ bool Projectile::IsSplashDamage(Zombie* theZombie)
 	return 
 		mProjectileType == ProjectileType::PROJECTILE_MELON || 
 		mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || 
+		mProjectileType == ProjectileType::PROJECTILE_CACTUSSPIKE ||
 		mProjectileType == ProjectileType::PROJECTILE_FIREBALL;
 }
 
@@ -394,7 +395,7 @@ unsigned int Projectile::GetDamageFlags(Zombie* theZombie)
 	{
 		SetBit(aDamageFlags, (int)DamageFlags::DAMAGE_HITS_SHIELD_AND_BODY, true);
 	}
-	else if (mMotionType == ProjectileMotion::MOTION_LOBBED || mMotionType == ProjectileMotion::MOTION_BACKWARDS)
+	else if (mMotionType == ProjectileMotion::MOTION_LOBBED || mMotionType == ProjectileMotion::MOTION_BACKWARDS || mMotionType == ProjectileMotion::MOTION_PIERCE)
 	{
 		SetBit(aDamageFlags, (int)DamageFlags::DAMAGE_BYPASSES_SHIELD, true);
 	}
@@ -1143,7 +1144,6 @@ void Projectile::DrawShadow(Graphics* g)
 	case ProjectileType::PROJECTILE_SLOWPEA:
 	case ProjectileType::PROJECTILE_BEE:
 	case ProjectileType::PROJECTILE_CACTUSSPIKE:
-
 	case ProjectileType::PROJECTILE_KERNEL:
 	case ProjectileType::PROJECTILE_BUTTER:
 	case ProjectileType::PROJECTILE_MELON:

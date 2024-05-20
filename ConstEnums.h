@@ -771,7 +771,8 @@ enum ProjectileMotion
     MOTION_STAR = 7,  // 斜向运动
     MOTION_FLOAT_OVER = 8,  // 缓慢漂浮向右（无碰撞）
     MOTION_HOMING = 9,   // 追踪
-    MOTION_TWOPEATER = 10
+    MOTION_TWOPEATER = 10,
+    MOTION_PIERCE = 11
 };
 enum ProjectileType
 {

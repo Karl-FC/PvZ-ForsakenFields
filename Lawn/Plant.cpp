@@ -2730,7 +2730,7 @@ bool Plant::IsUpgradableTo(SeedType theUpgradedType)
     {
         return true;
     }
-    if (theUpgradedType == SeedType::SEED_GLOOMSHROOM && mSeedType == SeedType::SEED_FUMESHROOM)
+    /*if (theUpgradedType == SeedType::SEED_GLOOMSHROOM && mSeedType == SeedType::SEED_FUMESHROOM)
     {
         return true;
     }
@@ -2738,7 +2738,7 @@ bool Plant::IsUpgradableTo(SeedType theUpgradedType)
     {
         Plant* aPlant = mBoard->GetTopPlantAt(mPlantCol, mRow, PlantPriority::TOPPLANT_ONLY_NORMAL_POSITION);
         return aPlant == nullptr || aPlant->mSeedType != SeedType::SEED_CATTAIL;
-    }
+    }*/
     return false;
 }
 
@@ -4732,6 +4732,8 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
         aProjectileType = ProjectileType::PROJECTILE_PUFF;
         break;
     case SeedType::SEED_CACTUS:
+        aProjectileType = ProjectileType::PROJECTILE_CACTUSSPIKE;
+        break;
     case SeedType::SEED_CATTAIL:
         aProjectileType = ProjectileType::PROJECTILE_SPIKE;
         break;
@@ -5350,10 +5352,7 @@ bool Plant::IsNocturnal(SeedType theSeedtype)
 {
     return
         theSeedtype == SeedType::SEED_PUFFSHROOM ||
-        theSeedtype == SeedType::SEED_SEASHROOM ||
-        theSeedtype == SeedType::SEED_HYPNOSHROOM ||
-        theSeedtype == SeedType::SEED_ICESHROOM ||
-        theSeedtype == SeedType::SEED_GLOOMSHROOM;
+        theSeedtype == SeedType::SEED_SEASHROOM;
 }
 
 //0x467EA0
@@ -5380,9 +5379,9 @@ bool Plant::IsUpgrade(SeedType theSeedtype)
         theSeedtype == SeedType::SEED_TWINSUNFLOWER || 
         theSeedtype == SeedType::SEED_SPIKEROCK ||*/ 
         theSeedtype == SeedType::SEED_COBCANNON || 
-        theSeedtype == SeedType::SEED_GOLD_MAGNET || 
+        theSeedtype == SeedType::SEED_GOLD_MAGNET /*||
         theSeedtype == SeedType::SEED_GLOOMSHROOM || 
-        theSeedtype == SeedType::SEED_CATTAIL;
+        theSeedtype == SeedType::SEED_CATTAIL*/ ;
 }
 
 //0x467EF0
