@@ -1016,7 +1016,7 @@ enum SeedType
 {//DAY
     SEED_PEASHOOTER = 0,                // 豌豆射手
     SEED_SUNSHROOM = 1,                     // 向日葵
-    SEED_CHERRYBOMB = 2,                    // 樱桃炸弹
+    SEED_ICEBERGLETTUCE = 2,
     SEED_WALLNUT = 3,                       // 坚果
     SEED_POTATOMINE = 4,                    // 土豆地雷
     SEED_SLOWPEA = 5,
@@ -1024,58 +1024,60 @@ enum SeedType
     SEED_SOULPEA = 7,
 //NIGHT
     SEED_PUFFSHROOM = 8,                    // 小喷菇
-    SEED_SUNFLOWER = 9,
-    SEED_CHOMPER = 10,
+    SEED_WILLOW = 9,
+    SEED_LEFTPEATER = 10,
     SEED_GRAVEBUSTER = 11,                  // 墓碑吞噬者
-    SEED_ICEBERGLETTUCE = 12,
-    SEED_TALLNUT = 13,
-    SEED_TWOPEATER = 14,
-    SEED_HYPNOSHROOM = 15,
+    SEED_TWOPEATER = 12,
+    SEED_CHOMPER = 13,
+    SEED_TALLNUT = 14,
+    SEED_CHERRYBOMB = 15,
 //POOL
     SEED_LILYPAD = 16,                      // 睡莲
-    SEED_SQUASH = 17,                       // 窝瓜
+    SEED_SUNFLOWER = 17,                   // 窝瓜
     SEED_FUMESHROOM = 18,
     SEED_TANGLEKELP = 19,                   // 缠绕海草
     SEED_BLOVER = 20,
     SEED_SPIKEWEED = 21,                    // Ice rock
-    SEED_REPEATER = 22,
-    SEED_ICESHROOM = 23,
+    SEED_JALAPENO = 22,
+    SEED_REPEATER = 23,            //Primal Wallnut
+
 //FOG
-    SEED_SEASHROOM = 24,
-    SEED_CABBAGEPULT = 25,
-    SEED_GARLIC = 26,
-    SEED_PLANTERN = 27,            //must explode
-    SEED_SPLITPEA = 28,
+    SEED_SEASHROOM = 24,        //Spikerush
+    SEED_KERNELPULT = 25,
+    SEED_CABBAGEPULT = 26,      //Explode o nut
+    SEED_PLANTERN = 27,            //Howitzer Hibiscus
+    SEED_SPLITPEA = 28,         //[new plant]
     SEED_MELONPULT = 29,
     SEED_PUMPKINSHELL = 30,
     SEED_MAGNETSHROOM = 31,
 //ROOF
-    SEED_KERNELPULT = 32,
+    SEED_DOOMSHROOM = 32,       //Twin Sunflower
     SEED_FLOWERPOT = 33,
     SEED_CACTUS = 34,
-    SEED_INSTANT_COFFEE = 35,
-    SEED_TORCHWOOD = 36,
-    SEED_UMBRELLA = 37,
-    SEED_MARIGOLD = 38,
-    SEED_DOOMSHROOM = 39,
+    SEED_GARLIC = 35,
+    SEED_TORCHWOOD = 36,        //[new plant]
+    SEED_UMBRELLA = 37,         //Wintermelon
+    SEED_ICESHROOM = 38,
+    SEED_MARIGOLD = 39,     //Poison pult
 //SHOP
     SEED_GATLINGPEA = 40,
-    SEED_TWINSUNFLOWER = 41,
+    SEED_TWINSUNFLOWER = 41,        //Triplet Sunflower
     SEED_GLOOMSHROOM = 42,
     SEED_CATTAIL = 43,
-    SEED_WINTERMELON = 44,
+    SEED_WINTERMELON = 44,      //Hypno shroom
     SEED_GOLD_MAGNET = 45,
     SEED_SPIKEROCK = 46,
     SEED_COBCANNON = 47,
-    SEED_JALAPENO = 48,
-    SEED_SNOWPEA = 49,
-    SEED_STARFRUIT = 50,
-    SEED_THREEPEATER = 51,
-    SEED_IMITATER = 52,
+    SEED_SNOWPEA = 48,
+    SEED_STARFRUIT = 59,
+    SEED_SQUASH = 50,
+    SEED_HYPNOSHROOM = 51,
+    SEED_THREEPEATER = 52,
+    SEED_INSTANT_COFFEE = 53,
+    SEED_IMITATER = 54,
     SEED_EXPLODE_O_NUT,
     SEED_GIANT_WALLNUT,
     SEED_SPROUT,
-    SEED_LEFTPEATER,
     NUM_SEED_TYPES,
     SEED_BEGHOULED_BUTTON_SHUFFLE,
     SEED_BEGHOULED_BUTTON_CRATER,
@@ -1098,7 +1100,7 @@ enum SeedType
     SEED_ZOMBIE_DANCER,
     SEED_ZOMBIE_GARGANTUAR,
     SEED_ZOMBIE_IMP,
-    NUM_SEEDS_IN_CHOOSER = 53,
+    NUM_SEEDS_IN_CHOOSER = 55,
     SEED_NONE = -1
 };
 enum ShieldType
