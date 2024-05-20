@@ -1064,7 +1064,7 @@ void Plant::UpdateShooter()
 //0x45F980
 bool Plant::MakesSun()
 {
-    return mSeedType == SeedType::SEED_SUNFLOWER || mSeedType == SeedType::SEED_TWINSUNFLOWER || mSeedType == SeedType::SEED_SUNSHROOM;
+    return mSeedType == SeedType::SEED_SUNFLOWER || SeedType::SEED_WILLOW || mSeedType == SeedType::SEED_TWINSUNFLOWER || mSeedType == SeedType::SEED_SUNSHROOM;
 }
 
 //0x45F9A0
