@@ -792,7 +792,7 @@ enum ProjectileType
     PROJECTILE_ZOMBIE_PEA = 13,  // 僵尸豌豆
     PROJECTILE_SLOWPEA = 14,
     PROJECTILE_SOULPEA = 15,
-    PROJECTILE_BEE = 16,
+    PROJECTILE_INVISIBLE = 16,
     PROJECTILE_CACTUSSPIKE = 17,
     NUM_PROJECTILES = 18
 };
@@ -1014,7 +1014,7 @@ enum SeedChooserState
     CHOOSE_VIEW_LAWN = 1
 };
 enum SeedType
-{//DAY
+{//DAY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     SEED_PEASHOOTER = 0,                // 豌豆射手
     SEED_SUNSHROOM = 1,                     // 向日葵
     SEED_ICEBERGLETTUCE = 2,
@@ -1029,7 +1029,7 @@ enum SeedType
     SEED_LEFTPEATER = 10,
     SEED_GRAVEBUSTER = 11,                  // 墓碑吞噬者
     SEED_TWOPEATER = 12,
-    SEED_CHOMPER = 13,
+    SEED_NOMMER = 13,
     SEED_TALLNUT = 14,
     SEED_CHERRYBOMB = 15,
 //POOL
@@ -1075,7 +1075,9 @@ enum SeedType
     SEED_HYPNOSHROOM = 51,
     SEED_THREEPEATER = 52,
     SEED_INSTANT_COFFEE = 53,
-    SEED_IMITATER = 54,
+    SEED_CHOMPER = 54,
+    SEED_IMITATER = 55,
+//MISC
     SEED_EXPLODE_O_NUT,
     SEED_GIANT_WALLNUT,
     SEED_SPROUT,
@@ -1101,7 +1103,7 @@ enum SeedType
     SEED_ZOMBIE_DANCER,
     SEED_ZOMBIE_GARGANTUAR,
     SEED_ZOMBIE_IMP,
-    NUM_SEEDS_IN_CHOOSER = 55,
+    NUM_SEEDS_IN_CHOOSER = 56, //CHANGE THIS! +1
     SEED_NONE = -1
 };
 enum ShieldType

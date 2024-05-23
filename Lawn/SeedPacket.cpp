@@ -308,6 +308,7 @@ void DrawSeedPacket(Graphics* g, float x, float y, SeedType theSeedType, SeedTyp
 	switch (aSeedType)
 	{
 	case SeedType::SEED_TALLNUT:
+	case SeedType::SEED_WALLNUT:
 		aScale = 0.3f;
 		aOffsetX = 12.0f;
 		aOffsetY = 22.0f;
@@ -343,6 +344,7 @@ void DrawSeedPacket(Graphics* g, float x, float y, SeedType theSeedType, SeedTyp
 	case SeedType::SEED_FUMESHROOM:
 	case SeedType::SEED_PUMPKINSHELL:
 	case SeedType::SEED_CHOMPER:
+	case SeedType::SEED_NOMMER:
 	case SeedType::SEED_DOOMSHROOM:
 	case SeedType::SEED_SQUASH:
 	case SeedType::SEED_HYPNOSHROOM:

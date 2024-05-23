@@ -28,8 +28,8 @@ ProjectileDefinition gProjectileDefinition[] = {  //0x69F1C0
 	{ ProjectileType::PROJECTILE_ZOMBIE_PEA,    0,  20  },
 	{ ProjectileType::PROJECTILE_SLOWPEA,       0,  5 },
 	{ ProjectileType::PROJECTILE_SOULPEA,       0,  180 },
-	{ ProjectileType::PROJECTILE_BEE,       0,  40 },
-	{ ProjectileType::PROJECTILE_CACTUSSPIKE,         0,  5  }
+	{ ProjectileType::PROJECTILE_INVISIBLE,       0,  40 },
+	{ ProjectileType::PROJECTILE_CACTUSSPIKE,         0,  5  },
 
 };
 
@@ -955,7 +955,7 @@ void Projectile::Update()
 		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_SOULPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_CACTUSSPIKE ||
-		mProjectileType == ProjectileType::PROJECTILE_BEE ||
+		mProjectileType == ProjectileType::PROJECTILE_INVISIBLE ||
 		mProjectileType == ProjectileType::PROJECTILE_SPIKE)
 	{
 		aTime = 0;
@@ -1006,6 +1006,10 @@ void Projectile::Draw(Graphics* g)
 		aScale = 1.7f;
 	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_FIREBALL)
+	{
+		aImage = nullptr;
+	}
+	else if (mProjectileType == ProjectileType::PROJECTILE_INVISIBLE)
 	{
 		aImage = nullptr;
 	}
@@ -1142,7 +1146,6 @@ void Projectile::DrawShadow(Graphics* g)
 
 	case ProjectileType::PROJECTILE_CABBAGE:
 	case ProjectileType::PROJECTILE_SLOWPEA:
-	case ProjectileType::PROJECTILE_BEE:
 	case ProjectileType::PROJECTILE_CACTUSSPIKE:
 	case ProjectileType::PROJECTILE_KERNEL:
 	case ProjectileType::PROJECTILE_BUTTER:
@@ -1199,7 +1202,7 @@ Rect Projectile::GetProjectileRect()
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA ||
 		mProjectileType == ProjectileType::PROJECTILE_SOULPEA ||
-		mProjectileType == ProjectileType::PROJECTILE_BEE ||
+		mProjectileType == ProjectileType::PROJECTILE_INVISIBLE ||
 		mProjectileType == ProjectileType::PROJECTILE_ZOMBIE_PEA)
 	{
 		return Rect(mX - 15, mY, mWidth + 15, mHeight);
