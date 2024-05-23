@@ -2835,7 +2835,7 @@ PlantingReason Board::CanPlantAt(int theGridX, int theGridY, SeedType theSeedTyp
 	}
 	// 水生植物只能种在水上
 	Plant* aNormalPlant = aPlantOnLawn.mNormalPlant;
-	if (theSeedType == SeedType::SEED_LILYPAD || theSeedType == SeedType::SEED_TANGLEKELP || theSeedType == SeedType::SEED_SEASHROOM)
+	if (theSeedType == SeedType::SEED_LILYPAD || theSeedType == SeedType::SEED_TANGLEKELP || theSeedType == SeedType::SEED_SPIKERUSH || theSeedType == SeedType::SEED_SEASHROOM)
 	{
 		if (!IsPoolSquare(theGridX, theGridY))
 		{
@@ -8948,7 +8948,7 @@ void Board::OffsetYForPlanting(int& theY, SeedType theSeedType)
 	{
 		theY += 15;
 	}
-	if (theSeedType == SeedType::SEED_SPIKEWEED || theSeedType == SeedType::SEED_SPIKEROCK)
+	if (theSeedType == SeedType::SEED_SPIKEWEED || theSeedType == SeedType::SEED_SPIKEROCK || theSeedType == SeedType::SEED_SPIKERUSH)
 	{
 		theY -= 15;
 	}

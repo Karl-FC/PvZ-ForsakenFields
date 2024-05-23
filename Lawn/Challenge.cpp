@@ -77,7 +77,7 @@ ZombieAllowedLevels gZombieAllowedLevels[NUM_ZOMBIE_TYPES] = {  //0x6A35B0
 	},
 	{ ZOMBIE_PAIL,
 		{
-			0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+			0, 0, 0, 1, 0, 1, 1, 1, 1, 1,
 			0, 1, 0, 0, 1, 0, 0, 0, 0, 0,
 			0, 1, 0, 1, 0, 0, 1, 0, 1, 1,
 			0, 0, 0, 0, 0, 0, 1, 0, 1, 1,
@@ -232,10 +232,10 @@ ZombieAllowedLevels gZombieAllowedLevels[NUM_ZOMBIE_TYPES] = {  //0x6A35B0
 	},
 	{ ZOMBIE_GARGANTUAR,
 		{
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 			0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
 		}
 	},
@@ -353,9 +353,9 @@ void Challenge::InitLevel()
 	}
 	if (mApp->IsFinalBossLevel())
 	{
-		mBoard->mSeedBank->AddSeed(SEED_CABBAGEPULT);
+		mBoard->mSeedBank->AddSeed(SEED_CACTUS);
 		mBoard->mSeedBank->AddSeed(SEED_JALAPENO);
-		mBoard->mSeedBank->AddSeed(SEED_CABBAGEPULT);
+		mBoard->mSeedBank->AddSeed(SEED_KERNELPULT);
 		mBoard->mSeedBank->AddSeed(SEED_ICESHROOM);
 		mConveyorBeltCounter = 1000;
 	}
@@ -1712,7 +1712,7 @@ void Challenge::UpdateConveyorBelt()
 		aSeedPickCount = 8;
 		aSeedPickArray[0].mItem = SEED_LILYPAD;
 		aSeedPickArray[0].mWeight = 25;
-		aSeedPickArray[1].mItem = SEED_SEASHROOM;
+		aSeedPickArray[1].mItem = SEED_SPIKERUSH;
 		aSeedPickArray[1].mWeight = 10;
 		aSeedPickArray[2].mItem = SEED_MAGNETSHROOM;
 		aSeedPickArray[2].mWeight = 5;
@@ -1731,7 +1731,7 @@ void Challenge::UpdateConveyorBelt()
 	}
 	else if (mApp->IsFinalBossLevel())
 	{
-		aSeedPickCount = 20;
+		aSeedPickCount = 16;
 		aSeedPickArray[0].mItem = SEED_FLOWERPOT;
 		aSeedPickArray[0].mWeight = 55;
 		aSeedPickArray[1].mItem = SEED_MELONPULT;
@@ -1741,37 +1741,29 @@ void Challenge::UpdateConveyorBelt()
 		aSeedPickArray[5].mItem = SEED_ICESHROOM;
 		aSeedPickArray[5].mWeight = 8;
 		aSeedPickArray[3].mItem = SEED_KERNELPULT;
-		aSeedPickArray[3].mWeight = 10;
+		aSeedPickArray[3].mWeight = 15;
 		aSeedPickArray[4].mItem = SEED_CACTUS;
-		aSeedPickArray[4].mWeight = 5;
+		aSeedPickArray[4].mWeight = 10;
 		aSeedPickArray[6].mItem = SEED_PUMPKINSHELL;
 		aSeedPickArray[6].mWeight = 10;
 		aSeedPickArray[7].mItem = SEED_PUFFSHROOM;
-		aSeedPickArray[7].mWeight = 10;
+		aSeedPickArray[7].mWeight = 8;
 		aSeedPickArray[8].mItem = SEED_DOOMSHROOM;
 		aSeedPickArray[8].mWeight = 3;
 		aSeedPickArray[9].mItem = SEED_WINTERMELON;
 		aSeedPickArray[9].mWeight = 5;
 		aSeedPickArray[10].mItem = SEED_FUMESHROOM;
-		aSeedPickArray[10].mWeight = 8;
-		aSeedPickArray[11].mItem = SEED_ICEBERGLETTUCE;
-		aSeedPickArray[11].mWeight = 7;
+		aSeedPickArray[10].mWeight = 10;
+		aSeedPickArray[11].mItem = SEED_ICEBERGCABBAGE;
+		aSeedPickArray[11].mWeight = 8;
 		aSeedPickArray[12].mItem = SEED_WALLNUT;
 		aSeedPickArray[12].mWeight = 7;
-		aSeedPickArray[13].mItem = SEED_SCAREDYSHROOM;
+		aSeedPickArray[13].mItem = SEED_NOMMER;
 		aSeedPickArray[13].mWeight = 7;
-		aSeedPickArray[14].mItem = SEED_HYPNOSHROOM;
-		aSeedPickArray[14].mWeight = 7;
-		aSeedPickArray[15].mItem = SEED_SQUASH;
-		aSeedPickArray[15].mWeight = 7;
-		aSeedPickArray[16].mItem = SEED_CABBAGEPULT;
-		aSeedPickArray[16].mWeight = 7;
-		aSeedPickArray[17].mItem = SEED_GATLINGPEA;
-		aSeedPickArray[17].mWeight = 7;
-		aSeedPickArray[18].mItem = SEED_SOULPEA;
-		aSeedPickArray[18].mWeight = 5;
-		aSeedPickArray[19].mItem = SEED_SLOWPEA;
-		aSeedPickArray[19].mWeight = 5;
+		aSeedPickArray[14].mItem = SEED_SQUASH;
+		aSeedPickArray[14].mWeight = 5;
+		aSeedPickArray[15].mItem = SEED_SOULPEA;
+		aSeedPickArray[15].mWeight = 5;
 
 
 	}
@@ -1918,11 +1910,11 @@ void Challenge::UpdateConveyorBelt()
 				int aEmptyPots = mBoard->CountEmptyPotsOrLilies(SEED_FLOWERPOT);
 				if (aEmptyPots <= 2)
 				{
-					aSeedPick.mWeight /= 5;
+					aSeedPick.mWeight /= 10;
 				}
 				else if (aEmptyPots <= 5)
 				{
-					aSeedPick.mWeight /= 3;
+					aSeedPick.mWeight /= 5;
 				}
 			}
 

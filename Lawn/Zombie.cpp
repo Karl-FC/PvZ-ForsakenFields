@@ -5475,7 +5475,7 @@ void Zombie::DrawBungeeReanim(Graphics* g, const ZombieDrawPosition& theDrawPos)
             aPlantGraphics.mTransY += 30.0f - mAltitude;
             if (mZombiePhase == ZombiePhase::PHASE_BUNGEE_RISING)
             {
-                if (aPlant->mSeedType == SeedType::SEED_SPIKEWEED || aPlant->mSeedType == SeedType::SEED_SPIKEROCK)
+                if (aPlant->mSeedType == SeedType::SEED_SPIKEWEED || aPlant->mSeedType == SeedType::SEED_SPIKEROCK || aPlant->mSeedType == SeedType::SEED_SPIKERUSH)
                 {
                     aPlantGraphics.mTransY -= 34.0f;
                 }

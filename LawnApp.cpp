@@ -2349,6 +2349,10 @@ bool LawnApp::HasSeedType(SeedType theSeedType)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_WINTERMELON] > 0;
 	}
+	if (theSeedType == SeedType::SEED_FIREPEASHOOTER)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_FIREPEASHOOTER] > 0;
+	}
 	if (theSeedType == SeedType::SEED_GOLD_MAGNET)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_GOLD_MAGNET] > 0;

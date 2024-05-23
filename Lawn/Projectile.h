@@ -51,6 +51,7 @@ public:
     int                     mCobTargetRow;          //+0x84
     ZombieID                mTargetZombieID;        //+0x88
     int                     mLastPortalX;           //+0x8C
+    std::vector<Zombie*>    mHitTarget;
 
 public:
     Projectile();

@@ -1212,7 +1212,7 @@ float ZenGarden::PlantPottedDrawHeightOffset(SeedType theSeedType, float theScal
         aHeightOffset += 10.0f;
         aScaleOffsetFix += 24.0f;
     }
-    else if (theSeedType == SeedType::SEED_CABBAGEPULT || theSeedType == SeedType::SEED_MELONPULT)
+    else if (theSeedType == SeedType::SEED_CABBAGEPULT || theSeedType == SeedType::SEED_MELONPULT || theSeedType == SeedType::SEED_ICEBERGCABBAGE)
     {
         aScaleOffsetFix += 10.0f;
         aHeightOffset += 3.0f;
@@ -1226,6 +1226,11 @@ float ZenGarden::PlantPottedDrawHeightOffset(SeedType theSeedType, float theScal
         aScaleOffsetFix += 3.0f;
     }
     else if (theSeedType == SeedType::SEED_SPIKEWEED)
+    {
+        aScaleOffsetFix += 10.0f;
+        aHeightOffset -= 13.0f;
+    }
+    else if (theSeedType == SeedType::SEED_SPIKERUSH)
     {
         aScaleOffsetFix += 10.0f;
         aHeightOffset -= 13.0f;

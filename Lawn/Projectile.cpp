@@ -29,7 +29,8 @@ ProjectileDefinition gProjectileDefinition[] = {  //0x69F1C0
 	{ ProjectileType::PROJECTILE_SLOWPEA,       0,  5 },
 	{ ProjectileType::PROJECTILE_SOULPEA,       0,  180 },
 	{ ProjectileType::PROJECTILE_INVISIBLE,       0,  40 },
-	{ ProjectileType::PROJECTILE_CACTUSSPIKE,         0,  5  },
+	{ ProjectileType::PROJECTILE_ICECABBAGE,       0,  40  },
+	{ ProjectileType::PROJECTILE_CACTUSSPIKE,         0,  40  },
 
 };
 
@@ -61,6 +62,7 @@ void Projectile::ProjectileInitialize(int theX, int theY, int theRenderOrder, in
 	mNumFrames = 1;
 	mRow = theRow;
 	mCobTargetX = 0.0f;
+	mHitTarget;
 	mDamageRangeFlags = 0;
 	mDead = false;
 	mAttachmentID = AttachmentID::ATTACHMENTID_NULL;
@@ -214,7 +216,16 @@ Zombie* Projectile::FindCollisionTarget()
 
 	Zombie* aZombie = nullptr;
 	while (mBoard->IterateZombies(aZombie))
-	{
+	{/*for (int i = 0; i < mHitTarget.size(); i++) {
+        if (mHitTarget[i] != aZombie) {
+            //unsigned int aDamageFlags = GetDamageFlags(aZombie);
+            aZombie->TakeDamage(20, 0U);
+            mHitTarget.push_back(aZombie);
+        }
+        
+    }
+}*/
+
 		if ((aZombie->mZombieType == ZombieType::ZOMBIE_BOSS || aZombie->mRow == mRow) && aZombie->EffectedByDamage((unsigned int)mDamageRangeFlags))
 		{
 			if (aZombie->mZombiePhase == ZombiePhase::PHASE_SNORKEL_WALKING_IN_POOL && mPosZ >= 45.0f)
@@ -226,6 +237,11 @@ Zombie* Projectile::FindCollisionTarget()
 			{
 				continue;
 			}
+
+			int cnt = count(mHitTarget.begin(), mHitTarget.end(), aZombie);
+				if (cnt > 0) {
+					continue;
+				}
 
 			Rect aZombieRect = aZombie->GetZombieRect();
 			if (GetRectOverlap(aProjectileRect, aZombieRect) > 0)
@@ -932,7 +948,11 @@ void Projectile::DoImpact(Zombie* theZombie)
 		}
 	}
 
-	Die();
+	if (mProjectileType == ProjectileType::PROJECTILE_CACTUSSPIKE) {
+		mHitTarget.push_back(theZombie);
+		if (theZombie == nullptr) {Die(); }
+	}
+	else Die();
 }
 
 //0x46E460

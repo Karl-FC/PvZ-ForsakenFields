@@ -349,6 +349,7 @@ void DrawSeedPacket(Graphics* g, float x, float y, SeedType theSeedType, SeedTyp
 	case SeedType::SEED_SQUASH:
 	case SeedType::SEED_HYPNOSHROOM:
 	case SeedType::SEED_SPIKEWEED:
+	case SeedType::SEED_SPIKERUSH:
 	case SeedType::SEED_SPIKEROCK:
 	case SeedType::SEED_PLANTERN:
 	case SeedType::SEED_TORCHWOOD:
