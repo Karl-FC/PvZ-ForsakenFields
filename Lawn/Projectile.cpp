@@ -153,7 +153,9 @@ Plant* Projectile::FindCollisionTargetPlant()
 			if (aPlant->mSeedType == SeedType::SEED_PUFFSHROOM ||
 				aPlant->mSeedType == SeedType::SEED_SUNSHROOM ||
 				aPlant->mSeedType == SeedType::SEED_POTATOMINE ||
+				aPlant->mSeedType == SeedType::SEED_ICEBERGLETTUCE ||
 				aPlant->mSeedType == SeedType::SEED_SPIKEWEED ||
+				aPlant->mSeedType == SeedType::SEED_SPIKERUSH ||
 				aPlant->mSeedType == SeedType::SEED_SPIKEROCK ||
 				aPlant->mSeedType == SeedType::SEED_LILYPAD)  // 僵尸豌豆不能击中低矮植物
 				continue;

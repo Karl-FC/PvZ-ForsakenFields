@@ -9698,6 +9698,43 @@ bool Board::PlantingRequirementsMet(SeedType theSeedType)
 	}
 }
 
+//ICETHEM
+void Board::IceAllZombiesInRadius(int theRow, int theX, int theY, int theRadius, int theRowRange, bool theBurn, int theDamageRangeFlags)
+{
+	Zombie* aZombie = nullptr;
+	while (IterateZombies(aZombie))
+	{
+		if (aZombie->EffectedByDamage(theDamageRangeFlags))
+		{
+			Rect aZombieRect = aZombie->GetZombieRect();
+			int aRowDist = aZombie->mRow - theRow;
+			if (aZombie->mZombieType == ZombieType::ZOMBIE_BOSS)
+			{
+				aRowDist = 0;
+			}
+
+			if (aRowDist <= theRowRange && aRowDist >= -theRowRange && GetCircleRectOverlap(theX, theY, theRadius, aZombieRect))
+			{
+					aZombie->HitIceTrap();
+			}
+		}
+	}
+
+	int aGridX = PixelToGridXKeepOnBoard(theX, theY);
+	int aGridY = PixelToGridYKeepOnBoard(theX, theY);
+	GridItem* aGridItem = nullptr;
+	while (IterateGridItems(aGridItem))
+	{
+		if (aGridItem->mGridItemType == GridItemType::GRIDITEM_LADDER)
+		{
+			if (GridInRange(aGridItem->mGridX, aGridItem->mGridY, aGridX, aGridY, theRowRange, theRowRange))
+			{
+				aGridItem->GridItemDie();
+			}
+		}
+	}
+}
+
 //0x41D8A0
 void Board::KillAllZombiesInRadius(int theRow, int theX, int theY, int theRadius, int theRowRange, bool theBurn, int theDamageRangeFlags)
 {

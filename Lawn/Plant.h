@@ -222,6 +222,7 @@ public:
     int                     GetDamageRangeFlags(PlantWeapon thePlantWeapon = PlantWeapon::WEAPON_PRIMARY);
     Rect                    GetPlantRect();
     Rect                    GetPlantAttackRect(PlantWeapon thePlantWeapon = PlantWeapon::WEAPON_PRIMARY);
+    Zombie*                 FindVeryNearestTarget();
     Zombie*                 FindSquashTarget();
     void                    UpdateSquash();
     /*inline*/ bool         NotOnGround();
@@ -229,6 +230,7 @@ public:
     void                    BurnRow(int theRow);
     void                    IceZombies();
     void                    BlowAwayFliers(int theX, int theRow);
+    void                    Iceberg(int theX, int theRow, int theY);
     void                    UpdateGraveBuster();
     TodParticleSystem*      AddAttachedParticle(int thePosX, int thePosY, int theRenderPosition, ParticleEffect theEffect);
     void                    GetPeaHeadOffset(int& theOffsetX, int& theOffsetY);
@@ -248,6 +250,7 @@ public:
     void                    DrawMagnetItems(Graphics* g);
     void                    UpdateDoomShroom();
     void                    UpdateIceShroom();
+    void                    UpdateIcebergLettuce();
     void                    UpdatePotato();
     int                     CalcRenderOrder();
     void                    AnimateNuts();
