@@ -1678,13 +1678,13 @@ void Challenge::UpdateConveyorBelt()
 		aSeedPickArray[2].mWeight = 15;
 		aSeedPickArray[3].mItem = SEED_HYPNOSHROOM;
 		aSeedPickArray[3].mWeight = 10;
-		aSeedPickArray[4].mItem = SEED_SCAREDYSHROOM;
+		aSeedPickArray[4].mItem = SEED_LEFTPEATER;
 		aSeedPickArray[4].mWeight = 15;
 		aSeedPickArray[5].mItem = SEED_TALLNUT;
 		aSeedPickArray[5].mWeight = 15;
 		aSeedPickArray[6].mItem = SEED_PUFFSHROOM;
 		aSeedPickArray[6].mWeight = 10;
-		aSeedPickArray[7].mItem = SEED_CHOMPER;
+		aSeedPickArray[7].mItem = SEED_NOMMER;
 		aSeedPickArray[7].mWeight = 10;
 	}
 	else if (mBoard->mLevel == 30)
@@ -1692,8 +1692,8 @@ void Challenge::UpdateConveyorBelt()
 		aSeedPickCount = 8;
 		aSeedPickArray[0].mItem = SEED_LILYPAD;
 		aSeedPickArray[0].mWeight = 25;
-		aSeedPickArray[1].mItem = SEED_POTATOMINE;
-		aSeedPickArray[1].mWeight = 5;
+		aSeedPickArray[1].mItem = SEED_FUMESHROOM;
+		aSeedPickArray[1].mWeight = 20;
 		aSeedPickArray[2].mItem = SEED_TWOPEATER;
 		aSeedPickArray[2].mWeight = 25;
 		aSeedPickArray[3].mItem = SEED_TANGLEKELP;
@@ -1701,9 +1701,9 @@ void Challenge::UpdateConveyorBelt()
 		aSeedPickArray[4].mItem = SEED_JALAPENO;
 		aSeedPickArray[4].mWeight = 10;
 		aSeedPickArray[5].mItem = SEED_SPIKEWEED;
-		aSeedPickArray[5].mWeight = 10;
+		aSeedPickArray[5].mWeight = 5;
 		aSeedPickArray[6].mItem = SEED_TORCHWOOD;
-		aSeedPickArray[6].mWeight = 10;
+		aSeedPickArray[6].mWeight = 5;
 		aSeedPickArray[7].mItem = SEED_TALLNUT;
 		aSeedPickArray[7].mWeight = 10;
 	}
