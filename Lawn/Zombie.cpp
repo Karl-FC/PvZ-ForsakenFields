@@ -53,6 +53,17 @@ ZombieDefinition gZombieDefs[NUM_ZOMBIE_TYPES] = {  //0x69DA80
     { ZOMBIE_REDEYE_GARGANTUAR, REANIM_GARGANTUAR,          10,     48,     15,     6000,   _S("REDEYED_GARGANTUAR") },
 };
 
+int ZombieDefinition::getPage()
+{
+    if (thePage != -10000) return thePage;
+    int realIndex = -1;
+    for (int i = 0; i < NUM_ZOMBIE_TYPES; i++)
+    {
+        if (true) realIndex++;
+        if (this->mZombieType == gPlantDefs[i].mSeedType) return (realIndex / 49);
+    }
+}
+
 static ZombieType gBossZombieList[] = {  //0x69DE1C
     ZombieType::ZOMBIE_TRAFFIC_CONE,
     ZombieType::ZOMBIE_PAIL,
