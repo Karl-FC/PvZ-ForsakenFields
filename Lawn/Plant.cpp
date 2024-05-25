@@ -32,7 +32,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_SOULPEA,           nullptr, ReanimationType::REANIM_PEASHOOTER,       4,  225,    750,    PlantSubClass::SUBCLASS_SHOOTER,    400,    _S("SOUL_PEA"),0 },
     { SeedType::SEED_PUFFSHROOM,        nullptr, ReanimationType::REANIM_PUFFSHROOM,    6,  0,      750,    PlantSubClass::SUBCLASS_SHOOTER,    175,    _S("PUFF_SHROOM"),0 },
     { SeedType::SEED_WILLOW,         nullptr, ReanimationType::REANIM_PLANTERN,     7,  50,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("DESERTWILLOW"),0 },
-    { SeedType::SEED_LEFTPEATER,        nullptr, ReanimationType::REANIM_REPEATER,      5,  200,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("REPEATER"),0 },
+    { SeedType::SEED_LEFTPEATER,        nullptr, ReanimationType::REANIM_REPEATER,      5,  200,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("UNSPLITPEA"),0 },
     { SeedType::SEED_GRAVEBUSTER,       nullptr, ReanimationType::REANIM_GRAVE_BUSTER,  40, 75,     750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GRAVE_BUSTER"),0 },
     { SeedType::SEED_TWOPEATER,       nullptr, ReanimationType::REANIM_THREEPEATER,   12, 325,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("TWOPEATER"),0 },
     { SeedType::SEED_NOMMER,           nullptr, ReanimationType::REANIM_THREEPEATER,       31, 150,    750,    PlantSubClass::SUBCLASS_SHOOTER,     70,      _S("NOMMER"),0 },
@@ -57,7 +57,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_DOOMSHROOM,        nullptr, ReanimationType::REANIM_DOOMSHROOM,    20, 125,    5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("DOOM_SHROOM"),0 }, //PALITAN into Twin SUnflower
     { SeedType::SEED_FLOWERPOT,         nullptr, ReanimationType::REANIM_FLOWER_POT,    33, 25,     750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("FLOWER_POT"),0 },
     { SeedType::SEED_CACTUS,            nullptr, ReanimationType::REANIM_CACTUS,        15, 250,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("CACTUS"),0 },
-    { SeedType::SEED_ICEBERGCABBAGE,    nullptr, ReanimationType::REANIM_CABBAGEPULT,   13, 175,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("SNOWPEA"),0 },
+    { SeedType::SEED_ICEBERGCABBAGE,    nullptr, ReanimationType::REANIM_CABBAGEPULT,   13, 175,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("ICEBERG_CABBAGE"),0 },
     { SeedType::SEED_GARLIC,            nullptr, ReanimationType::REANIM_GARLIC,        8,  50,     750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GARLIC"),0 },
     { SeedType::SEED_UMBRELLA,          nullptr, ReanimationType::REANIM_UMBRELLALEAF,  23, 100,    750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("UMBRELLA_LEAF"),0 }, //PALITAN into Wintermelon
     { SeedType::SEED_ICESHROOM,         nullptr, ReanimationType::REANIM_ICESHROOM,     36, 75,     5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("ICE_SHROOM"),0 },
@@ -282,12 +282,12 @@ void Plant::PlantInitialize(int theGridX, int theGridY, SeedType theSeedType, Se
         TOD_ASSERT(aBodyReanim);
 
         aBodyReanim->mAnimRate = RandRangeFloat(15.0f, 20.0f);
-        Reanimation* aHeadReanim1 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
+        /*Reanimation* aHeadReanim1 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
         aHeadReanim1->mLoopType = ReanimLoopType::REANIM_LOOP;
         aHeadReanim1->mAnimRate = aBodyReanim->mAnimRate;
         aHeadReanim1->SetFramesForLayer("anim_head_idle1");
         aHeadReanim1->AttachToAnotherReanimation(aBodyReanim, "anim_head1");
-        mHeadReanimID = mApp->ReanimationGetID(aHeadReanim1);
+        mHeadReanimID = mApp->ReanimationGetID(aHeadReanim1);*/
 
         Reanimation* aHeadReanim2 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
         aHeadReanim2->mLoopType = ReanimLoopType::REANIM_LOOP;

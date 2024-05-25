@@ -9346,10 +9346,14 @@ bool Zombie::SetupDrawZombieWon(Graphics* g)
         break;
     case BackgroundType::BACKGROUND_3_POOL:
     case BackgroundType::BACKGROUND_4_FOG:
+    case BackgroundType::BACKGROUND_7_FLOOD:
+    case BackgroundType::BACKGROUND_8_STORM:
         g->ClipRect(-172 - mX, -mY, BOARD_WIDTH, BOARD_HEIGHT);
         break;
     case BackgroundType::BACKGROUND_5_ROOF:
     case BackgroundType::BACKGROUND_6_BOSS:
+    case BackgroundType::BACKGROUND_9_HARD:
+    case BackgroundType::BACKGROUND_10_HARDNIGHT:
         g->ClipRect(-220 - mX, -mY, BOARD_WIDTH, 187);
         break;
     }

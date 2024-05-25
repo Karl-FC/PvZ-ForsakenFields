@@ -898,6 +898,14 @@ void CutScene::StartLevelIntro()
 			{
 				aHouseMessage = TodStringTranslate(_S("[PLAYERS_ROOF]"));
 			}
+			else if (mBoard->mBackground == BackgroundType::BACKGROUND_7_FLOOD || mBoard->mBackground == BackgroundType::BACKGROUND_8_STORM)
+			{
+				aHouseMessage = TodStringTranslate(_S("[PLAYERS_ROOF]"));
+			}
+			else if (mBoard->mBackground == BackgroundType::BACKGROUND_9_HARD || mBoard->mBackground == BackgroundType::BACKGROUND_10_HARDNIGHT)
+			{
+				aHouseMessage = TodStringTranslate(_S("[PLAYERS_BACKYARD]"));
+			}
 			else
 			{
 				TOD_ASSERT();

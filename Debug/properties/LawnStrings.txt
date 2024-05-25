@@ -4,6 +4,18 @@ Peashooter
 [PEASHOOTER_TOOLTIP]
 Shoots peas at the enemy
 
+[SUN_SHROOM]
+Sun-shroom
+
+[SUN_SHROOM_TOOLTIP]
+Gives small sun at first and normal sun later
+
+[ICEBERGLETTUCE]
+Iceberg Lettuce
+
+[ICEBERGLETTUCE_TOOLTIP]
+Freezes a zombie when stepped on.
+
 [SUNFLOWER]
 Sunflower
 
@@ -40,6 +52,18 @@ Snow Pea
 [SNOW_PEA_TOOLTIP]
 Shoots frozen peas that damage and slow the enemy
 
+[SLOW_PEA]
+Slow Pollen
+
+[SLOW_PEA_TOOLTIP]
+Slows down enemies
+
+[SOUL_PEA]
+DeadPea
+
+[SOUL_PEA_TOOLTIP]
+Slowly shoots [REDACTED] that deals massive damage to undead
+
 [CHOMPER]
 Chomper
 
@@ -47,28 +71,40 @@ Chomper
 Devours a zombie whole, but is vulnerable while chewing
 
 [PUFF_SHROOM]
-Puff-shroom
+Pop-shroom
 
 [PUFF_SHROOM_TOOLTIP]
-Shoots short-ranged spores at the enemy
+Shoots kernel and butter at a short range
 
-[SUN_SHROOM]
-Sun-shroom
+[DESERTWILLOW]
+Desert Willow
 
-[SUN_SHROOM_TOOLTIP]
-Gives small sun at first and normal sun later
+[DESERTWILLOW_TOOLTIP]
+Medium-grade wall that provides sun
 
 [FUME_SHROOM]
 Fume-shroom
 
 [FUME_SHROOM_TOOLTIP]
-Shoots fumes that can pass through screen doors
+Shoots fumes that can pass through hordes
 
 [GRAVE_BUSTER]
 Grave Buster
 
 [GRAVE_BUSTER_TOOLTIP]
 Plant it on a grave to remove the grave
+
+[NOMMER]
+Nommer
+
+[NOMMER_TOOLTIP]
+Rapidly bites nearby enemies in front of them
+
+[UNSPLITPEA]
+Un-Split Pea
+
+[UNSPLITPEA_TOOLTIP]
+Fires two peas backwards
 
 [HYPNO_SHROOM]
 Hypno-shroom
@@ -80,7 +116,7 @@ Makes a zombie fight for you
 Scaredy-shroom
 
 [SCAREDY_SHROOM_TOOLTIP]
-Long-ranged shooter that hides when enemies get near it
+Rapid shooter that hides when enemies get near it
 
 [ICE_SHROOM]
 Ice-shroom
@@ -105,6 +141,12 @@ Squash
 
 [SQUASH_TOOLTIP]
 Squashes zombies
+
+[TWOPEATER]
+Twopeater
+
+[TWOPEATER_TOOLTIP]
+Shoots peas in two lanes
 
 [THREEPEATER]
 Threepeater
@@ -196,6 +238,12 @@ Cabbage-pult
 [CABBAGE_PULT_TOOLTIP]
 Hurls cabbages at the enemy
 
+[ICEBERG_CABBAGE]
+Iceberg Cabbage
+
+[ICEBERG_CABBAGE_TOOLTIP]
+Hurls frozen cabbages that damages and slows the enemy
+
 [FLOWER_POT]
 Flower Pot
 
@@ -237,35 +285,30 @@ Gatling Pea
 
 [GATLING_PEA_TOOLTIP]
 Shoots four peas at a time
-(requires repeater)
 
 [TWIN_SUNFLOWER]
 Twin Sunflower
 
 [TWIN_SUNFLOWER_TOOLTIP]
 Gives twice as much sun as a sunflower
-(requires sunflower)
 
 [GLOOM_SHROOM]
 Gloom-shroom
 
 [GLOOM_SHROOM_TOOLTIP]
 Releases heavy fumes in an area around itself
-(requires fume-shroom)
 
 [CATTAIL]
 Cattail
 
 [CATTAIL_TOOLTIP]
 Attacks any lane and shoots down balloon zombies
-(requires lily pad)
 
 [WINTER_MELON]
 Winter Melon
 
 [WINTER_MELON_TOOLTIP]
 Does heavy damage and slows groups of zombies
-(requires melon-pult)
 
 [GOLD_MAGNET]
 Gold Magnet
@@ -279,7 +322,6 @@ Spikerock
 
 [SPIKEROCK_TOOLTIP]
 Pops multiple tires and damages zombies that walk over it
-(requires spikeweed)
 
 [COB_CANNON]
 Cob Cannon
@@ -287,6 +329,12 @@ Cob Cannon
 [COB_CANNON_TOOLTIP]
 Click to launch deadly cobs of corn
 (requires 2 kernel-pults)
+
+[FIREPEASHOOTER]
+Fire Peashooter
+
+[FIREPEASHOOTER_TOOLTIP]
+Shoots flaming peas down the lane
 
 [IMITATER]
 Imitater
@@ -422,6 +470,14 @@ Sunflowers are essential for you to produce extra sun. Try planting as many as y
 {FLAVOR}Sunflower can't resist bouncing to the beat. Which beat is that? Why, the 
 life-giving jazzy rhythm of the Earth itself, thumping at a frequency only Sunflower can hear.
 
+[ICEBERGLETTUCE_DESCRIPTION]
+Zombies that steps on Iceberg Lettuce will be frozen.
+{SHORTLINE}
+{KEYWORD}Usage:{STAT} single use, instant
+{SHORTLINE}
+{FLAVOR}"Don't get lost staring into Iceberg's adorably cute eyes. 
+If you do, it will be your last step... but only if you're a zombie."
+
 [WALL_NUT_DESCRIPTION]
 Wall-nuts have hard shells which you can use to protect your other plants.
 {SHORTLINE}
@@ -459,13 +515,20 @@ Repeaters fire two peas at a time.
 {FLAVOR}Repeater is fierce. He's from the streets. He doesn't take attitude from anybody, 
 plant or zombie, and he shoots peas to keep people at a distance. Secretly, though, Repeater yearns for love.
 
-[SNOW_PEA_DESCRIPTION]
-Snow Peas shoot frozen peas that damage and slow the enemy.
+[SLOW_PEA_DESCRIPTION]
+Slow pollens shoots pollens that slow the enemy.
 {SHORTLINE}
-{KEYWORD}Damage:{STAT} normal, slows zombies
+{KEYWORD}Damage:{STAT} non-existent, slows zombies
 {SHORTLINE}
-{FLAVOR}Folks often tell Snow Pea how "cool" he is, or exhort him to "chill out." They 
-tell him to "stay frosty." Snow Pea just rolls his eyes. He's heard 'em all.
+{FLAVOR}Wala pakong maisip hahaha
+
+[SOUL_PEA_DESCRIPTION]
+Deadpeas fires [REDACTED] that deals massive damage to the undead
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} massive
+{KEYWORD}Fire speed:{STAT} massively slow
+{SHORTLINE}
+{FLAVOR}Definitely not a reference to a known creepypasta
 
 [CHOMPER_DESCRIPTION]
 Chompers can devour a zombie whole, but they are vulnerable while chewing.
@@ -479,10 +542,11 @@ through when his agent demanded too much on the front end. Chomper's not resentf
 though. He says it's just part of the business.
 
 [PUFF_SHROOM_DESCRIPTION]
-Puff-shrooms are cheap, but can only fire a short distance.
+Pop-shrooms rapidly fires kernel and butter at zombies, but can only fire a short distance.
 {SHORTLINE}
-{KEYWORD}Damage:{STAT} normal
+{KEYWORD}Damage:{STAT} light (kernel), normal (butter)
 {KEYWORD}Range:{STAT} short
+{KEYWORD}Special:{STAT} butter immobilizes zombies
 {NOCTURNAL}Sleeps during the day
 {SHORTLINE}
 {FLAVOR}"I only recently became aware of the existence of zombies," says Puff-shroom. "Like many fungi, 
@@ -497,6 +561,14 @@ Sun-shrooms give small sun at first and normal sun later.
 {FLAVOR}Sun-shroom hates sun. He hates it so much that when it builds up in his system, 
 he spits it out as fast as he can. He just won't abide it. To him, sun is crass.
 
+[DESERTWILLOW_DESCRIPTION]
+Desert Willows have hard wood that protects your other plants while also giving small sun.
+{SHORTLINE}
+{KEYWORD}Toughness:{STAT} medium
+{SHORTLINE}
+{FLAVOR}"How many times have I told you, DESERT ONLY HAS ONE "S"!
+DESSERT IS CAKE!!!"
+
 [FUME_SHROOM_DESCRIPTION]
 Fume-shrooms shoot fumes that can pass through screen doors.
 {SHORTLINE}
@@ -507,6 +579,16 @@ Fume-shrooms shoot fumes that can pass through screen doors.
 {FLAVOR}"I was in a dead-end job producing yeast spores for a bakery," says Fume-shroom. 
 "Then Puff-shroom, bless 'im, told me about this great opportunity blasting zombies. Now I really feel like I'm making a difference."
 
+[UNSPLITPEA_DESCRIPTION]
+Un-Split Peas shoot peas backwards.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} normal
+{KEYWORD}Range:{STAT} backwards
+{KEYWORD}Firing Speed:{STAT} 2x backwards
+{SHORTLINE}
+{FLAVOR}"I was once a Gemini," says Un-Split Pea. "That is until I have culled the weakness out of me.
+What do you mean that's not how Zodiac signs work?!"
+
 [GRAVE_BUSTER_DESCRIPTION]
 Plant Grave Busters on graves to remove the graves.
 {SHORTLINE}
@@ -515,6 +597,26 @@ Plant Grave Busters on graves to remove the graves.
 {SHORTLINE}
 {FLAVOR}Despite Grave Buster's fearsome appearance, he wants everyone to know that he loves 
 kittens and spends his off hours volunteering at a local zombie rehabilitation center. "It's just the right thing to do," he says.
+
+[TWOPEATER_DESCRIPTION]
+Twopeaters shoot peas the lanes above and below it.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} normal (for each pea)
+{KEYWORD}Special:{STAT} doesn't shoot at zombies directly in front of it.
+{KEYWORD}Range:{STAT} two lanes
+{SHORTLINE}
+{FLAVOR}Wtf. Where's the other one???
+
+[NOMMER_DESCRIPTION]
+Nommers rapidly bite nearby enemies in front of them.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} high
+{KEYWORD}Range:{STAT} very short
+{KEYWORD}Firing speed:{STAT} fast
+{SHORTLINE}
+{FLAVOR}"Oh no. We are not a weaker version of Chomper. We are simply, him... but more.
+We... are all Chompers.
+We... Are... Nommer."
 
 [HYPNO_SHROOM_DESCRIPTION]
 When eaten, Hypno-shrooms will make a zombie turn around and fight for you.
@@ -527,13 +629,13 @@ When eaten, Hypno-shrooms will make a zombie turn around and fight for you.
 who play a valuable role in our ecology. We can and should do more to bring them round to our way of thinking."
 
 [SCAREDY_SHROOM_DESCRIPTION]
-Scaredy-shrooms are long-ranged shooters that hide when enemies get near them.
+Scaredy-shrooms are rapid shooters that hide when enemies get near them.
 {SHORTLINE}
 {KEYWORD}Damage:{STAT} normal
+{KEYWORD}Firing speed:{STAT} Fast
 {KEYWORD}Special:{STAT} stops shooting when enemy is close
-{NOCTURNAL}Sleeps during the day
 {SHORTLINE}
-{FLAVOR}"Who's there?" whispers Scaredy-shroom, voice barely audible. "Go away. I don't want to see anybody. Unless it's the man from the circus."
+{FLAVOR}"War. War never changes," whispered Scaredy-shroom. "Do it. Just do it scared."
 
 [ICE_SHROOM_DESCRIPTION]
 Ice-shrooms temporarily immobilize all zombies on the screen.
@@ -652,24 +754,23 @@ darkness and excretes light. Plantern's cagey about how he does it. "I'm not gon
 wouldn't use the term 'dark forces,' I just... I think I've said enough."
 
 [CACTUS_DESCRIPTION]
-Cactuses shoot spikes that can hit both ground and air targets.
+Cactuses shoot spikes that can pierces through ground targets while hitting air targets.
 {SHORTLINE}
-{KEYWORD}Damage:{STAT} normal
+{KEYWORD}Damage:{STAT} high
 {KEYWORD}Range:{STAT} ground and air
+{KEYWORD}Special:{STAT} spikes pierce through zombies
 {SHORTLINE}
-{FLAVOR}She's prickly, sure, but Cactus's spikes belie a spongy heart filled with love and goodwill. 
-She just wants to hug and be hugged. Most folks can't hang with that, but Cactus doesn't mind. She's 
-been seeing an armadillo for a while and it really seems to be working out.
+{FLAVOR}Things have really changed for Cactus lately. 
+Book deals, movies, truck show appearances... she's just trying to focus on staying humble and launching thorns like always.
 
 [BLOVER_DESCRIPTION]
-Blovers blow away all balloon zombies and fog.
+Blovers push back all zombies in their lane with a chilling wind.
 {SHORTLINE}
 {KEYWORD}Usage:{STAT} single use, instant
-{KEYWORD}Special:{STAT} blows away all balloon zombies
+{KEYWORD}Special:{STAT} pushes back all zombies in their lane
+{KEYWORD}Special:{STAT} blows away all balloon zombies and fog
 {SHORTLINE}
-{FLAVOR}When Blover was five he got a shiny new birthday cake. Blover made his wish, huffed and puffed, 
-but was able to extinguish only 60% of the candles. Instead of giving up, though, he's used that early 
-defeat as a catalyst to push himself harder ever since.
+{FLAVOR}Bro had enough of the Blover vs. Hurrikale debate
 
 [SPLIT_PEA_DESCRIPTION]
 Split Peas shoot peas forward and backwards.
@@ -717,6 +818,24 @@ Cabbage-pults hurl cabbages at the enemy.
 {SHORTLINE}
 {FLAVOR}Cabbage-pult is okay with launching cabbages at zombies. It's what he's paid for, after all, and 
 he's good at it. He just doesn't understand how the zombies get up on the roof in the first place.
+
+[ICEBERG_CABBAGE_DESCRIPTION]
+Iceberg-Cabbages hurl frozen cabbages that damage and slow the enemy.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} normal, slows zombies
+{KEYWORD}Range:{STAT} lobbed
+{SHORTLINE}
+{FLAVOR}Now THIS is climate change.
+
+[FIREPEASHOOTER_DESCRIPTION]
+Shoots fiery peas which burn so good.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} high
+{KEYWORD}Special:{STAT}fireballs deal damage to nearby zombies on impact
+{SHORTLINE}
+{FLAVOR}Fire Peashooter knows that what she does looks exciting. But working with an open flame is 
+serious and, more importantly, dangerous business. That's why, in her spare time, she talks to children
+ about the importance of fire safety. "I'm a trained professional." she explains. "Don't try this at home, kids."
 
 [FLOWER_POT_DESCRIPTION]
 Flower Pots let you plant on the roof.
@@ -780,6 +899,14 @@ Melon-pults do heavy damage to groups of zombies.
 {SHORTLINE}
 {FLAVOR}There's no false modesty with Melon-pult. "Sun-for-damage, I deliver the biggest punch on 
 the lawn," he says. "I'm not bragging. Run the numbers. You'll see."
+
+[SNOW_PEA_DESCRIPTION]
+Snow Peas shoot frozen peas that damage and slow the enemy.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} normal, slows zombies
+{SHORTLINE}
+{FLAVOR}Folks often tell Snow Pea how "cool" he is, or exhort him to "chill out." They 
+tell him to "stay frosty." Snow Pea just rolls his eyes. He's heard 'em all.
 
 [GATLING_PEA_DESCRIPTION]
 Gatling Peas shoot four peas at a time.
