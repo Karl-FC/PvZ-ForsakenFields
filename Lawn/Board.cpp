@@ -2628,7 +2628,7 @@ bool Board::RowCanHaveZombieType(int theRow, ZombieType theZombieType)
 		return false;
 	}
 	// 雪橇僵尸小队仅能在有冰道的行刷出
-	if (theZombieType == ZOMBIE_BOBSLED && !mIceTimer[theRow])
+	if (theZombieType == ZOMBIE_BOBSLED && !mIceTimer[theRow] || theZombieType == ZOMBIE_BOAT && !mIceTimer[theRow])
 	{
 		return false;
 	}
@@ -2739,6 +2739,13 @@ Zombie* Board::AddZombieInRow(ZombieType theZombieType, int theRow, int theFromW
 		for (int _i = 0; _i < 3; _i++)
 		{
 			mZombies.DataArrayAlloc()->ZombieInitialize(theRow, ZombieType::ZOMBIE_BOBSLED, false, aZombie, theFromWave);
+		}
+	}
+	if (theZombieType == ZombieType::ZOMBIE_BOAT && aZombie->IsOnBoard())
+	{
+		for (int _i = 0; _i < 3; _i++)
+		{
+			mZombies.DataArrayAlloc()->ZombieInitialize(theRow, ZombieType::ZOMBIE_BOAT, false, aZombie, theFromWave);
 		}
 	}
 	return aZombie;
@@ -5105,6 +5112,12 @@ void Board::SpawnZombieWave()
 				break;
 
 			if (aZombieType == ZombieType::ZOMBIE_BOBSLED && !CanAddBobSled())
+			{
+				for (int i = 0; i < MAX_ZOMBIE_FOLLOWERS; i++)
+				{
+					AddZombie(ZombieType::ZOMBIE_NORMAL, mCurrentWave);  // 生成 4 只普通僵尸以代替雪橇僵尸小队
+				}
+			} else if (aZombieType == ZombieType::ZOMBIE_BOAT && !CanAddBobSled())
 			{
 				for (int i = 0; i < MAX_ZOMBIE_FOLLOWERS; i++)
 				{
@@ -8646,6 +8659,23 @@ void Board::KeyChar(SexyChar theChar)
 		AddZombie(ZombieType::ZOMBIE_BOBSLED, Zombie::ZOMBIE_WAVE_DEBUG);
 		return;
 	}
+	if (theChar == _S('E'))
+	{
+		if (!CanAddBobSled())
+		{
+			int aRow = Rand(5);
+			int aPos = 400;
+			if (StageHasPool())
+			{
+				aRow = Rand(5);
+			}
+			mIceTimer[aRow] = 3000;
+			mIceMinX[aRow] = aPos;
+		}
+
+		AddZombie(ZombieType::ZOMBIE_BOAT, Zombie::ZOMBIE_WAVE_DEBUG);
+		return;
+	}
 	if (theChar == _S('r'))
 	{
 		SpawnZombiesFromGraves();
@@ -10035,7 +10065,8 @@ int Board::NumberZombiesInWave(int theWaveIndex)
 
 bool Board::IsZombieTypeSpawnedOnly(ZombieType theZombieType)
 {
-	return (theZombieType == ZombieType::ZOMBIE_BACKUP_DANCER || theZombieType == ZombieType::ZOMBIE_BOBSLED || theZombieType == ZombieType::ZOMBIE_IMP);
+	return (theZombieType == ZombieType::ZOMBIE_BACKUP_DANCER ||
+		theZombieType == ZombieType::ZOMBIE_BOBSLED || theZombieType == ZombieType::ZOMBIE_BOAT);
 }
 
 

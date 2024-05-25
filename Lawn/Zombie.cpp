@@ -51,6 +51,7 @@ ZombieDefinition gZombieDefs[NUM_ZOMBIE_TYPES] = {  //0x69DA80
     { ZOMBIE_SQUASH_HEAD,       REANIM_ZOMBIE,              3,      51,     10,     2000,   _S("ZOMBIE_SQUASH_HEAD"), 1 },
     { ZOMBIE_TALLNUT_HEAD,      REANIM_ZOMBIE,              4,      51,     10,     2000,   _S("ZOMBIE_TALLNUT_HEAD"), 1 },
     { ZOMBIE_REDEYE_GARGANTUAR, REANIM_GARGANTUAR,          10,     48,     15,     6000,   _S("REDEYED_GARGANTUAR"), 1 },
+    { ZOMBIE_BOAT,              REANIM_ZOMBIE,             3,      31,     10,     2000,   _S("ZOMBIE_BOAT"),1 },
 };
 
 int ZombieDefinition::getPage()
@@ -519,6 +520,66 @@ void Zombie::ZombieInitialize(int theRow, ZombieType theType, bool theVariant, Z
         break;
     }
 
+
+    case ZombieType::ZOMBIE_BOAT:  //0x523071
+    {
+        aRenderOffset = 3;
+
+        if (theParentZombie)
+        {
+            int aPosition = 0;
+            while (aPosition < NUM_BOBSLED_FOLLOWERS && theParentZombie->mFollowerZombieID[aPosition] != ZombieID::ZOMBIEID_NULL)
+            {
+                aPosition++;
+            }
+            TOD_ASSERT(aPosition < 3);
+            theParentZombie->mFollowerZombieID[aPosition] = mBoard->ZombieGetID(this);
+            mRelatedZombieID = mBoard->ZombieGetID(theParentZombie);
+
+            mPosX = theParentZombie->mPosX + (aPosition + 1) * 50;
+            if (aPosition == 0)
+            {
+                aRenderOffset = 1;
+                mAltitude = 9.0f;
+            }
+            else if (aPosition == 1)
+            {
+                aRenderOffset = 2;
+                mAltitude = -7.0f;
+            }
+            else
+            {
+                aRenderOffset = 0;
+                mAltitude = 9.0f;
+            }
+        }
+        else
+        {
+            mPosX = WIDE_BOARD_WIDTH + 80;
+            mZombieRect = Rect(-50, 0, 275, 115);
+            mHelmType = HelmType::HELMTYPE_BOBSLED;
+            mHelmHealth = 600;
+            mAltitude = -10.0f;
+        }
+
+        mVelX = 0.6f;
+        mZombiePhase = ZombiePhase::PHASE_BOBSLED_SLIDING;
+        mPhaseCounter = 500;
+        mVariant = false;
+
+        if (mFromWave == Zombie::ZOMBIE_WAVE_CUTSCENE)
+        {
+            PlayZombieReanim("anim_jump", ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD, 0, 20.0f);
+            mApp->ReanimationGet(mBodyReanimID)->mAnimTime = 1.0f;
+            mAltitude = 18.0f;
+        }
+        else if (IsOnBoard())
+        {
+            PlayZombieReanim("anim_push", ReanimLoopType::REANIM_LOOP, 0, 30.0f);
+        }
+
+        break;
+    }
     case ZombieType::ZOMBIE_FLAG:  //0x5231E8
     {
         mHasObject = true;
@@ -2672,6 +2733,61 @@ void Zombie::UpdateZombieBobsled()
     }
 }
 
+void Zombie::UpdateZombieBoat()
+{
+    if (mZombiePhase == ZombiePhase::PHASE_BOBSLED_CRASHING)
+    {
+        if (mPhaseCounter == 0)
+        {
+            mZombiePhase = ZombiePhase::PHASE_ZOMBIE_NORMAL;
+            if (GetBobsledPosition() == 0)
+            {
+                for (int i = 0; i < NUM_BOBSLED_FOLLOWERS; i++)
+                {
+                    Zombie* aZombie = mBoard->ZombieGet(mFollowerZombieID[i]);
+                    aZombie->mRelatedZombieID = ZombieID::ZOMBIEID_NULL;
+                    mFollowerZombieID[i] = ZombieID::ZOMBIEID_NULL;
+                    aZombie->PickRandomSpeed();
+                }
+                PickRandomSpeed();
+            }
+        }
+        return;
+    }
+
+    if (mZombiePhase == ZombiePhase::PHASE_BOBSLED_SLIDING)
+    {
+        if (mPhaseCounter == 0)
+        {
+            mZombiePhase = ZombiePhase::PHASE_BOBSLED_BOARDING;
+            PlayZombieReanim("anim_jump", ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD, 0, 20.0f);
+        }
+    }
+    else
+    {
+        if (mZombiePhase != ZombiePhase::PHASE_BOBSLED_BOARDING)
+            return;
+
+        Reanimation* aBodyReanim = mApp->ReanimationGet(mBodyReanimID);
+        int aCounter = aBodyReanim->mAnimTime * 50.0f;
+        int aPosition = GetBobsledPosition();
+        if (aPosition == 1 || aPosition == 3)
+        {
+            mAltitude = TodAnimateCurveFloat(0, 50, aCounter, 8.0f, 18.0f, TodCurves::CURVE_LINEAR);
+        }
+        else
+        {
+            mAltitude = TodAnimateCurveFloat(0, 50, aCounter, -9.0f, 18.0f, TodCurves::CURVE_LINEAR);
+        }
+    }
+
+    mBoard->mIceTimer[mRow] = max(500, mBoard->mIceTimer[mRow]);
+    if (mPosX + 10.0f < mBoard->mIceMinX[mRow] && GetBobsledPosition() == 0)
+    {
+        TakeDamage(6, 8U);
+    }
+}
+
 //0x528240
 void Zombie::DiggerLoseAxe()
 {
@@ -3504,6 +3620,10 @@ void Zombie::DropHead(unsigned int theDamageFlags)
         {
             aParticle->OverrideImage(nullptr, IMAGE_ZOMBIEBOBSLEDHEAD);
         }
+        else if (mZombieType == ZombieType::ZOMBIE_BOAT)
+        {
+            aParticle->OverrideImage(nullptr, IMAGE_ZOMBIEBOBSLEDHEAD);
+        }
         else if (mZombieType == ZombieType::ZOMBIE_LADDER)
         {
             aParticle->OverrideImage(nullptr, IMAGE_ZOMBIELADDERHEAD);
@@ -3661,6 +3781,10 @@ void Zombie::SetupReanimForLostArm(unsigned int theDamageFlags)
             GetTrackPosition("Zombie_outerarm_lower", aPosX, aPosY);
             aBodyReanim->SetImageOverride("Zombie_dolphinrider_outerarm_upper", IMAGE_REANIM_ZOMBIE_BOBSLED_OUTERARM_UPPER2);
             break;
+        case ZombieType::ZOMBIE_BOAT:
+            GetTrackPosition("Zombie_outerarm_lower", aPosX, aPosY);
+            aBodyReanim->SetImageOverride("Zombie_dolphinrider_outerarm_upper", IMAGE_REANIM_ZOMBIE_BOBSLED_OUTERARM_UPPER2);
+            break;
         case ZombieType::ZOMBIE_JACK_IN_THE_BOX:
             GetTrackPosition("Zombie_jackbox_outerarm_lower", aPosX, aPosY);
             aBodyReanim->SetImageOverride("Zombie_jackbox_outerarm_lower", IMAGE_REANIM_ZOMBIE_JACKBOX_OUTERARM_LOWER2);
@@ -3743,6 +3867,9 @@ void Zombie::SetupReanimForLostArm(unsigned int theDamageFlags)
                 aParticle->OverrideImage(nullptr, IMAGE_REANIM_ZOMBIE_DANCER_INNERARM_HAND);
                 break;
             case ZombieType::ZOMBIE_BOBSLED:
+                aParticle->OverrideImage(nullptr, IMAGE_REANIM_ZOMBIE_BOBSLED_OUTERARM_HAND);
+                break;
+            case ZombieType::ZOMBIE_BOAT:
                 aParticle->OverrideImage(nullptr, IMAGE_REANIM_ZOMBIE_BOBSLED_OUTERARM_HAND);
                 break;
             case ZombieType::ZOMBIE_IMP:
@@ -4084,6 +4211,7 @@ void Zombie::UpdateZombieWalking()
             mZombieType == ZombieType::ZOMBIE_DANCER || 
             mZombieType == ZombieType::ZOMBIE_BACKUP_DANCER || 
             mZombieType == ZombieType::ZOMBIE_BOBSLED || 
+            mZombieType == ZombieType::ZOMBIE_BOAT ||
             mZombieType == ZombieType::ZOMBIE_POGO || 
             mZombieType == ZombieType::ZOMBIE_DOLPHIN_RIDER || 
             mZombieType == ZombieType::ZOMBIE_BALLOON)
@@ -4402,6 +4530,10 @@ void Zombie::UpdateActions()
     if (mZombieType == ZombieType::ZOMBIE_BOBSLED)
     {
         UpdateZombieBobsled();
+    }
+    if (mZombieType == ZombieType::ZOMBIE_BOAT)
+    {
+        UpdateZombieBoat();
     }
     if (mZombieType == ZombieType::ZOMBIE_ZAMBONI)
     {
@@ -4899,6 +5031,11 @@ void Zombie::Animate()
                 aRightHandTime = 0.53f;
             }
             else if (mZombieType == ZombieType::ZOMBIE_BOBSLED)
+            {
+                aLeftHandTime = 0.33f;
+                aRightHandTime = 0.83f;
+            }
+            else if (mZombieType == ZombieType::ZOMBIE_BOAT)
             {
                 aLeftHandTime = 0.33f;
                 aRightHandTime = 0.83f;
@@ -5659,6 +5796,12 @@ void Zombie::DrawReanim(Graphics* g, const ZombieDrawPosition& theDrawPos, int t
         aBodyReanim->DrawRenderGroup(g, theBaseRenderGroup);
         DrawBobsledReanim(g, theDrawPos, false);
     }
+    else if (mZombieType == ZombieType::ZOMBIE_BOAT)
+    {
+        DrawBobsledReanim(g, theDrawPos, true);
+        aBodyReanim->DrawRenderGroup(g, theBaseRenderGroup);
+        DrawBobsledReanim(g, theDrawPos, false);
+    }
     else if (mZombieType == ZombieType::ZOMBIE_BUNGEE)
     {
         DrawBungeeReanim(g, theDrawPos);
@@ -5917,6 +6060,7 @@ void Zombie::GetDrawPos(ZombieDrawPosition& theDrawPos)
         theDrawPos.mImageOffsetY -= 8.0f;
         break;
     case ZombieType::ZOMBIE_BOBSLED:
+    case ZombieType::ZOMBIE_BOAT:
         theDrawPos.mImageOffsetY -= 12.0f;
         break;
     }
@@ -7388,7 +7532,7 @@ void Zombie::DieNoLoot()
 
     mDead = true;
     TrySpawnLevelAward();
-    if (mZombieType == ZombieType::ZOMBIE_BOBSLED)
+    if (mZombieType == ZombieType::ZOMBIE_BOBSLED || mZombieType == ZombieType::ZOMBIE_BOAT)
     {
         BobsledDie();
     }
@@ -8109,6 +8253,10 @@ bool Zombie::EffectedByDamage(unsigned int theDamageRangeFlags)
     {
         return false;  // 存在雪橇时，只有领头僵尸会受到攻击
     }
+    if (mZombieType == ZombieType::ZOMBIE_BOAT && GetBobsledPosition() > 0)
+    {
+        return false; 
+    }
 
     if (mZombiePhase == ZombiePhase::PHASE_POLEVAULTER_IN_VAULT || 
         mZombiePhase == ZombiePhase::PHASE_IMP_GETTING_THROWN || 
@@ -8127,6 +8275,10 @@ bool Zombie::EffectedByDamage(unsigned int theDamageRangeFlags)
     }
 
     if (mZombieType != ZombieType::ZOMBIE_BOBSLED && GetZombieRect().mX > WIDE_BOARD_WIDTH)
+    {
+        return false;  // 除雪橇僵尸小队外，场外的僵尸不会受到攻击
+    }
+    if (mZombieType != ZombieType::ZOMBIE_BOAT && GetZombieRect().mX > WIDE_BOARD_WIDTH)
     {
         return false;  // 除雪橇僵尸小队外，场外的僵尸不会受到攻击
     }
@@ -8263,6 +8415,7 @@ bool Zombie::ZombieTypeCanGoInPool(ZombieType theZombieType)
         theZombieType == ZombieType::ZOMBIE_FLAG || 
         theZombieType == ZombieType::ZOMBIE_SNORKEL || 
         theZombieType == ZombieType::ZOMBIE_DOLPHIN_RIDER || 
+        theZombieType == ZombieType::ZOMBIE_BOAT||
         theZombieType == ZombieType::ZOMBIE_PEA_HEAD || 
         theZombieType == ZombieType::ZOMBIE_WALLNUT_HEAD || 
         theZombieType == ZombieType::ZOMBIE_JALAPENO_HEAD || 
@@ -8792,7 +8945,7 @@ void Zombie::ApplyBurn()
         DieWithLoot();
     }
 
-    if (mZombieType == ZombieType::ZOMBIE_BOBSLED)
+    if (mZombieType == ZombieType::ZOMBIE_BOBSLED|| mZombieType == ZombieType::ZOMBIE_BOAT)
     {
         BobsledBurn();
     }
@@ -9149,6 +9302,7 @@ void Zombie::UpdateDeath()
             aFallTime = 0.83f;
             break;
 
+        case ZombieType::ZOMBIE_BOAT:
         case ZombieType::ZOMBIE_BOBSLED:
             aFallTime = 0.81f;
             break;
@@ -9423,7 +9577,7 @@ void Zombie::DrawShadow(Graphics* g)
         }
         aShadowOffsetY += 11.0f;
     }
-    else if (mZombieType == ZombieType::ZOMBIE_BOBSLED)
+    else if (mZombieType == ZombieType::ZOMBIE_BOBSLED || ZombieType::ZOMBIE_BOAT)
     {
         if (IsWalkingBackwards())
         {

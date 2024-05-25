@@ -214,6 +214,7 @@ public:
     Rect                            GetZombieAttackRect();
     void                            UpdateZombieWalking();
     void                            UpdateZombieBobsled();
+    void                            UpdateZombieBoat();
     void                            BobsledCrash();
     Plant*                          IsStandingOnSpikeweed();
     void                            CheckForZombieStep();

@@ -175,6 +175,13 @@ void CutScene::PlaceAZombie(ZombieType theZombieType, int theGridX, int theGridY
 		aZombie->mPosX = 1105.0f;
 		aZombie->mPosY = 480.0f;
 	}
+	else if (theZombieType == ZombieType::ZOMBIE_BOAT)
+	{
+		aZombie->mRenderOrder = Board::MakeRenderOrder(RenderLayer::RENDER_LAYER_LAWN, 0, 1000);
+		aZombie->mRow = 0;
+		aZombie->mPosX = 1105.0f;
+		aZombie->mPosY = 480.0f;
+	}
 }
 
 //0x4393D0
@@ -230,6 +237,7 @@ bool CutScene::CanZombieGoInGridSpot(ZombieType theZombieType, int theGridX, int
 	if (Is2x2Zombie(theZombieType) || 
 		theZombieType == ZombieType::ZOMBIE_ZAMBONI || 
 		theZombieType == ZombieType::ZOMBIE_BOBSLED || 
+		theZombieType == ZombieType::ZOMBIE_BOAT ||
 		theZombieType == ZombieType::ZOMBIE_POLEVAULTER)
 	{
 		if (theGridX == 0)
@@ -526,7 +534,7 @@ void CutScene::PlaceStreetZombies()
 
 			++aZombieTypeCount[aZombieType];
 			++aTotalZombieCount;
-			if (aZombieType == ZombieType::ZOMBIE_BUNGEE || aZombieType == ZombieType::ZOMBIE_BOBSLED)
+			if (aZombieType == ZombieType::ZOMBIE_BUNGEE || aZombieType == ZombieType::ZOMBIE_BOBSLED || aZombieType == ZombieType::ZOMBIE_BOAT)
 			{
 				aZombieTypeCount[aZombieType] = 1;  // 蹦极僵尸和雪橇僵尸至多仅允许有 1 只预览僵尸
 			}
