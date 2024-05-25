@@ -81,7 +81,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_TORCHWOOD,         nullptr, ReanimationType::REANIM_TORCHWOOD,     29, 250,    750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("TORCHWOOD"),1 }, //PALITAN into [new plant]
     { SeedType::SEED_FIREPEASHOOTER,    nullptr, ReanimationType::REANIM_SNOWPEA,       4,  175,    500,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("FIREPEASHOOTER"),1 },
     { SeedType::SEED_IMITATER,          nullptr, ReanimationType::REANIM_IMITATER,      33, 0,      750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("IMITATER"),0 },
-    { SeedType::SEED_EXPLODE_O_NUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("EXPLODE_O_NUT"),1 },
+    { SeedType::SEED_EXPLODE_O_NUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  150,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("EXPLODE_O_NUT"),1 },
     { SeedType::SEED_GIANT_WALLNUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GIANT_WALLNUT"),-1 },
     { SeedType::SEED_SPROUT,            nullptr, ReanimationType::REANIM_ZENGARDEN_SPROUT,          33, 0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("SPROUT"),-1 }
 };
@@ -3358,6 +3358,14 @@ void Plant::AnimateNuts()
         aCracked2 = IMAGE_REANIM_TALLNUT_CRACKED2;
         aTrackToOverride = "anim_idle";
     }
+
+    else if (mSeedType == SeedType::SEED_EXPLODE_O_NUT)
+    {
+        aCracked1 = IMAGE_REANIM_WALLNUT_CRACKED1;
+        aCracked2 = IMAGE_REANIM_WALLNUT_CRACKED2;
+        aTrackToOverride = "anim_face";
+        aBodyReanim->mColorOverride = Color(255, 64, 64);
+    }
     else return;
 
     int aPosX = mX + 40;
@@ -3775,7 +3783,7 @@ void Plant::Animate()
         return;
     }
 
-    if (mSeedType == SeedType::SEED_WALLNUT || mSeedType == SeedType::SEED_TALLNUT)
+    if (mSeedType == SeedType::SEED_WALLNUT || mSeedType == SeedType::SEED_TALLNUT || mSeedType == SeedType::SEED_EXPLODE_O_NUT)
     {
         AnimateNuts();
     }

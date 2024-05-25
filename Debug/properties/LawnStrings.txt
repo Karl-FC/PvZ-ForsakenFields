@@ -834,8 +834,8 @@ Shoots fiery peas which burn so good.
 {KEYWORD}Special:{STAT}fireballs deal damage to nearby zombies on impact
 {SHORTLINE}
 {FLAVOR}Fire Peashooter knows that what she does looks exciting. But working with an open flame is 
-serious and, more importantly, dangerous business. That's why, in her spare time, she talks to children
- about the importance of fire safety. "I'm a trained professional." she explains. "Don't try this at home, kids."
+serious and, dangerous business. That's why, in her spare time, she talks to children about the importance of fire safety.
+ "I'm a trained professional." she explains. "Don't try this at home, kids."
 
 [FLOWER_POT_DESCRIPTION]
 Flower Pots let you plant on the roof.
@@ -878,8 +878,7 @@ Umbrella Leaves protect nearby plants from bungees and catapults.
 {SHORTLINE}
 {KEYWORD}Special:{STAT} protects adjacent plants from bungees and catapults
 {SHORTLINE}
-{FLAVOR}"SPROING!" says Umbrella Leaf. "Didja like that? I can do it again. SPROING! Woo! That's me 
-popping up to protect stuff around me. Yeah. Just like that. EXACTLY like that. Believe it."
+{FLAVOR}BECAUSE tonight will be the night that I will fall foyow. Over ageennnn dont mimi change myyy maynddd
 
 [MARIGOLD_DESCRIPTION]
 Marigolds give you silver and gold coins.
@@ -966,6 +965,17 @@ Gold Magnets collect coins and diamonds for you.
 {FLAVOR}"How did I end up here?" asks Gold Magnet. "I was on the fast track --corner office, full 
 benefits, stock options. I was gonna be Vice President of Midwestern Operations. Now I'm here, on this 
 lawn, in serious danger of being eaten to death. Ooh! A coin!"
+
+[EXPLODE_O_NUT_DESCRIPTION]
+Explode-O-Nuts provide protection, and when their shells are eaten, they explode to blow up zombies.
+{SHORTLINE}
+{KEYWORD}Toughness:{STAT} high
+{KEYWORD}Damage:{STAT} massive
+{KEYWORD}Range:{STAT} all zombies in a medium area
+{KEYWORD}Usage:{STAT} single use, instant
+{SHORTLINE}
+{FLAVOR}"My only regret," says Explode-O-Nut, "is that I have but one chewy center full of
+ nitroglycerin to give in defense of this lawn."
 
 [COB_CANNON_DESCRIPTION]
 Click on the Cob Cannon to launch deadly cobs of corn.
