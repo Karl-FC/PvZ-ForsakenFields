@@ -104,7 +104,19 @@ void Projectile::ProjectileInitialize(int theX, int theY, int theRenderOrder, in
 	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_FIREBALL)
 	{
-		TOD_ASSERT();
+		float aOffsetX = -25.0f;
+		float aOffsetY = -25.0f;
+		Reanimation* aFirePeaReanim = mApp->AddReanimation(0.0f, 0.0f, 0, ReanimationType::REANIM_FIRE_PEA);
+		if (mMotionType == ProjectileMotion::MOTION_BACKWARDS)
+		{
+			aFirePeaReanim->OverrideScale(-1.0f, 1.0f);
+			aOffsetX += 80.0f;
+		}
+
+		aFirePeaReanim->SetPosition(mPosX + aOffsetX, mPosY + aOffsetY);
+		aFirePeaReanim->mLoopType = ReanimLoopType::REANIM_LOOP;
+		aFirePeaReanim->mAnimRate = RandRangeFloat(50.0f, 80.0f);
+		AttachReanim(mAttachmentID, aFirePeaReanim, aOffsetX, aOffsetY);
 	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_COBBIG)
 	{
@@ -967,6 +979,7 @@ void Projectile::Update()
 	int aTime = 20;
 	if (mProjectileType == ProjectileType::PROJECTILE_PEA || 
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || 
+		mProjectileType == ProjectileType::PROJECTILE_FIREBALL ||
 		mProjectileType == ProjectileType::PROJECTILE_CABBAGE || 
 		mProjectileType == ProjectileType::PROJECTILE_MELON || 
 		mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || 
