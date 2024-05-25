@@ -80,8 +80,10 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_SEASHROOM,         nullptr, ReanimationType::REANIM_SEASHROOM,     39, 0,      3000,   PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SEA_SHROOM"),1 }, //Supposedly  Spikerush
     { SeedType::SEED_TORCHWOOD,         nullptr, ReanimationType::REANIM_TORCHWOOD,     29, 250,    750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("TORCHWOOD"),1 }, //PALITAN into [new plant]
     { SeedType::SEED_FIREPEASHOOTER,    nullptr, ReanimationType::REANIM_SNOWPEA,       4,  175,    500,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("FIREPEASHOOTER"),1 },
-    { SeedType::SEED_IMITATER,          nullptr, ReanimationType::REANIM_IMITATER,      33, 0,      750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("IMITATER"),0 },
+    { SeedType::SEED_ICEQUEENPEA,        nullptr, ReanimationType::REANIM_GATLINGPEA,    5,  550,    5000,   PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("ICEQUEENPEA"),1 },
+    { SeedType::SEED_FLAMETHROWERPEA,   nullptr, ReanimationType::REANIM_GATLINGPEA,    5,  550,    5000,   PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("FLAMETHROWERPEA"),1 },
     { SeedType::SEED_EXPLODE_O_NUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  150,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("EXPLODE_O_NUT"),1 },
+    { SeedType::SEED_IMITATER,          nullptr, ReanimationType::REANIM_IMITATER,      33, 0,      750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("IMITATER"),0 },
     { SeedType::SEED_GIANT_WALLNUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GIANT_WALLNUT"),-1 },
     { SeedType::SEED_SPROUT,            nullptr, ReanimationType::REANIM_ZENGARDEN_SPROUT,          33, 0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("SPROUT"),-1 }
 };
@@ -212,6 +214,8 @@ void Plant::PlantInitialize(int theGridX, int theGridY, SeedType theSeedType, Se
     case SeedType::SEED_NOMMER:
     case SeedType::SEED_REPEATER:
     case SeedType::SEED_LEFTPEATER:
+    case SeedType::SEED_ICEQUEENPEA:
+    case SeedType::SEED_FLAMETHROWERPEA:
     case SeedType::SEED_GATLINGPEA:
         if (aBodyReanim)
         {
@@ -793,7 +797,9 @@ bool Plant::FindTargetAndFire(int theRow, PlantWeapon thePlantWeapon)
             aHeadReanim->mAnimRate = 45.0f;
             mShootingCounter = 26;
         }
-        else if (mSeedType == SeedType::SEED_GATLINGPEA)
+        else if (mSeedType == SeedType::SEED_GATLINGPEA
+            || mSeedType == SeedType::SEED_ICEQUEENPEA
+            || mSeedType == SeedType::SEED_FLAMETHROWERPEA)
         {
             aHeadReanim->mAnimRate = 38.0f;
             mShootingCounter = 100;
@@ -2533,7 +2539,7 @@ void Plant::Squish()
             DoSpecial();
             return;
         }
-        else if (mSeedType == SeedType::SEED_ICEBERGLETTUCE)
+        else if (mSeedType == SeedType::SEED_ICEBERGLETTUCE || mSeedType == SeedType::SEED_EXPLODE_O_NUT)
         {
             DoSpecial();
             return;
@@ -3207,6 +3213,8 @@ Reanimation* Plant::AttachBlinkAnim(Reanimation* theReanimBody)
         mSeedType == SeedType::SEED_SOULPEA ||
         mSeedType == SeedType::SEED_REPEATER ||
         mSeedType == SeedType::SEED_LEFTPEATER ||
+        mSeedType == SeedType::SEED_ICEQUEENPEA ||
+        mSeedType == SeedType::SEED_FLAMETHROWERPEA ||
         mSeedType == SeedType::SEED_GATLINGPEA)
     {
         if (theReanimBody->TrackExists("anim_stem"))
@@ -3490,6 +3498,20 @@ void Plant::UpdateShooting()
     else if (mSeedType == SeedType::SEED_GATLINGPEA)
     {
         if (mShootingCounter == 18 || mShootingCounter == 35 || mShootingCounter == 51 || mShootingCounter == 68)
+        {
+            Fire(nullptr, mRow, PlantWeapon::WEAPON_PRIMARY);
+        }
+    }
+    else if (mSeedType == SeedType::SEED_ICEQUEENPEA)
+    {
+        if (mShootingCounter == 18 || mShootingCounter == 20 || mShootingCounter == 22 || mShootingCounter == 24)
+        {
+            Fire(nullptr, mRow, PlantWeapon::WEAPON_PRIMARY);
+        }
+    }
+    else if (mSeedType == SeedType::SEED_FLAMETHROWERPEA)
+    {
+        if (mShootingCounter == 18 || mShootingCounter == 23 || mShootingCounter == 28 || mShootingCounter == 33)
         {
             Fire(nullptr, mRow, PlantWeapon::WEAPON_PRIMARY);
         }
@@ -4695,7 +4717,10 @@ void Plant::DoSpecial()
     {
         mApp->PlayFoley(FoleyType::FOLEY_CHERRYBOMB);
 
+        int aDamageRangeFlags = GetDamageRangeFlags(PlantWeapon::WEAPON_PRIMARY) | 32U;
         mBoard->KillAllZombiesInRadius(mRow, aPosX, aPosY, 115, 1, true, aDamageRangeFlags);
+        mApp->AddTodParticle(aPosX, aPosY, (int)RenderLayer::RENDER_LAYER_TOP, ParticleEffect::PARTICLE_POWIE);
+        mBoard->ShakeBoard(3, -4);
 
         Die();
         break;
@@ -4896,12 +4921,14 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
     case SeedType::SEED_LEFTPEATER:
         aProjectileType = ProjectileType::PROJECTILE_PEA;
         break;
+    case SeedType::SEED_FLAMETHROWERPEA:
     case SeedType::SEED_FIREPEASHOOTER:
         aProjectileType = ProjectileType::PROJECTILE_FIREBALL;
         break;
     case SeedType::SEED_NOMMER:
         aProjectileType = ProjectileType::PROJECTILE_INVISIBLE;
         break;
+    case SeedType::SEED_ICEQUEENPEA:
     case SeedType::SEED_SNOWPEA:
         aProjectileType = ProjectileType::PROJECTILE_SNOWPEA;
         break;
@@ -5038,7 +5065,8 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
         aOriginX = mX + aOffsetX + 24;
         aOriginY = mY + aOffsetY - 33;
     }
-    else if (mSeedType == SeedType::SEED_GATLINGPEA)
+    else if (mSeedType == SeedType::SEED_GATLINGPEA || mSeedType == SeedType::SEED_ICEQUEENPEA
+        || mSeedType == SeedType::SEED_FLAMETHROWERPEA)
     {
         int aOffsetX, aOffsetY;
         GetPeaHeadOffset(aOffsetX, aOffsetY);

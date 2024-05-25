@@ -1300,8 +1300,11 @@ void GameSelector::AddPreviewProfiles()
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_CHOMPER] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_SEASHROOM] = 1;
 
-
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_IMITATER] = 1;
+
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_FLAMETHROWERPEA] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_ICEQUEENPEA] = 1;
+
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PACKET_UPGRADE] = 3;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_POOL_CLEANER] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_ROOF_CLEANER] = 1;

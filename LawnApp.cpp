@@ -2215,6 +2215,7 @@ bool LawnApp::IsFinalBossLevel()
 		return true;
 
 	return IsAdventureMode() && mPlayerInfo->mLevel == 50;
+	return IsAdventureMode() && mPlayerInfo->mLevel == 100;
 }
 
 //0x453A00
@@ -2397,6 +2398,14 @@ bool LawnApp::HasSeedType(SeedType theSeedType)
 	if (theSeedType == SeedType::SEED_CHOMPER)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_CHOMPER] > 0;
+	}
+	if (theSeedType == SeedType::SEED_FLAMETHROWERPEA)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_FLAMETHROWERPEA] > 0;
+	}
+	if (theSeedType == SeedType::SEED_ICEQUEENPEA)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_ICEQUEENPEA] > 0;
 	}
 	if (theSeedType == SeedType::SEED_SEASHROOM)
 	{

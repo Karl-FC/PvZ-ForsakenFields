@@ -25,10 +25,14 @@ static StoreItem gStoreItemSpots[NUM_STORE_PAGES][MAX_PAGE_SPOTS] =
 {
     { STORE_ITEM_PACKET_UPGRADE,    STORE_ITEM_POOL_CLEANER,        STORE_ITEM_RAKE,                STORE_ITEM_ROOF_CLEANER,
       STORE_ITEM_PLANT_GATLINGPEA,  STORE_ITEM_PLANT_EXPLODEONUT, STORE_ITEM_PLANT_GLOOMSHROOM,   STORE_ITEM_PLANT_CATTAIL },
+
     { STORE_ITEM_PLANT_SPIKEROCK,   STORE_ITEM_PLANT_GOLD_MAGNET,   STORE_ITEM_PLANT_WINTERMELON,   STORE_ITEM_PLANT_COBCANNON,
       STORE_ITEM_PLANT_IMITATER,    STORE_ITEM_FIRSTAID,            STORE_ITEM_PLANT_FIREPEASHOOTER, STORE_ITEM_PLANT_SNOWPEA },
     { STORE_ITEM_PLANT_TORCHWOOD,   STORE_ITEM_PLANT_STARFRUIT,       STORE_ITEM_PLANT_SQUASH,        STORE_ITEM_PLANT_HYPNOSHROOM,
       STORE_ITEM_PLANT_THREEPEATER,    STORE_ITEM_PLANT_INSTANTCOFFEE,    STORE_ITEM_PLANT_CHOMPER,       STORE_ITEM_PLANT_SEASHROOM },
+    { STORE_ITEM_PLANT_FLAMETHROWERPEA,   STORE_ITEM_PLANT_ICEQUEENPEA,       STORE_ITEM_INVALID,        STORE_ITEM_INVALID,
+      STORE_ITEM_INVALID,           STORE_ITEM_INVALID,             STORE_ITEM_INVALID,             STORE_ITEM_INVALID },
+    
     { STORE_ITEM_POTTED_MARIGOLD_1, STORE_ITEM_POTTED_MARIGOLD_2,   STORE_ITEM_POTTED_MARIGOLD_3,   STORE_ITEM_GOLD_WATERINGCAN,
       STORE_ITEM_FERTILIZER,        STORE_ITEM_BUG_SPRAY,           STORE_ITEM_PHONOGRAPH,          STORE_ITEM_GARDENING_GLOVE },
     { STORE_ITEM_MUSHROOM_GARDEN,   STORE_ITEM_AQUARIUM_GARDEN,     STORE_ITEM_WHEEL_BARROW,        STORE_ITEM_STINKY_THE_SNAIL,
@@ -591,6 +595,8 @@ void StoreScreen::UpdateMouse()
                 case STORE_ITEM_PLANT_INSTANTCOFFEE:         aMessageIndex = 8008;                           break;
                 case STORE_ITEM_PLANT_CHOMPER:         aMessageIndex = 8009;                           break;
                 case STORE_ITEM_PLANT_SEASHROOM:         aMessageIndex = 8010;                           break;
+                case STORE_ITEM_PLANT_FLAMETHROWERPEA:         aMessageIndex = 8011;                           break;
+                case STORE_ITEM_PLANT_ICEQUEENPEA:         aMessageIndex = 8012;                           break;
                 default:                                TOD_ASSERT();                                   break;
                 }
                 if (mApp->mCrazyDaveMessageIndex != aMessageIndex)
@@ -895,6 +901,8 @@ int StoreScreen::GetItemCost(StoreItem theStoreItem)
     case STORE_ITEM_PLANT_INSTANTCOFFEE:                     return 10;
     case STORE_ITEM_PLANT_CHOMPER:                     return 10;
     case STORE_ITEM_PLANT_SEASHROOM:                     return 10;
+    case STORE_ITEM_PLANT_FLAMETHROWERPEA:                     return 10;
+    case STORE_ITEM_PLANT_ICEQUEENPEA:                     return 10;
         //IMITATER
     case STORE_ITEM_PLANT_IMITATER:                     return 3000;
     case STORE_ITEM_POTTED_MARIGOLD_1:                  return 250;

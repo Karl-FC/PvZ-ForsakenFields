@@ -849,11 +849,11 @@ void Board::LoadBackgroundImages()
 		break;
 
 	case BackgroundType::BACKGROUND_9_HARD:
-		TodLoadResources("DelayLoad_Background1");
+		TodLoadResources("DelayLoad_Background3");
 		break;
 
 	case BackgroundType::BACKGROUND_10_HARDNIGHT:
-		TodLoadResources("DelayLoad_Background2");
+		TodLoadResources("DelayLoad_Background4");
 		break;
 
 	case BackgroundType::BACKGROUND_GREENHOUSE:
@@ -6060,8 +6060,8 @@ void Board::DrawBackdrop(Graphics* g)
 	case BackgroundType::BACKGROUND_6_BOSS:				aBgImage = Sexy::IMAGE_BACKGROUND6BOSS;					break;
 	case BackgroundType::BACKGROUND_7_FLOOD:			aBgImage = Sexy::IMAGE_BACKGROUND3;						break;
 	case BackgroundType::BACKGROUND_8_STORM:			aBgImage = Sexy::IMAGE_BACKGROUND4;						break;
-	case BackgroundType::BACKGROUND_9_HARD:				aBgImage = Sexy::IMAGE_BACKGROUND1;						break;
-	case BackgroundType::BACKGROUND_10_HARDNIGHT:		aBgImage = Sexy::IMAGE_BACKGROUND2;						break;
+	case BackgroundType::BACKGROUND_9_HARD:				aBgImage = Sexy::IMAGE_BACKGROUND3;						break;
+	case BackgroundType::BACKGROUND_10_HARDNIGHT:		aBgImage = Sexy::IMAGE_BACKGROUND4;						break;
 	case BackgroundType::BACKGROUND_MUSHROOM_GARDEN:	aBgImage = Sexy::IMAGE_BACKGROUND_MUSHROOMGARDEN;		break;
 	case BackgroundType::BACKGROUND_GREENHOUSE:			aBgImage = Sexy::IMAGE_BACKGROUND_GREENHOUSE;			break;
 	case BackgroundType::BACKGROUND_ZOMBIQUARIUM:		aBgImage = Sexy::IMAGE_AQUARIUM1;						break;
@@ -6848,8 +6848,8 @@ void Board::DrawHouseDoorTop(Graphics* g)
 	case BackgroundType::BACKGROUND_6_BOSS:		g->DrawImage(Sexy::IMAGE_BACKGROUND6_GAMEOVER_MASK, -220, 81);		break;
 	case BackgroundType::BACKGROUND_7_FLOOD:		g->DrawImage(Sexy::IMAGE_BACKGROUND3_GAMEOVER_MASK, -172, 234);		break;
 	case BackgroundType::BACKGROUND_8_STORM:		g->DrawImage(Sexy::IMAGE_BACKGROUND4_GAMEOVER_MASK, -173, 133);		break;
-	case BackgroundType::BACKGROUND_9_HARD:		g->DrawImage(Sexy::IMAGE_BACKGROUND1_GAMEOVER_MASK, -130, 202);		break;
-	case BackgroundType::BACKGROUND_10_HARDNIGHT:	g->DrawImage(Sexy::IMAGE_BACKGROUND2_GAMEOVER_MASK, -128, 207);		break;
+	case BackgroundType::BACKGROUND_9_HARD:		g->DrawImage(Sexy::IMAGE_BACKGROUND3_GAMEOVER_MASK, -130, 202);		break;
+	case BackgroundType::BACKGROUND_10_HARDNIGHT:	g->DrawImage(Sexy::IMAGE_BACKGROUND4_GAMEOVER_MASK, -128, 207);		break;
 	default:																										break;
 	}
 }
@@ -8942,9 +8942,7 @@ bool Board::StageHasGraveStones()
 bool Board::StageHasRoof()
 {
 	return (mBackground == BackgroundType::BACKGROUND_5_ROOF ||
-		mBackground == BackgroundType::BACKGROUND_6_BOSS ||
-		mBackground == BackgroundType::BACKGROUND_9_HARD ||
-		mBackground == BackgroundType::BACKGROUND_10_HARDNIGHT
+		mBackground == BackgroundType::BACKGROUND_6_BOSS
 		);
 }
 
