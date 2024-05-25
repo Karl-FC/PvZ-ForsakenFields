@@ -24,9 +24,11 @@
 static StoreItem gStoreItemSpots[NUM_STORE_PAGES][MAX_PAGE_SPOTS] =
 {
     { STORE_ITEM_PACKET_UPGRADE,    STORE_ITEM_POOL_CLEANER,        STORE_ITEM_RAKE,                STORE_ITEM_ROOF_CLEANER,
-      STORE_ITEM_PLANT_GATLINGPEA,  STORE_ITEM_PLANT_TWINSUNFLOWER, STORE_ITEM_PLANT_GLOOMSHROOM,   STORE_ITEM_PLANT_CATTAIL },
+      STORE_ITEM_PLANT_GATLINGPEA,  STORE_ITEM_PLANT_EXPLODEONUT, STORE_ITEM_PLANT_GLOOMSHROOM,   STORE_ITEM_PLANT_CATTAIL },
     { STORE_ITEM_PLANT_SPIKEROCK,   STORE_ITEM_PLANT_GOLD_MAGNET,   STORE_ITEM_PLANT_WINTERMELON,   STORE_ITEM_PLANT_COBCANNON,
-      STORE_ITEM_PLANT_IMITATER,    STORE_ITEM_FIRSTAID,            STORE_ITEM_PLANT_FIREPEASHOOTER, STORE_ITEM_INVALID },
+      STORE_ITEM_PLANT_IMITATER,    STORE_ITEM_FIRSTAID,            STORE_ITEM_PLANT_FIREPEASHOOTER, STORE_ITEM_PLANT_SNOWPEA },
+    { STORE_ITEM_PLANT_TORCHWOOD,   STORE_ITEM_PLANT_STARFRUIT,       STORE_ITEM_PLANT_SQUASH,        STORE_ITEM_PLANT_HYPNOSHROOM,
+      STORE_ITEM_PLANT_THREEPEATER,    STORE_ITEM_PLANT_INSTANTCOFFEE,    STORE_ITEM_PLANT_CHOMPER,       STORE_ITEM_PLANT_SEASHROOM },
     { STORE_ITEM_POTTED_MARIGOLD_1, STORE_ITEM_POTTED_MARIGOLD_2,   STORE_ITEM_POTTED_MARIGOLD_3,   STORE_ITEM_GOLD_WATERINGCAN,
       STORE_ITEM_FERTILIZER,        STORE_ITEM_BUG_SPRAY,           STORE_ITEM_PHONOGRAPH,          STORE_ITEM_GARDENING_GLOVE },
     { STORE_ITEM_MUSHROOM_GARDEN,   STORE_ITEM_AQUARIUM_GARDEN,     STORE_ITEM_WHEEL_BARROW,        STORE_ITEM_STINKY_THE_SNAIL,
@@ -161,7 +163,7 @@ bool StoreScreen::IsFullVersionOnly(StoreItem theStoreItem)
     if (theStoreItem == STORE_ITEM_PACKET_UPGRADE && mApp->mPlayerInfo->mPurchases[STORE_ITEM_PACKET_UPGRADE] >= 2)
         return true;
     
-    return theStoreItem == STORE_ITEM_PLANT_TWINSUNFLOWER;
+    return theStoreItem == STORE_ITEM_PLANT_EXPLODEONUT;
 }
 
 bool StoreScreen::IsPottedPlant(StoreItem theStoreItem)
@@ -404,7 +406,7 @@ void StoreScreen::DrawItem(Graphics* g, int theItemPosition, StoreItem theItemTy
     if (IsComingSoon(theItemType))
     {
         Rect aRect(aPosX, aPosY, 60, 70);
-        if (theItemType == STORE_ITEM_PLANT_TWINSUNFLOWER || theItemType == STORE_ITEM_PACKET_UPGRADE)
+        if (theItemType == STORE_ITEM_PLANT_EXPLODEONUT || theItemType == STORE_ITEM_PACKET_UPGRADE)
         {
             aRect.mX -= 4;
         }
@@ -545,7 +547,6 @@ void StoreScreen::UpdateMouse()
                 switch (aItemType)
                 {
                 case STORE_ITEM_PLANT_GATLINGPEA:       aMessageIndex = 2000;                           break;
-                case STORE_ITEM_PLANT_TWINSUNFLOWER:    aMessageIndex = 2001;                           break;
                 case STORE_ITEM_PLANT_GLOOMSHROOM:      aMessageIndex = 2002;                           break;
                 case STORE_ITEM_PLANT_CATTAIL:          aMessageIndex = 2003;                           break;
                 case STORE_ITEM_PLANT_WINTERMELON:      aMessageIndex = 2004;                           break;
@@ -579,7 +580,17 @@ void StoreScreen::UpdateMouse()
                 case STORE_ITEM_TREE_FOOD:              aMessageIndex = 2031;                           break;
                 case STORE_ITEM_FIRSTAID:               aMessageIndex = 2033;                           break;
                 case STORE_ITEM_PVZ:                    aMessageIndex = 2034;                           break;
-                case STORE_ITEM_PLANT_FIREPEASHOOTER:         aMessageIndex = 9000;                           break;
+                case STORE_ITEM_PLANT_EXPLODEONUT:         aMessageIndex = 8000;                           break;
+                case STORE_ITEM_PLANT_FIREPEASHOOTER:         aMessageIndex = 8001;                           break;
+                case STORE_ITEM_PLANT_SNOWPEA:         aMessageIndex = 8002;                           break;
+                case STORE_ITEM_PLANT_TORCHWOOD:         aMessageIndex = 8003;                           break;
+                case STORE_ITEM_PLANT_STARFRUIT:         aMessageIndex = 8004;                           break;
+                case STORE_ITEM_PLANT_SQUASH:         aMessageIndex = 8005;                           break;
+                case STORE_ITEM_PLANT_HYPNOSHROOM:         aMessageIndex = 8006;                           break;
+                case STORE_ITEM_PLANT_THREEPEATER:         aMessageIndex = 8007;                           break;
+                case STORE_ITEM_PLANT_INSTANTCOFFEE:         aMessageIndex = 8008;                           break;
+                case STORE_ITEM_PLANT_CHOMPER:         aMessageIndex = 8009;                           break;
+                case STORE_ITEM_PLANT_SEASHROOM:         aMessageIndex = 8010;                           break;
                 default:                                TOD_ASSERT();                                   break;
                 }
                 if (mApp->mCrazyDaveMessageIndex != aMessageIndex)
@@ -866,7 +877,7 @@ int StoreScreen::GetItemCost(StoreItem theStoreItem)
     switch (theStoreItem)
     {
     case STORE_ITEM_PLANT_GATLINGPEA:                   return 500;
-    case STORE_ITEM_PLANT_TWINSUNFLOWER:                return 500;
+    case STORE_ITEM_PLANT_EXPLODEONUT:                  return 300;
     case STORE_ITEM_PLANT_GLOOMSHROOM:                  return 750;
     case STORE_ITEM_PLANT_CATTAIL:                      return 1000;
     case STORE_ITEM_PLANT_WINTERMELON:                  return 1000;
@@ -875,6 +886,15 @@ int StoreScreen::GetItemCost(StoreItem theStoreItem)
     case STORE_ITEM_PLANT_COBCANNON:                    return 2000;
         //NEW
     case STORE_ITEM_PLANT_FIREPEASHOOTER:                     return 10;
+    case STORE_ITEM_PLANT_SNOWPEA:                     return 10;
+    case STORE_ITEM_PLANT_TORCHWOOD:                     return 10;
+    case STORE_ITEM_PLANT_STARFRUIT:                     return 10;
+    case STORE_ITEM_PLANT_SQUASH:                     return 10;
+    case STORE_ITEM_PLANT_HYPNOSHROOM:                     return 10;
+    case STORE_ITEM_PLANT_THREEPEATER:                     return 10;
+    case STORE_ITEM_PLANT_INSTANTCOFFEE:                     return 10;
+    case STORE_ITEM_PLANT_CHOMPER:                     return 10;
+    case STORE_ITEM_PLANT_SEASHROOM:                     return 10;
         //IMITATER
     case STORE_ITEM_PLANT_IMITATER:                     return 3000;
     case STORE_ITEM_POTTED_MARIGOLD_1:                  return 250;

@@ -1281,13 +1281,26 @@ void GameSelector::AddPreviewProfiles()
 		aProfile->mHasUnlockedMinigames = 1;
 		aProfile->mHasUnlockedPuzzleMode = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_GATLINGPEA] = 1;
-		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_TWINSUNFLOWER] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_EXPLODEONUT] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_GLOOMSHROOM] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_CATTAIL] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_WINTERMELON] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_GOLD_MAGNET] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_SPIKEROCK] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_COBCANNON] = 1;
+
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_FIREPEASHOOTER] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_SNOWPEA] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_TORCHWOOD] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_STARFRUIT] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_SQUASH] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_HYPNOSHROOM] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_THREEPEATER] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_INSTANTCOFFEE] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_CHOMPER] = 1;
+		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_SEASHROOM] = 1;
+
+
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PLANT_IMITATER] = 1;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_PACKET_UPGRADE] = 3;
 		aProfile->mPurchases[StoreItem::STORE_ITEM_POOL_CLEANER] = 1;

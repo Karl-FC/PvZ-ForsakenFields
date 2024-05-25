@@ -2333,9 +2333,9 @@ bool LawnApp::HasSeedType(SeedType theSeedType)
 		return mPlayerInfo->mPurchases[theSeedType - SeedType::SEED_GATLINGPEA];
 	*/
 
-	if (theSeedType == SeedType::SEED_TWINSUNFLOWER)
+	if (theSeedType == SeedType::SEED_EXPLODE_O_NUT)
 	{
-		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_TWINSUNFLOWER] > 0;
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_EXPLODEONUT] > 0;
 	}
 	if (theSeedType == SeedType::SEED_GLOOMSHROOM)
 	{
@@ -2349,10 +2349,6 @@ bool LawnApp::HasSeedType(SeedType theSeedType)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_WINTERMELON] > 0;
 	}
-	if (theSeedType == SeedType::SEED_FIREPEASHOOTER)
-	{
-		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_FIREPEASHOOTER] > 0;
-	}
 	if (theSeedType == SeedType::SEED_GOLD_MAGNET)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_GOLD_MAGNET] > 0;
@@ -2365,6 +2361,48 @@ bool LawnApp::HasSeedType(SeedType theSeedType)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_COBCANNON] > 0;
 	}
+
+	if (theSeedType == SeedType::SEED_FIREPEASHOOTER)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_FIREPEASHOOTER] > 0;
+	}
+	if (theSeedType == SeedType::SEED_SNOWPEA)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_SNOWPEA] > 0;
+	}
+	if (theSeedType == SeedType::SEED_TORCHWOOD)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_TORCHWOOD] > 0;
+	}
+	if (theSeedType == SeedType::SEED_STARFRUIT)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_STARFRUIT] > 0;
+	}
+	if (theSeedType == SeedType::SEED_SQUASH)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_SQUASH] > 0;
+	}
+	if (theSeedType == SeedType::SEED_HYPNOSHROOM)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_HYPNOSHROOM] > 0;
+	}
+	if (theSeedType == SeedType::SEED_THREEPEATER)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_THREEPEATER] > 0;
+	}
+	if (theSeedType == SeedType::SEED_INSTANT_COFFEE)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_INSTANTCOFFEE] > 0;
+	}
+	if (theSeedType == SeedType::SEED_CHOMPER)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_CHOMPER] > 0;
+	}
+	if (theSeedType == SeedType::SEED_SEASHROOM)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_SEASHROOM] > 0;
+	}
+
 	if (theSeedType == SeedType::SEED_IMITATER)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_IMITATER] > 0;

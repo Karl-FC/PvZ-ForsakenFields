@@ -6995,6 +6995,7 @@ void Zombie::EatPlant(Plant* thePlant)
     if (thePlant->mSeedType == SeedType::SEED_JALAPENO || 
         thePlant->mSeedType == SeedType::SEED_CHERRYBOMB || 
         thePlant->mSeedType == SeedType::SEED_DOOMSHROOM ||
+        thePlant->mSeedType == SeedType::SEED_ICEBERGLETTUCE ||
         thePlant->mSeedType == SeedType::SEED_ICESHROOM || 
         thePlant->mSeedType == SeedType::SEED_HYPNOSHROOM || 
         thePlant->mState == PlantState::STATE_FLOWERPOT_INVULNERABLE ||
@@ -7057,6 +7058,10 @@ void Zombie::EatPlant(Plant* thePlant)
         mBoard->mPlantsEaten++;
         thePlant->Die();
         mBoard->mChallenge->ZombieAtePlant(this, thePlant);
+
+        if (thePlant->mSeedType == SeedType::SEED_EXPLODE_O_NUT) {
+            thePlant->DoSpecial();
+        }
 
         if (mBoard->mLevel >= 2 && mBoard->mLevel <= 4 && mApp->IsFirstTimeAdventureMode())
         {
