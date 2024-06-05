@@ -1053,7 +1053,7 @@ enum SeedType
     SEED_KERNELPULT = 25,
     SEED_CABBAGEPULT = 26,      //Explode o nut
     SEED_PLANTERN = 27,            //Howitzer Hibiscus
-    SEED_SPLITPEA = 28,         //[new plant]
+    SEED_ICEROCK = 28,         //[new plant]
     SEED_MELONPULT = 29,
     SEED_PUMPKINSHELL = 30,
     SEED_MAGNETSHROOM = 31,
@@ -1088,9 +1088,11 @@ enum SeedType
     SEED_ICEQUEENPEA = 58,
     SEED_FLAMETHROWERPEA = 59,
     SEED_EXPLODE_O_NUT = 60,
-    SEED_ICEROCK = 61,
+    SEED_SPLITPEA = 61,
     SEED_JALAPENO = 62,
-    SEED_IMITATER = 63,
+    SEED_PRIMALSUNFLOWER = 63,
+    SEED_BLOOMSHROOM = 64,
+    SEED_IMITATER = 65,
 //MISC
     
     SEED_GIANT_WALLNUT,
@@ -1117,7 +1119,7 @@ enum SeedType
     SEED_ZOMBIE_DANCER,
     SEED_ZOMBIE_GARGANTUAR,
     SEED_ZOMBIE_IMP,
-    NUM_SEEDS_IN_CHOOSER = 64, //CHANGE THIS! +1
+    NUM_SEEDS_IN_CHOOSER = 66, //CHANGE THIS! +1
     SEED_NONE = -1
 };
 enum ShieldType

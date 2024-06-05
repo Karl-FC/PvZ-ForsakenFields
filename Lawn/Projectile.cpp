@@ -171,6 +171,7 @@ Plant* Projectile::FindCollisionTargetPlant()
 				aPlant->mSeedType == SeedType::SEED_SPIKEWEED ||
 				aPlant->mSeedType == SeedType::SEED_SPIKERUSH ||
 				aPlant->mSeedType == SeedType::SEED_SPIKEROCK ||
+				aPlant->mSeedType == SeedType::SEED_ICEROCK ||
 				aPlant->mSeedType == SeedType::SEED_LILYPAD)  // 僵尸豌豆不能击中低矮植物
 				continue;
 		}

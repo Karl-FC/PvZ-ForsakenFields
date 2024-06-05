@@ -379,7 +379,7 @@ void Coin::CoinInitialize(int theX, int theY, CoinType theCoinType, CoinMotion t
     }
     else if (mType == CoinType::COIN_LARGESUN)
     {
-        aScale = 2.0f;
+        aScale = 1.5f;
     }
     else
     {
@@ -1280,7 +1280,7 @@ void Coin::Collect()
 
 float Coin::GetSunScale()
 {
-    return mType == CoinType::COIN_SMALLSUN ? 0.5f : mType == CoinType::COIN_LARGESUN ? 2.0f : 1.0f;
+    return mType == CoinType::COIN_SMALLSUN ? 0.5f : mType == CoinType::COIN_LARGESUN ? 1.5f : 1.0f;
 }
 
 //0x4329A0

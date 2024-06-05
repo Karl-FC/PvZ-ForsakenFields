@@ -50,7 +50,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_KERNELPULT,        nullptr, ReanimationType::REANIM_KERNELPULT,    13, 100,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("KERNEL_PULT"),0 },
     { SeedType::SEED_CABBAGEPULT,       nullptr, ReanimationType::REANIM_CABBAGEPULT,   13, 200,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("CABBAGE_PULT"),0 }, //Supposedly Explode-o-nut
     { SeedType::SEED_PLANTERN,          nullptr, ReanimationType::REANIM_PLANTERN,      38, 25,     3000,   PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("PLANTERN"),0 }, //Supposedly Howitzer Hibiscus
-    { SeedType::SEED_SPLITPEA,          nullptr, ReanimationType::REANIM_SPLITPEA,      32, 125,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SPLIT_PEA"),0 }, //PALITAN into [new plant]
+    { SeedType::SEED_ICEROCK,         nullptr, ReanimationType::REANIM_SPIKEROCK,     27, 350,    3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("ICEROCK"),0 },
     { SeedType::SEED_MELONPULT,         nullptr, ReanimationType::REANIM_MELONPULT,     14, 300,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("MELON_PULT"),0 },
     { SeedType::SEED_PUMPKINSHELL,      nullptr, ReanimationType::REANIM_PUMPKIN,       25, 125,    3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("PUMPKIN"),0 },
     { SeedType::SEED_MAGNETSHROOM,      nullptr, ReanimationType::REANIM_MAGNETSHROOM,  35, 100,    750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("MAGNET_SHROOM"),0 },
@@ -83,8 +83,10 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_ICEQUEENPEA,        nullptr, ReanimationType::REANIM_GATLINGPEA,    5,  800,    3000,   PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("ICEQUEENPEA"),1 },
     { SeedType::SEED_FLAMETHROWERPEA,   nullptr, ReanimationType::REANIM_GATLINGPEA,    5,  1000,    3000,   PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("FLAMETHROWERPEA"),1 },
     { SeedType::SEED_EXPLODE_O_NUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  150,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("EXPLODE_O_NUT"),1 },
-    { SeedType::SEED_ICEROCK,         nullptr, ReanimationType::REANIM_SPIKEROCK,     27, 350,    3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("ICEROCK"),1 },
-    { SeedType::SEED_JALAPENO,          nullptr, ReanimationType::REANIM_JALAPENO,      11, 125,    5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("JALAPENO"),0 },
+    { SeedType::SEED_SPLITPEA,          nullptr, ReanimationType::REANIM_SPLITPEA,      32, 125,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SPLIT_PEA"),1 }, //PALITAN into [new plant]
+    { SeedType::SEED_JALAPENO,          nullptr, ReanimationType::REANIM_JALAPENO,      11, 125,    5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("JALAPENO"),1 },
+        { SeedType::SEED_PRIMALSUNFLOWER,         nullptr, ReanimationType::REANIM_SUNFLOWER,     7,  50,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("PRIMALSUNFLOWER"),1 },
+    { SeedType::SEED_BLOOMSHROOM,         nullptr, ReanimationType::REANIM_ZENGARDEN_SPROUT,     7,  50,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("BLOOMSHROOM"),1 },
     { SeedType::SEED_IMITATER,          nullptr, ReanimationType::REANIM_IMITATER,      33, 0,      750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("IMITATER"),0 },
     { SeedType::SEED_GIANT_WALLNUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GIANT_WALLNUT"),-1 },
     { SeedType::SEED_SPROUT,            nullptr, ReanimationType::REANIM_ZENGARDEN_SPROUT,          33, 0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("SPROUT"),-1 }
@@ -325,7 +327,10 @@ void Plant::PlantInitialize(int theGridX, int theGridY, SeedType theSeedType, Se
         aBodyReanim->mColorOverride = Color(255, 64, 64);
         break;
     case SeedType::SEED_ICEBERGCABBAGE:
-        aBodyReanim->mColorOverride = Color(64, 64, 255);
+        aBodyReanim->mColorOverride = Color(0, 0, 255);
+        break;
+    case SeedType::SEED_ICEROCK:
+        aBodyReanim->mColorOverride = Color(0, 0, 0);
         break;
     case SeedType::SEED_GIANT_WALLNUT:
         mPlantHealth = 4000;
@@ -723,6 +728,7 @@ void Plant::BasiliskSmash()
 bool Plant::IsSpiky()
 {
     return mSeedType == SeedType::SEED_SPIKEWEED || mSeedType == SeedType::SEED_SPIKEROCK ||
+        mSeedType == SeedType::SEED_ICEROCK ||
         mSeedType == SeedType::SEED_SPIKERUSH;
 }
 
@@ -1108,12 +1114,17 @@ void Plant::UpdateShooter()
 //0x45F980
 bool Plant::MakesSun()
 {
-    return mSeedType == SeedType::SEED_SUNFLOWER || mSeedType == SeedType::SEED_WILLOW || mSeedType == SeedType::SEED_TWINSUNFLOWER || mSeedType == SeedType::SEED_SUNSHROOM;
+    return mSeedType == SeedType::SEED_SUNFLOWER ||
+        mSeedType == SeedType::SEED_WILLOW ||
+        mSeedType == SeedType::SEED_TWINSUNFLOWER ||
+        mSeedType == SeedType::SEED_PRIMALSUNFLOWER ||
+        mSeedType == SeedType::SEED_SUNSHROOM;
 }
 
 //0x45F9A0
 void Plant::UpdateProductionPlant()
 {
+
     if (!IsInPlay() || mApp->IsIZombieLevel() || mApp->mGameMode == GameMode::GAMEMODE_UPSELL || mApp->mGameMode == GameMode::GAMEMODE_INTRO)
         return;
 
@@ -1151,6 +1162,10 @@ void Plant::UpdateProductionPlant()
             {
                 mBoard->AddCoin(mX, mY, CoinType::COIN_SMALLSUN, CoinMotion::COIN_MOTION_FROM_PLANT);
             }
+            else if (mState == PlantState::STATE_SUNSHROOM_HUGE)
+            {
+                mBoard->AddCoin(mX, mY, CoinType::COIN_LARGESUN, CoinMotion::COIN_MOTION_FROM_PLANT);
+            }
             else
             {
                 mBoard->AddCoin(mX, mY, CoinType::COIN_SUN, CoinMotion::COIN_MOTION_FROM_PLANT);
@@ -1160,6 +1175,10 @@ void Plant::UpdateProductionPlant()
         {
             mBoard->AddCoin(mX, mY, CoinType::COIN_SUN, CoinMotion::COIN_MOTION_FROM_PLANT);
         }
+        else if (mSeedType == SeedType::SEED_PRIMALSUNFLOWER)
+        {
+            mBoard->AddCoin(mX, mY, CoinType::COIN_LARGESUN, CoinMotion::COIN_MOTION_FROM_PLANT);
+        }
         else if (mSeedType == SeedType::SEED_WILLOW)
         {
             mBoard->AddCoin(mX, mY, CoinType::COIN_SMALLSUN, CoinMotion::COIN_MOTION_FROM_PLANT);
@@ -1168,6 +1187,21 @@ void Plant::UpdateProductionPlant()
         {
             mBoard->AddCoin(mX, mY, CoinType::COIN_SUN, CoinMotion::COIN_MOTION_FROM_PLANT);
             mBoard->AddCoin(mX, mY, CoinType::COIN_SUN, CoinMotion::COIN_MOTION_FROM_PLANT);
+        }
+        else if (mSeedType == SeedType::SEED_BLOOMSHROOM)
+        {
+            SeedType aSeedType;
+            do
+                aSeedType = (SeedType)Rand(mApp->GetSeedsAvailable());
+            while (
+                mBoard->SeedNotRecommendedForLevel(aSeedType) ||
+                !mApp->SeedTypeAvailable(aSeedType) ||
+                Plant::IsUpgrade(aSeedType) ||
+                aSeedType == SEED_INSTANT_COFFEE ||
+                aSeedType == SEED_IMITATER
+                );
+
+            mBoard->AddCoin(mX, mY, COIN_USABLE_SEED_PACKET, COIN_MOTION_FROM_PLANT)->mUsableSeedType = aSeedType;
         }
         else if (mSeedType == SeedType::SEED_MARIGOLD)
         {
@@ -1209,6 +1243,26 @@ void Plant::UpdateSunShroom()
         {
             PlayBodyReanim("anim_bigidle", ReanimLoopType::REANIM_LOOP, 10, RandRangeFloat(12.0f, 15.0f));
             mState = PlantState::STATE_SUNSHROOM_BIG;
+            mStateCountdown = 12000;
+        }
+    }
+    else if (mState == PlantState::STATE_SUNSHROOM_BIG)
+    {
+        if (mStateCountdown == 0)
+        {
+            PlayBodyReanim("anim_grow", ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD, 15, 17.0f);
+            mState = PlantState::STATE_SUNSHROOM_GROWING2;
+            mApp->PlayFoley(FoleyType::FOLEY_PLANTGROW);
+        }
+
+        UpdateProductionPlant();
+    }
+    else if (mState == PlantState::STATE_SUNSHROOM_GROWING2)
+    {
+        if (aBodyReanim->mLoopCount > 0)
+        {
+            PlayBodyReanim("anim_bigidle", ReanimLoopType::REANIM_LOOP, 10, RandRangeFloat(17.0f, 20.0f));
+            mState = PlantState::STATE_SUNSHROOM_HUGE;
         }
     }
     else
@@ -1404,6 +1458,18 @@ void Plant::SpikeweedAttack()
         
         mState = PlantState::STATE_SPIKEWEED_ATTACKING;
         mStateCountdown = 100;
+
+        if (mSeedType == SEED_ICEROCK)
+        {
+            Zombie* aZombie = FindVeryNearestTarget();
+            if (aZombie)
+            {
+                mTargetZombieID = mBoard->ZombieGetID(aZombie);
+                mTargetX = aZombie->ZombieTargetLeadX(0.0f) - mWidth / 2;
+                mStateCountdown = 80;
+                aZombie->ApplyChill(false);
+            }
+        }
     }
 }
 
@@ -2799,12 +2865,17 @@ void Plant::UpdateAbilities()
     else if (mSeedType == SeedType::SEED_MAGNETSHROOM)                                          UpdateMagnetShroom();
     else if (mSeedType == SeedType::SEED_GOLD_MAGNET)                                           UpdateGoldMagnetShroom();
     else if (mSeedType == SeedType::SEED_SUNSHROOM)                                             UpdateSunShroom();
-    else if (MakesSun() || mSeedType == SeedType::SEED_MARIGOLD)                                UpdateProductionPlant();
+    else if (MakesSun() ||
+        mSeedType == SeedType::SEED_MARIGOLD ||
+        mSeedType == SeedType::SEED_BLOOMSHROOM)                                                UpdateProductionPlant();
     else if (mSeedType == SeedType::SEED_GRAVEBUSTER)                                           UpdateGraveBuster();
     else if (mSeedType == SeedType::SEED_TORCHWOOD)                                             UpdateTorchwood();
     else if (mSeedType == SeedType::SEED_ICEBERGLETTUCE)                                        UpdateIcebergLettuce();
     else if (mSeedType == SeedType::SEED_POTATOMINE)                                            UpdatePotato();
-    else if (mSeedType == SeedType::SEED_SPIKEWEED || mSeedType == SeedType::SEED_SPIKEROCK || mSeedType == SeedType::SEED_SPIKERUSH)    UpdateSpikeweed();
+    else if (mSeedType == SeedType::SEED_SPIKEWEED ||
+        mSeedType == SeedType::SEED_SPIKEROCK || 
+        mSeedType == SeedType::SEED_ICEROCK ||
+        mSeedType == SeedType::SEED_SPIKERUSH)                                                  UpdateSpikeweed();
     else if (mSeedType == SeedType::SEED_TANGLEKELP)                                            UpdateTanglekelp();
     else if (mSeedType == SeedType::SEED_SCAREDYSHROOM)                                         UpdateScaredyShroom();
 
@@ -3915,6 +3986,7 @@ float PlantFlowerPotHeightOffset(SeedType theSeedType, float theFlowerPotScale)
     case SeedType::SEED_TANGLEKELP:
     case SeedType::SEED_BLOVER:
     case SeedType::SEED_SPIKERUSH:
+    case SeedType::SEED_ICEROCK:
     case SeedType::SEED_SPIKEWEED:
         aScaleOffsetFix -= 8.0f;
         break;
@@ -4031,7 +4103,9 @@ float PlantDrawHeightOffset(Board* theBoard, Plant* thePlant, SeedType theSeedTy
     {
         aHeightOffset -= 40.0f;
     }
-    else if (theSeedType == SeedType::SEED_SPIKEWEED || theSeedType == SeedType::SEED_SPIKEROCK || theSeedType == SeedType::SEED_SPIKERUSH)
+    else if (theSeedType == SeedType::SEED_SPIKEWEED ||
+        theSeedType == SeedType::SEED_SPIKEROCK || theSeedType == SeedType::SEED_ICEROCK ||
+        theSeedType == SeedType::SEED_SPIKERUSH)
     {
         int aBottomRow = 4;
         if (theBoard && theBoard->StageHas6Rows())
@@ -4217,7 +4291,7 @@ void Plant::DrawShadow(Sexy::Graphics* g, float theOffsetX, float theOffsetY)
 {
     if (mSeedType == SeedType::SEED_LILYPAD || mSeedType == SeedType::SEED_STARFRUIT || mSeedType == SeedType::SEED_TANGLEKELP || 
         mSeedType == SeedType::SEED_SEASHROOM || mSeedType == SeedType::SEED_COBCANNON || mSeedType == SeedType::SEED_SPIKEWEED || mSeedType == SeedType::SEED_SPIKERUSH ||
-        mSeedType == SeedType::SEED_SPIKEROCK || mSeedType == SeedType::SEED_GRAVEBUSTER || mSeedType == SeedType::SEED_CATTAIL || 
+        mSeedType == SeedType::SEED_ICEROCK || mSeedType == SeedType::SEED_SPIKEROCK || mSeedType == SeedType::SEED_GRAVEBUSTER || mSeedType == SeedType::SEED_CATTAIL ||
         mOnBungeeState == PlantOnBungeeState::RISING_WITH_BUNGEE)
         return;
 
@@ -4251,13 +4325,27 @@ void Plant::DrawShadow(Sexy::Graphics* g, float theOffsetX, float theOffsetY)
         aShadowOffsetY = 42.0f;
         if (mState == PlantState::STATE_SUNSHROOM_SMALL)
         {
-            aScale = 0.5f;
+            aScale = 0.3f;
         }
         else if (mState == PlantState::STATE_SUNSHROOM_GROWING)
         {
             Reanimation* aBodyReanim = mApp->ReanimationGet(mBodyReanimID);
-            aScale = 0.5f + 0.5f * aBodyReanim->mAnimTime;
+            aScale = 0.3f + 0.3f * aBodyReanim->mAnimTime;
         }
+        else if (mState == PlantState::STATE_SUNSHROOM_BIG)
+        {
+            aScale = 0.6f;
+        }
+        else if (mState == PlantState::STATE_SUNSHROOM_GROWING2)
+        {
+            Reanimation* aBodyReanim = mApp->ReanimationGet(mBodyReanimID);
+            aScale = 0.3f + 0.3f + 0.6f * aBodyReanim->mAnimTime;
+        }
+        else if (mState == PlantState::STATE_SUNSHROOM_HUGE)
+        {
+            aScale = 1.2f;
+        }
+
     }
     else if (mSeedType == SeedType::SEED_UMBRELLA)
     {
@@ -5683,6 +5771,7 @@ Rect Plant::GetPlantAttackRect(PlantWeapon thePlantWeapon)
     case SeedType::SEED_CHOMPER:        aRect = Rect(mX + 80,       mY,             80,                 mHeight);               break;
     case SeedType::SEED_SPIKEWEED:
     case SeedType::SEED_SPIKERUSH:
+    case SeedType::SEED_ICEROCK:
     case SeedType::SEED_SPIKEROCK:      aRect = Rect(mX + 20,       mY,             mWidth - 50,        mHeight);               break;
     case SeedType::SEED_ICEBERGLETTUCE:
     case SeedType::SEED_POTATOMINE:     aRect = Rect(mX,            mY,             mWidth - 25,        mHeight);               break;
