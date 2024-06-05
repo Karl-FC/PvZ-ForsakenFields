@@ -48,7 +48,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_BASILISK,          nullptr, ReanimationType::REANIM_WALLNUT,      5,  150,     3000,    PlantSubClass::SUBCLASS_NORMAL,    0,    _S("BASILISK"),0 }, //Supposedly  Primal Wallnut
     { SeedType::SEED_SPIKERUSH,         nullptr, ReanimationType::REANIM_SPIKEWEED,     40, 0,    750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("SPIKERUSH"),0 },
     { SeedType::SEED_KERNELPULT,        nullptr, ReanimationType::REANIM_KERNELPULT,    13, 100,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("KERNEL_PULT"),0 },
-    { SeedType::SEED_CABBAGEPULT,       nullptr, ReanimationType::REANIM_CABBAGEPULT,   13, 100,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("CABBAGE_PULT"),0 }, //Supposedly Explode-o-nut
+    { SeedType::SEED_CABBAGEPULT,       nullptr, ReanimationType::REANIM_CABBAGEPULT,   13, 200,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("CABBAGE_PULT"),0 }, //Supposedly Explode-o-nut
     { SeedType::SEED_PLANTERN,          nullptr, ReanimationType::REANIM_PLANTERN,      38, 25,     3000,   PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("PLANTERN"),0 }, //Supposedly Howitzer Hibiscus
     { SeedType::SEED_SPLITPEA,          nullptr, ReanimationType::REANIM_SPLITPEA,      32, 125,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SPLIT_PEA"),0 }, //PALITAN into [new plant]
     { SeedType::SEED_MELONPULT,         nullptr, ReanimationType::REANIM_MELONPULT,     14, 300,    750,    PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("MELON_PULT"),0 },
@@ -324,6 +324,9 @@ void Plant::PlantInitialize(int theGridX, int theGridY, SeedType theSeedType, Se
         mBlinkCountdown = 1000 + Sexy::Rand(1000);
         aBodyReanim->mColorOverride = Color(255, 64, 64);
         break;
+    case SeedType::SEED_ICEBERGCABBAGE:
+        aBodyReanim->mColorOverride = Color(64, 64, 255);
+        break;
     case SeedType::SEED_GIANT_WALLNUT:
         mPlantHealth = 4000;
         mBlinkCountdown = 1000 + Sexy::Rand(1000);
@@ -518,7 +521,8 @@ void Plant::PlantInitialize(int theGridX, int theGridY, SeedType theSeedType, Se
     }
     
     if ((mApp->mGameMode == GameMode::GAMEMODE_CHALLENGE_BIG_TIME) &&
-        (theSeedType == SeedType::SEED_WALLNUT || theSeedType == SeedType::SEED_SUNFLOWER || theSeedType == SeedType::SEED_MARIGOLD))
+        (theSeedType == SeedType::SEED_WALLNUT || theSeedType == SeedType::SEED_SUNFLOWER ||
+            theSeedType == SeedType::SEED_MARIGOLD))
     {
         mPlantHealth *= 2;
     }
@@ -809,7 +813,7 @@ bool Plant::FindTargetAndFire(int theRow, PlantWeapon thePlantWeapon)
         aHeadReanim->SetFramesForLayer("anim_shooting");
 
         mShootingCounter = 33;
-        if (mSeedType == SeedType::SEED_REPEATER || mSeedType == SeedType::SEED_CABBAGEPULT || mSeedType == SeedType::SEED_SPLITPEA || mSeedType == SeedType::SEED_LEFTPEATER)
+        if (mSeedType == SeedType::SEED_REPEATER || mSeedType == SeedType::SEED_SPLITPEA || mSeedType == SeedType::SEED_LEFTPEATER)
         {
             aHeadReanim->mAnimRate = 45.0f;
             mShootingCounter = 26;
@@ -1088,7 +1092,7 @@ void Plant::UpdateShooter()
     }
     if (mLaunchCounter == 25)
     {
-        if (mSeedType == SeedType::SEED_REPEATER || mSeedType == SeedType::SEED_CABBAGEPULT || mSeedType == SeedType::SEED_LEFTPEATER)
+        if (mSeedType == SeedType::SEED_REPEATER || mSeedType == SeedType::SEED_LEFTPEATER)
         {
             FindTargetAndFire(mRow, PlantWeapon::WEAPON_PRIMARY);
         }
@@ -3386,8 +3390,8 @@ void Plant::AnimateNuts()
 
     else if (mSeedType == SeedType::SEED_BASILISK)
     {
-        aCracked1 = IMAGE_REANIM_TALLNUT_CRACKED1;
-        aCracked2 = IMAGE_REANIM_TALLNUT_CRACKED2;
+        aCracked1 = IMAGE_REANIM_WALLNUT_CRACKED1;
+        aCracked2 = IMAGE_REANIM_WALLNUT_CRACKED2;
         aTrackToOverride = "anim_idle";
     }
 
@@ -5006,6 +5010,11 @@ void Plant::Fire(Zombie* theTargetZombie, int theRow, PlantWeapon thePlantWeapon
     if (mSeedType == SeedType::SEED_PUFFSHROOM && Sexy::Rand(4) == 0)
     { 
         aProjectileType = ProjectileType::PROJECTILE_BUTTER;
+    }
+
+    if (mSeedType == SeedType::SEED_CABBAGEPULT && Sexy::Rand(4) == 0)
+    {
+        aProjectileType = ProjectileType::PROJECTILE_BIGCABBAGE;
     }
 
     if (mSeedType == SeedType::SEED_PEASHOOTER && Sexy::Rand(3) == 0)

@@ -14,7 +14,7 @@
 ProjectileDefinition gProjectileDefinition[] = {  //0x69F1C0
 	{ ProjectileType::PROJECTILE_PEA,           0,  20  },
 	{ ProjectileType::PROJECTILE_SNOWPEA,       0,  20  },
-	{ ProjectileType::PROJECTILE_CABBAGE,       0,  40  },
+	{ ProjectileType::PROJECTILE_CABBAGE,       0,  20  },
 	{ ProjectileType::PROJECTILE_MELON,         0,  80  },
 	{ ProjectileType::PROJECTILE_PUFF,          0,  20  },
 	{ ProjectileType::PROJECTILE_WINTERMELON,   0,  80  },
@@ -31,6 +31,7 @@ ProjectileDefinition gProjectileDefinition[] = {  //0x69F1C0
 	{ ProjectileType::PROJECTILE_INVISIBLE,       0,  40 },
 	{ ProjectileType::PROJECTILE_ICECABBAGE,       0,  40  },
 	{ ProjectileType::PROJECTILE_CACTUSSPIKE,         0,  40  },
+	{ ProjectileType::PROJECTILE_BIGCABBAGE,       0,  60  },
 
 };
 
@@ -82,7 +83,8 @@ void Projectile::ProjectileInitialize(int theX, int theY, int theRenderOrder, in
 	mClickBackoffCounter = 0;
 	mAnimTicksPerFrame = 0;
 
-	if (mProjectileType == ProjectileType::PROJECTILE_CABBAGE || mProjectileType == ProjectileType::PROJECTILE_BUTTER)
+	if (mProjectileType == ProjectileType::PROJECTILE_CABBAGE || mProjectileType == ProjectileType::PROJECTILE_BUTTER
+		|| mProjectileType == ProjectileType::PROJECTILE_BIGCABBAGE)
 	{
 		mRotation = -7 * PI / 25;  // DEG_TO_RAD(-50.4f);
 		mRotationSpeed = RandRangeFloat(-0.08f, -0.02f);
@@ -569,7 +571,9 @@ void Projectile::UpdateLobMotion()
 		{
 			aMinCollisionZ = 60.0f;
 		}
-		else if (mProjectileType == ProjectileType::PROJECTILE_MELON || mProjectileType == ProjectileType::PROJECTILE_WINTERMELON)
+		else if (mProjectileType == ProjectileType::PROJECTILE_MELON 
+			|| mProjectileType == ProjectileType::PROJECTILE_WINTERMELON
+			|| mProjectileType == ProjectileType::PROJECTILE_BIGCABBAGE)
 		{
 			aMinCollisionZ = -35.0f;
 		}
@@ -916,7 +920,7 @@ void Projectile::DoImpact(Zombie* theZombie)
 		aSplatPosX -= 20.0f;
 		aEffect = ParticleEffect::PARTICLE_PUFF_SPLAT;
 	}
-	else if (mProjectileType == ProjectileType::PROJECTILE_CABBAGE)
+	else if (mProjectileType == ProjectileType::PROJECTILE_CABBAGE || mProjectileType == ProjectileType::PROJECTILE_BIGCABBAGE)
 	{
 		aSplatPosX = aLastPosX - 38.0f;
 		aSplatPosY = aLastPosY + 23.0f;
@@ -981,6 +985,7 @@ void Projectile::Update()
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || 
 		mProjectileType == ProjectileType::PROJECTILE_FIREBALL ||
 		mProjectileType == ProjectileType::PROJECTILE_CABBAGE || 
+		mProjectileType == ProjectileType::PROJECTILE_BIGCABBAGE ||
 		mProjectileType == ProjectileType::PROJECTILE_MELON || 
 		mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || 
 		mProjectileType == ProjectileType::PROJECTILE_KERNEL || 
@@ -1071,6 +1076,11 @@ void Projectile::Draw(Graphics* g)
 	{
 		aImage = IMAGE_REANIM_CABBAGEPULT_CABBAGE;
 		aScale = 1.0f;
+	}
+	else if (mProjectileType == ProjectileType::PROJECTILE_BIGCABBAGE)
+	{
+		aImage = IMAGE_REANIM_CABBAGEPULT_CABBAGE;
+		aScale = 1.5f;
 	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_KERNEL)
 	{
