@@ -1243,12 +1243,13 @@ void Plant::UpdateSunShroom()
         {
             PlayBodyReanim("anim_bigidle", ReanimLoopType::REANIM_LOOP, 10, RandRangeFloat(12.0f, 15.0f));
             mState = PlantState::STATE_SUNSHROOM_BIG;
+            bool aAidPurchased = mApp->mPlayerInfo->mPurchases[StoreItem::STORE_ITEM_SUNSHROOMER] > 0;
             mStateCountdown = 12000;
         }
     }
     else if (mState == PlantState::STATE_SUNSHROOM_BIG)
     {
-        if (mStateCountdown == 0)
+        if (mStateCountdown == 0 && mApp->mPlayerInfo->mPurchases[StoreItem::STORE_ITEM_SUNSHROOMER] > 0)
         {
             PlayBodyReanim("anim_grow", ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD, 15, 17.0f);
             mState = PlantState::STATE_SUNSHROOM_GROWING2;

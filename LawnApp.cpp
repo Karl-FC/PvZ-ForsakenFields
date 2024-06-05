@@ -2395,6 +2395,14 @@ bool LawnApp::HasSeedType(SeedType theSeedType)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_INSTANTCOFFEE] > 0;
 	}
+	if (theSeedType == SeedType::SEED_PRIMALSUNFLOWER)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_PRIMALSUNFLOWER] > 0;
+	}
+	if (theSeedType == SeedType::SEED_BLOOMSHROOM)
+	{
+		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_BLOOMSHROOM] > 0;
+	}
 	if (theSeedType == SeedType::SEED_CHOMPER)
 	{
 		return mPlayerInfo->mPurchases[(int)StoreItem::STORE_ITEM_PLANT_CHOMPER] > 0;
