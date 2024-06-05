@@ -330,6 +330,7 @@ void Plant::PlantInitialize(int theGridX, int theGridY, SeedType theSeedType, Se
     case SeedType::SEED_GIANT_WALLNUT:
         mPlantHealth = 4000;
         mBlinkCountdown = 1000 + Sexy::Rand(1000);
+        aBodyReanim->mColorOverride = Color(64, 64, 64);
         break;
     case SeedType::SEED_TALLNUT:
         mPlantHealth = 8000;

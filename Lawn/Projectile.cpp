@@ -99,7 +99,7 @@ void Projectile::ProjectileInitialize(int theX, int theY, int theRenderOrder, in
 		mRotation = 0.0f;
 		mRotationSpeed = RandRangeFloat(-0.2f, -0.08f);
 	}
-	else if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA)
+	else if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || mProjectileType == ProjectileType::PROJECTILE_ICECABBAGE)
 	{
 		TodParticleSystem* aParticle = mApp->AddTodParticle(mPosX + 8.0f, mPosY + 13.0f, 400000, ParticleEffect::PARTICLE_SNOWPEA_TRAIL);
 		AttachParticle(mAttachmentID, aParticle, 8.0f, 13.0f);
@@ -415,7 +415,8 @@ bool Projectile::IsSplashDamage(Zombie* theZombie)
 		mProjectileType == ProjectileType::PROJECTILE_MELON || 
 		mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || 
 		mProjectileType == ProjectileType::PROJECTILE_CACTUSSPIKE ||
-		mProjectileType == ProjectileType::PROJECTILE_FIREBALL;
+		mProjectileType == ProjectileType::PROJECTILE_FIREBALL ||
+		mProjectileType == ProjectileType::PROJECTILE_BIGCABBAGE;
 }
 
 //0x46D230
@@ -436,7 +437,10 @@ unsigned int Projectile::GetDamageFlags(Zombie* theZombie)
 		SetBit(aDamageFlags, (int)DamageFlags::DAMAGE_BYPASSES_SHIELD, true);
 	}
 
-	if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || mProjectileType == ProjectileType::PROJECTILE_SLOWPEA)
+	if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA ||
+		mProjectileType == ProjectileType::PROJECTILE_WINTERMELON ||
+		mProjectileType == ProjectileType::PROJECTILE_ICECABBAGE ||
+		mProjectileType == ProjectileType::PROJECTILE_SLOWPEA)
 	{
 		SetBit(aDamageFlags, (int)DamageFlags::DAMAGE_FREEZE, true);
 	}
@@ -825,7 +829,8 @@ void Projectile::PlayImpactSound(Zombie* theZombie)
 		aPlayHelmSound = false;
 		aPlaySplatSound = false;
 	}
-	else if (mProjectileType == ProjectileType::PROJECTILE_MELON || mProjectileType == ProjectileType::PROJECTILE_WINTERMELON)
+	else if (mProjectileType == ProjectileType::PROJECTILE_MELON || mProjectileType == ProjectileType::PROJECTILE_WINTERMELON
+		|| mProjectileType == ProjectileType::PROJECTILE_BIGCABBAGE)
 	{
 		mApp->PlayFoley(FoleyType::FOLEY_MELONIMPACT);
 		aPlaySplatSound = false;
@@ -896,7 +901,7 @@ void Projectile::DoImpact(Zombie* theZombie)
 		aSplatPosX -= 15.0f;
 		aEffect = ParticleEffect::PARTICLE_PEA_SPLAT;
 	}
-	else if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA)
+	else if (mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || mProjectileType == ProjectileType::PROJECTILE_ICECABBAGE)
 	{
 		aSplatPosX -= 15.0f;
 		aEffect = ParticleEffect::PARTICLE_SNOWPEA_SPLAT;
@@ -985,6 +990,7 @@ void Projectile::Update()
 		mProjectileType == ProjectileType::PROJECTILE_SNOWPEA || 
 		mProjectileType == ProjectileType::PROJECTILE_FIREBALL ||
 		mProjectileType == ProjectileType::PROJECTILE_CABBAGE || 
+		mProjectileType == ProjectileType::PROJECTILE_ICECABBAGE ||
 		mProjectileType == ProjectileType::PROJECTILE_BIGCABBAGE ||
 		mProjectileType == ProjectileType::PROJECTILE_MELON || 
 		mProjectileType == ProjectileType::PROJECTILE_WINTERMELON || 
@@ -1035,10 +1041,15 @@ void Projectile::Draw(Graphics* g)
 	{
 		aImage = IMAGE_PROJECTILESNOWPEA;
 	}
+	else if (mProjectileType == ProjectileType::PROJECTILE_ICECABBAGE)
+	{
+		aImage = IMAGE_PROJECTILESNOWPEA;
+		aScale = 1.0f;
+	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_SLOWPEA)
 	{
-		aImage = IMAGE_REANIM_CORNPULT_BUTTER;
-		aScale = 0.6f;
+		aImage = IMAGE_ICE_SPARKLES;
+		aScale = 1.6f;
 	}
 	else if (mProjectileType == ProjectileType::PROJECTILE_SOULPEA)
 	{
