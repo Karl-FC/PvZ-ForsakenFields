@@ -7648,7 +7648,7 @@ void Zombie::ApplyChill(bool theIsIceTrap)
     int aChillTime = 1000;
     if (theIsIceTrap)
     {
-        aChillTime = 2000;
+        aChillTime = 3000;
     }
     mChilledCounter = max(aChillTime, mChilledCounter);
 

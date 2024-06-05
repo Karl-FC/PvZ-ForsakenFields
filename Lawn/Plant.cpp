@@ -63,7 +63,7 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_ICESHROOM,         nullptr, ReanimationType::REANIM_ICESHROOM,     36, 75,     5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("ICE_SHROOM"),0 },
     { SeedType::SEED_MARIGOLD,          nullptr, ReanimationType::REANIM_MARIGOLD,      24, 50,     3000,   PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("MARIGOLD"),0 }, //Supposedly Poison-pult
     { SeedType::SEED_GATLINGPEA,        nullptr, ReanimationType::REANIM_GATLINGPEA,    5,  550,    5000,   PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("GATLING_PEA"),0 },
-        { SeedType::SEED_DOOMSHROOM,        nullptr, ReanimationType::REANIM_DOOMSHROOM,    20, 125,    5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("DOOM_SHROOM"),0 },
+    { SeedType::SEED_DOOMSHROOM,        nullptr, ReanimationType::REANIM_DOOMSHROOM,    20, 125,    5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("DOOM_SHROOM"),0 },
     { SeedType::SEED_GLOOMSHROOM,       nullptr, ReanimationType::REANIM_GLOOMSHROOM,   27, 250,    3000,   PlantSubClass::SUBCLASS_SHOOTER,    200,    _S("GLOOM_SHROOM"),0 },
     { SeedType::SEED_CATTAIL,           nullptr, ReanimationType::REANIM_CATTAIL,       27, 225,    1500,   PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("CATTAIL"),0 },
     { SeedType::SEED_WINTERMELON,       nullptr, ReanimationType::REANIM_WINTER_MELON,  27, 500,    1500,   PlantSubClass::SUBCLASS_SHOOTER,    300,    _S("WINTER_MELON"),0 },
@@ -85,8 +85,8 @@ PlantDefinition gPlantDefs[SeedType::NUM_SEED_TYPES] = {  //0x69F2B0
     { SeedType::SEED_EXPLODE_O_NUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  150,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("EXPLODE_O_NUT"),1 },
     { SeedType::SEED_SPLITPEA,          nullptr, ReanimationType::REANIM_SPLITPEA,      32, 125,    750,    PlantSubClass::SUBCLASS_SHOOTER,    150,    _S("SPLIT_PEA"),1 }, //PALITAN into [new plant]
     { SeedType::SEED_JALAPENO,          nullptr, ReanimationType::REANIM_JALAPENO,      11, 125,    5000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("JALAPENO"),1 },
-        { SeedType::SEED_PRIMALSUNFLOWER,         nullptr, ReanimationType::REANIM_SUNFLOWER,     7,  50,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("PRIMALSUNFLOWER"),1 },
-    { SeedType::SEED_BLOOMSHROOM,         nullptr, ReanimationType::REANIM_ZENGARDEN_SPROUT,     7,  50,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("BLOOMSHROOM"),1 },
+    { SeedType::SEED_PRIMALSUNFLOWER,         nullptr, ReanimationType::REANIM_SUNFLOWER,     7,  50,     750,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("PRIMALSUNFLOWER"),1 },
+    { SeedType::SEED_BLOOMSHROOM,         nullptr, ReanimationType::REANIM_MARIGOLD,     7,  100,     3000,    PlantSubClass::SUBCLASS_NORMAL,     2500,   _S("BLOOMSHROOM"),1 },
     { SeedType::SEED_IMITATER,          nullptr, ReanimationType::REANIM_IMITATER,      33, 0,      750,    PlantSubClass::SUBCLASS_NORMAL,     0,      _S("IMITATER"),0 },
     { SeedType::SEED_GIANT_WALLNUT,     nullptr, ReanimationType::REANIM_WALLNUT,       2,  0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("GIANT_WALLNUT"),-1 },
     { SeedType::SEED_SPROUT,            nullptr, ReanimationType::REANIM_ZENGARDEN_SPROUT,          33, 0,      3000,   PlantSubClass::SUBCLASS_NORMAL,     0,      _S("SPROUT"),-1 }
@@ -290,12 +290,12 @@ void Plant::PlantInitialize(int theGridX, int theGridY, SeedType theSeedType, Se
         TOD_ASSERT(aBodyReanim);
 
         aBodyReanim->mAnimRate = RandRangeFloat(15.0f, 20.0f);
-        /*Reanimation* aHeadReanim1 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
+        Reanimation* aHeadReanim1 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
         aHeadReanim1->mLoopType = ReanimLoopType::REANIM_LOOP;
         aHeadReanim1->mAnimRate = aBodyReanim->mAnimRate;
         aHeadReanim1->SetFramesForLayer("anim_head_idle1");
         aHeadReanim1->AttachToAnotherReanimation(aBodyReanim, "anim_head1");
-        mHeadReanimID = mApp->ReanimationGetID(aHeadReanim1);*/
+        mHeadReanimID = mApp->ReanimationGetID(aHeadReanim1);
 
         Reanimation* aHeadReanim2 = mApp->AddReanimation(0.0f, 0.0f, mRenderOrder + 2, aPlantDef.mReanimationType);
         aHeadReanim2->mLoopType = ReanimLoopType::REANIM_LOOP;
@@ -1244,7 +1244,7 @@ void Plant::UpdateSunShroom()
             PlayBodyReanim("anim_bigidle", ReanimLoopType::REANIM_LOOP, 10, RandRangeFloat(12.0f, 15.0f));
             mState = PlantState::STATE_SUNSHROOM_BIG;
             bool aAidPurchased = mApp->mPlayerInfo->mPurchases[StoreItem::STORE_ITEM_SUNSHROOMER] > 0;
-            mStateCountdown = 12000;
+            mStateCountdown = 6000;
         }
     }
     else if (mState == PlantState::STATE_SUNSHROOM_BIG)
@@ -4326,16 +4326,16 @@ void Plant::DrawShadow(Sexy::Graphics* g, float theOffsetX, float theOffsetY)
         aShadowOffsetY = 42.0f;
         if (mState == PlantState::STATE_SUNSHROOM_SMALL)
         {
-            aScale = 0.3f;
+            aScale = 0.6f;
         }
         else if (mState == PlantState::STATE_SUNSHROOM_GROWING)
         {
             Reanimation* aBodyReanim = mApp->ReanimationGet(mBodyReanimID);
-            aScale = 0.3f + 0.3f * aBodyReanim->mAnimTime;
+            aScale = 0.4f + 0.4f * aBodyReanim->mAnimTime;
         }
         else if (mState == PlantState::STATE_SUNSHROOM_BIG)
         {
-            aScale = 0.6f;
+            aScale = 1.2f;
         }
         else if (mState == PlantState::STATE_SUNSHROOM_GROWING2)
         {
@@ -4344,7 +4344,7 @@ void Plant::DrawShadow(Sexy::Graphics* g, float theOffsetX, float theOffsetY)
         }
         else if (mState == PlantState::STATE_SUNSHROOM_HUGE)
         {
-            aScale = 1.2f;
+            aScale = 1.8f;
         }
 
     }
@@ -4451,10 +4451,6 @@ void Plant::Draw(Graphics* g)
         if (mSeedType == SeedType::SEED_FLOWERPOT)
         {
             aOffsetY -= 15.0f;
-        }
-        if (mSeedType == SeedType::SEED_INSTANT_COFFEE)
-        {
-            aOffsetY -= 20.0f;
         }
 
         g->SetScale(1.0f, 0.25f, 0.0f, 0.0f);
