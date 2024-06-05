@@ -287,6 +287,7 @@ public:
     void                    UpdateImitater();
     void                    UpdateReanim();
     void                    SpikeRockTakeDamage();
+    void                    BasiliskSmash();
     bool                    IsSpiky();
     static /*inline*/ void  PreloadPlantResources(SeedType theSeedType);
     /*inline*/ bool         IsInPlay();

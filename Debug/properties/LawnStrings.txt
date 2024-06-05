@@ -62,7 +62,7 @@ Slows down enemies
 DeadPea
 
 [SOUL_PEA_TOOLTIP]
-Slowly shoots [REDACTED] that deals massive damage to undead
+Slowly shoots (REDACTED) that deals massive damage to undead
 
 [CHOMPER]
 Chomper
@@ -523,7 +523,7 @@ Slow pollens shoots pollens that slow the enemy.
 {FLAVOR}Wala pakong maisip hahaha
 
 [SOUL_PEA_DESCRIPTION]
-Deadpeas fires [REDACTED] that deals massive damage to the undead
+Deadpeas fires (REDACTED) that deals massive damage to the undead
 {SHORTLINE}
 {KEYWORD}Damage:{STAT} massive
 {KEYWORD}Fire speed:{STAT} massively slow
@@ -714,6 +714,16 @@ Spikeweeds pop tires and hurt any zombies that step on them.
 {SHORTLINE}
 {FLAVOR}Hockey is Spikeweed's obsession. He's got box seat season tickets. He keeps close track of his favorite 
 players. And he consistently cleans up in the office hockey pool. Just one problem: he's terrified of pucks.
+
+[SPIKERUSH_DESCRIPTION]
+Spikerushs hurt any weak zombies that pass through them.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} normal
+{KEYWORD}Range:{STAT} The entire tile Spikerush is placed in
+{KEYWORD}Special:{STAT} zombies can pass through it
+{KEYWORD}Weakness:{STAT} stronger zombies can eat it
+{SHORTLINE}
+{FLAVOR}
 
 [TORCHWOOD_DESCRIPTION]
 Torchwoods turn peas that pass through them into fireballs that deal twice as much damage.
@@ -976,6 +986,28 @@ Explode-O-Nuts provide protection, and when their shells are eaten, they explode
 {SHORTLINE}
 {FLAVOR}"My only regret," says Explode-O-Nut, "is that I have but one chewy center full of
  nitroglycerin to give in defense of this lawn."
+ 
+[ICEQUEENPEA_DESCRIPTION]
+Ice Queen Peas shoot four peas at a time.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} normal (for each pea)
+{KEYWORD}Firing Speed:{STAT} 4x
+{KEYWORD}Must be planted on repeaters
+{SHORTLINE}
+{FLAVOR}Gatling Pea's parents were concerned when he announced his intention to join the military. 
+"But honey, it's so dangerous!" they said in unison. Gatling Pea refused to budge. "Life is dangerous," 
+he replied, eyes glinting with steely conviction.
+
+[FLAMETHROWERPEASHOOTER_DESCRIPTION]
+Flamethrower Peas shoot four peas at a time.
+{SHORTLINE}
+{KEYWORD}Damage:{STAT} normal (for each pea)
+{KEYWORD}Firing Speed:{STAT} 4x
+{KEYWORD}Must be planted on repeaters
+{SHORTLINE}
+{FLAVOR}Gatling Pea's parents were concerned when he announced his intention to join the military. 
+"But honey, it's so dangerous!" they said in unison. Gatling Pea refused to budge. "Life is dangerous," 
+he replied, eyes glinting with steely conviction.
 
 [COB_CANNON_DESCRIPTION]
 Click on the Cob Cannon to launch deadly cobs of corn.

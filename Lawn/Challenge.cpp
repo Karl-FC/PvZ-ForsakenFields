@@ -579,7 +579,7 @@ void Challenge::InitLevel()
 		mBoard->mSeedBank->AddSeed(SEED_TALLNUT);
 		mBoard->mSeedBank->AddSeed(SEED_MELONPULT);
 		mBoard->mSeedBank->AddSeed(SEED_MAGNETSHROOM);
-		mBoard->mSeedBank->AddSeed(SEED_INSTANT_COFFEE);
+		mBoard->mSeedBank->AddSeed(SEED_PUMPKINSHELL);
 		mBoard->mSeedBank->AddSeed(SEED_MELONPULT);
 		mConveyorBeltCounter = 1000;
 	}

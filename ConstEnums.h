@@ -1020,32 +1020,32 @@ enum SeedChooserState
 };
 enum SeedType
 {//DAY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    SEED_PEASHOOTER = 0,                // 豌豆射手
-    SEED_SUNSHROOM = 1,                     // 向日葵
+    SEED_PEASHOOTER = 0,               
+    SEED_SUNSHROOM = 1,                   
     SEED_ICEBERGLETTUCE = 2,
-    SEED_WALLNUT = 3,                       // 坚果
-    SEED_POTATOMINE = 4,                    // 土豆地雷
+    SEED_WALLNUT = 3,               
+    SEED_POTATOMINE = 4,
     SEED_SLOWPEA = 5,
     SEED_SCAREDYSHROOM = 6,
     SEED_SOULPEA = 7,
 //NIGHT
-    SEED_PUFFSHROOM = 8,                    // 小喷菇
+    SEED_PUFFSHROOM = 8,
     SEED_WILLOW = 9,
     SEED_LEFTPEATER = 10,
-    SEED_GRAVEBUSTER = 11,                  // 墓碑吞噬者
+    SEED_GRAVEBUSTER = 11,
     SEED_TWOPEATER = 12,
     SEED_NOMMER = 13,
     SEED_TALLNUT = 14,
     SEED_CHERRYBOMB = 15,
 //POOL
-    SEED_LILYPAD = 16,                      // 睡莲
-    SEED_SUNFLOWER = 17,                   // 窝瓜
+    SEED_LILYPAD = 16,
+    SEED_SUNFLOWER = 17,
     SEED_FUMESHROOM = 18,
-    SEED_TANGLEKELP = 19,                   // 缠绕海草
+    SEED_TANGLEKELP = 19,
     SEED_BLOVER = 20,
     SEED_SPIKEWEED = 21,                    // Ice rock
-    SEED_JALAPENO = 22,
-    SEED_REPEATER = 23,            //Primal Wallnut
+    SEED_REPEATER = 22,
+    SEED_BASILISK = 23,            //Primal Wallnut
 
 //FOG
     SEED_SPIKERUSH = 24,        //Spikerush
@@ -1057,7 +1057,7 @@ enum SeedType
     SEED_PUMPKINSHELL = 30,
     SEED_MAGNETSHROOM = 31,
 //ROOF
-    SEED_DOOMSHROOM = 32,       //Twin Sunflower
+    SEED_TWINSUNFLOWER = 32,        //Twin Sunflower
     SEED_FLOWERPOT = 33,
     SEED_CACTUS = 34,
     SEED_ICEBERGCABBAGE = 35,
@@ -1067,7 +1067,7 @@ enum SeedType
     SEED_MARIGOLD = 39,     //Poison pult
 //SHOP
     SEED_GATLINGPEA = 40,
-    SEED_TWINSUNFLOWER = 41,        //Triplet Sunflower
+    SEED_DOOMSHROOM = 41,        //Triplet Sunflower
     SEED_GLOOMSHROOM = 42,
     SEED_CATTAIL = 43,
     SEED_WINTERMELON = 44,      //Hypno shroom
@@ -1087,7 +1087,9 @@ enum SeedType
     SEED_ICEQUEENPEA = 58,
     SEED_FLAMETHROWERPEA = 59,
     SEED_EXPLODE_O_NUT = 60,
-    SEED_IMITATER = 61,
+    SEED_ICEROCK = 61,
+    SEED_JALAPENO = 62,
+    SEED_IMITATER = 63,
 //MISC
     
     SEED_GIANT_WALLNUT,
@@ -1114,7 +1116,7 @@ enum SeedType
     SEED_ZOMBIE_DANCER,
     SEED_ZOMBIE_GARGANTUAR,
     SEED_ZOMBIE_IMP,
-    NUM_SEEDS_IN_CHOOSER = 62, //CHANGE THIS! +1
+    NUM_SEEDS_IN_CHOOSER = 64, //CHANGE THIS! +1
     SEED_NONE = -1
 };
 enum ShieldType

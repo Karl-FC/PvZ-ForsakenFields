@@ -2169,6 +2169,14 @@ void Zombie::UpdateZombieGargantuar()
                     {
                         SquishAllInSquare(aPlant->mPlantCol, aPlant->mRow, ZombieAttackType::ATTACKTYPE_CHEW);
                     }
+                } 
+                else if (aPlant->mSeedType == SeedType::SEED_BASILISK)
+                {
+                    aPlant->BasiliskSmash();
+                    if (aPlant->mPlantHealth <= 0)
+                    {
+                        SquishAllInSquare(aPlant->mPlantCol, aPlant->mRow, ZombieAttackType::ATTACKTYPE_CHEW);
+                    }
                 }
                 else
                 {
@@ -4861,10 +4869,10 @@ void Zombie::UpdateYuckyFace()
         {
             SetRow((Rand(2) == 0) ? (mRow + 1) : (mRow - 1));
         }
-        else
+        /*else
         {
             TOD_ASSERT();
-        }
+        }*/
     }
 }
 
@@ -6418,6 +6426,9 @@ bool Zombie::CanTargetPlant(Plant* thePlant, ZombieAttackType theAttackType)
         return false;
 
     if (thePlant->NotOnGround() || thePlant->mSeedType == SeedType::SEED_TANGLEKELP)
+        return false;
+
+    if (thePlant->mSeedType == SeedType::SEED_SPIKERUSH && mHelmHealth < 100)
         return false;
 
     if (!mInPool && mBoard->IsPoolSquare(thePlant->mPlantCol, thePlant->mRow))
